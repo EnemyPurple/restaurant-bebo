@@ -75,6 +75,35 @@
       "photo": "menu/khatakhari.webp"
     },
     {
+      "category": "Выпечка",
+      "name": "Хачапури по-аджарски",
+      "slug": "khachapuri",
+      "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
+      "price": "550.00",
+      "weight": 420,
+      "photo": "menu/khachapuri.jpg",
+      "is_recommended": true
+    },
+    {
+      "category": "Выпечка",
+      "name": "Хачапури по-имеретински",
+      "slug": "khachapuri-imeruli",
+      "description": "Круглый хачапури с сыром сулугуни внутри.",
+      "price": "480.00",
+      "weight": 350,
+      "photo": "menu/khachapuri-imeruli.jpg"
+    },
+    {
+      "category": "Выпечка",
+      "name": "Хинкали с мясом",
+      "slug": "khinkali",
+      "description": "Классические грузинские пельмени с сочной мясной начинкой.",
+      "price": "460.00",
+      "weight": 300,
+      "photo": "menu/khinkali.jpg",
+      "is_recommended": true
+    },
+    {
       "category": "Горячие блюда",
       "name": "Сациви с индейкой",
       "slug": "satsivi-indejka",
@@ -82,6 +111,15 @@
       "price": "480.00",
       "weight": 300,
       "photo": "menu/satsivi-indejka.webp"
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Сациви",
+      "slug": "satsivi",
+      "description": "Курица в густом ореховом соусе по грузинскому рецепту.",
+      "price": "450.00",
+      "weight": 300,
+      "photo": "menu/satsivi.jpg"
     },
     {
       "category": "Закуски",
@@ -105,12 +143,32 @@
     },
     {
       "category": "Закуски",
+      "name": "Бадриджани",
+      "slug": "badrijani",
+      "description": "Маринованные баклажаны с чесноком и зеленью.",
+      "price": "320.00",
+      "weight": 200,
+      "photo": "menu/badrijani.jpg",
+      "is_vegetarian": true
+    },
+    {
+      "category": "Закуски",
       "name": "Баклажан с сыром",
       "slug": "baklazhan-syr",
       "description": "Запечённый баклажан с сырной начинкой.",
       "price": "320.00",
       "weight": 240,
       "photo": "menu/baklazhan-syr.webp",
+      "is_vegetarian": true
+    },
+    {
+      "category": "Закуски",
+      "name": "Лобио",
+      "slug": "lobio",
+      "description": "Традиционная фасоль с ароматными специями.",
+      "price": "320.00",
+      "weight": 250,
+      "photo": "menu/lobio.jpg",
       "is_vegetarian": true
     },
     {
@@ -252,12 +310,5 @@
       "max_guests": 40
     }
   ],
-  "deactivate_dishes": [
-    "Хачапури по-аджарски",
-    "Хинкали с мясом",
-    "Лобио",
-    "Сациви",
-    "Хачапури по-имеретински",
-    "Бадриджани"
-  ]
+  "deactivate_dishes": []
 }

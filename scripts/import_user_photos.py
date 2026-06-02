@@ -75,12 +75,46 @@ DISHES = [
         "weight": 380,
     },
     {
+        "dest": "media/menu/khachapuri.jpg",
+        "category": "Выпечка",
+        "name": "Хачапури по-аджарски",
+        "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
+        "price": "550.00",
+        "weight": 420,
+        "is_recommended": True,
+    },
+    {
+        "dest": "media/menu/khachapuri-imeruli.jpg",
+        "category": "Выпечка",
+        "name": "Хачапури по-имеретински",
+        "description": "Круглый хачапури с сыром сулугуни внутри.",
+        "price": "480.00",
+        "weight": 350,
+    },
+    {
+        "dest": "media/menu/khinkali.jpg",
+        "category": "Выпечка",
+        "name": "Хинкали с мясом",
+        "description": "Классические грузинские пельмени с сочной мясной начинкой.",
+        "price": "460.00",
+        "weight": 300,
+        "is_recommended": True,
+    },
+    {
         "src": "Satsivi s indeykoy.webp",
         "dest": "media/menu/satsivi-indejka.webp",
         "category": "Горячие блюда",
         "name": "Сациви с индейкой",
         "description": "Индейка в густом грузинском ореховом соусе.",
         "price": "480.00",
+        "weight": 300,
+    },
+    {
+        "dest": "media/menu/satsivi.jpg",
+        "category": "Горячие блюда",
+        "name": "Сациви",
+        "description": "Курица в густом ореховом соусе по грузинскому рецепту.",
+        "price": "450.00",
         "weight": 300,
     },
     {
@@ -104,6 +138,15 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
+        "dest": "media/menu/badrijani.jpg",
+        "category": "Закуски",
+        "name": "Бадриджани",
+        "description": "Маринованные баклажаны с чесноком и зеленью.",
+        "price": "320.00",
+        "weight": 200,
+        "is_vegetarian": True,
+    },
+    {
         "src": "baklazhan s syrom.webp",
         "dest": "media/menu/baklazhan-syr.webp",
         "category": "Закуски",
@@ -111,6 +154,15 @@ DISHES = [
         "description": "Запечённый баклажан с сырной начинкой.",
         "price": "320.00",
         "weight": 240,
+        "is_vegetarian": True,
+    },
+    {
+        "dest": "media/menu/lobio.jpg",
+        "category": "Закуски",
+        "name": "Лобио",
+        "description": "Традиционная фасоль с ароматными специями.",
+        "price": "320.00",
+        "weight": 250,
         "is_vegetarian": True,
     },
     {
@@ -259,14 +311,7 @@ def build_manifest() -> dict:
         "dishes": dishes,
         "gallery": gallery,
         "events": events,
-        "deactivate_dishes": [
-            "Хачапури по-аджарски",
-            "Хинкали с мясом",
-            "Лобио",
-            "Сациви",
-            "Хачапури по-имеретински",
-            "Бадриджани",
-        ],
+        "deactivate_dishes": [],
     }
 
 
@@ -278,7 +323,9 @@ def main() -> None:
         copy_file(src_name, dest_rel)
 
     for item in DISHES:
-        copy_file(item["src"], item["dest"])
+        src = item.get("src")
+        if src:
+            copy_file(src, item["dest"])
 
     copy_file(EVENT["src"], EVENT["dest"])
 
