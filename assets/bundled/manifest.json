@@ -17,8 +17,8 @@
       "description": "Жареное мясо с картофелем, луком и специями.",
       "price": "590.00",
       "weight": 350,
-      "photo": "menu/odzhahuri-svinina.webp",
-      "is_recommended": true
+      "is_recommended": true,
+      "photo": "menu/odzhahuri-svinina.webp"
     },
     {
       "category": "Горячие блюда",
@@ -45,8 +45,8 @@
       "description": "Креветки в сливочно-чесночном соусе с сыром.",
       "price": "890.00",
       "weight": 280,
-      "photo": "menu/krevetki-chkmeruli.webp",
-      "is_recommended": true
+      "is_recommended": true,
+      "photo": "menu/krevetki-chkmeruli.webp"
     },
     {
       "category": "Горячие блюда",
@@ -63,8 +63,7 @@
       "slug": "khatakhari",
       "description": "Хачапури с начинкой из яиц, сыра и масла.",
       "price": "510.00",
-      "weight": 380,
-      "photo": "menu/khatakhari.webp"
+      "weight": 380
     },
     {
       "category": "Горячие блюда",
@@ -73,7 +72,6 @@
       "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
       "price": "550.00",
       "weight": 420,
-      "photo": "menu/khachapuri.jpg",
       "is_recommended": true
     },
     {
@@ -82,8 +80,7 @@
       "slug": "khachapuri-imeruli",
       "description": "Круглый хачапури с сыром сулугуни внутри.",
       "price": "480.00",
-      "weight": 350,
-      "photo": "menu/khachapuri-imeruli.jpg"
+      "weight": 350
     },
     {
       "category": "Горячие блюда",
@@ -92,7 +89,6 @@
       "description": "Классические грузинские пельмени с сочной мясной начинкой.",
       "price": "460.00",
       "weight": 300,
-      "photo": "menu/khinkali.jpg",
       "is_recommended": true
     },
     {
@@ -110,8 +106,7 @@
       "slug": "satsivi",
       "description": "Курица в густом ореховом соусе по грузинскому рецепту.",
       "price": "450.00",
-      "weight": 300,
-      "photo": "menu/satsivi.jpg"
+      "weight": 300
     },
     {
       "category": "Горячие блюда",
@@ -120,8 +115,8 @@
       "description": "Тушёные баклажаны с перцем и томатами.",
       "price": "360.00",
       "weight": 260,
-      "photo": "menu/adjapsandali.webp",
-      "is_vegetarian": true
+      "is_vegetarian": true,
+      "photo": "menu/adjapsandali.webp"
     },
     {
       "category": "Горячие блюда",
@@ -130,8 +125,8 @@
       "description": "Баклажаны с ореховой пастой и зеленью.",
       "price": "340.00",
       "weight": 220,
-      "photo": "menu/badrijani-oreh.webp",
-      "is_vegetarian": true
+      "is_vegetarian": true,
+      "photo": "menu/badrijani-oreh.webp"
     },
     {
       "category": "Горячие блюда",
@@ -140,7 +135,6 @@
       "description": "Маринованные баклажаны с чесноком и зеленью.",
       "price": "320.00",
       "weight": 200,
-      "photo": "menu/badrijani.jpg",
       "is_vegetarian": true
     },
     {
@@ -150,8 +144,8 @@
       "description": "Запечённый баклажан с сырной начинкой.",
       "price": "320.00",
       "weight": 240,
-      "photo": "menu/baklazhan-syr.webp",
-      "is_vegetarian": true
+      "is_vegetarian": true,
+      "photo": "menu/baklazhan-syr.webp"
     },
     {
       "category": "Горячие блюда",
@@ -160,7 +154,6 @@
       "description": "Традиционная фасоль с ароматными специями.",
       "price": "320.00",
       "weight": 250,
-      "photo": "menu/lobio.jpg",
       "is_vegetarian": true
     },
     {
@@ -170,8 +163,8 @@
       "description": "Фасоль с ароматными специями и зеленью.",
       "price": "350.00",
       "weight": 280,
-      "photo": "menu/lobio-kakheti.jpg",
-      "is_vegetarian": true
+      "is_vegetarian": true,
+      "photo": "menu/lobio-kakheti.jpg"
     },
     {
       "category": "Горячие блюда",
@@ -189,8 +182,8 @@
       "description": "Традиционные пасты из овощей с орехами и специями.",
       "price": "380.00",
       "weight": 250,
-      "photo": "menu/phkali-assorti.webp",
-      "is_vegetarian": true
+      "is_vegetarian": true,
+      "photo": "menu/phkali-assorti.webp"
     },
     {
       "category": "Горячие блюда",
@@ -208,8 +201,8 @@
       "description": "Сыр сулугуни с свежими томатами и зеленью.",
       "price": "410.00",
       "weight": 220,
-      "photo": "menu/suluguni-tomaty.webp",
-      "is_vegetarian": true
+      "is_vegetarian": true,
+      "photo": "menu/suluguni-tomaty.webp"
     },
     {
       "category": "Напитки",

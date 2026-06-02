@@ -37,8 +37,7 @@ async function loadMenu() {
             <h5 class="card-title mb-1">${d.name}</h5>
             <span class="badge text-bg-primary">${d.price} ₽</span>
           </div>
-          <div class="text-muted small mb-2">${d.category.name}</div>
-          <div class="card-text small text-muted">${(d.description || "").slice(0, 120)}</div>
+          <div class="card-text small text-muted mt-2">${(d.description || "").slice(0, 120)}</div>
           <div class="mt-2 d-flex gap-1 flex-wrap">
             ${d.is_spicy ? `<span class="badge text-bg-danger">Острое</span>` : ""}
             ${d.is_vegetarian ? `<span class="badge text-bg-success">Вегет.</span>` : ""}

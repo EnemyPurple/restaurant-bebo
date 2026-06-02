@@ -66,8 +66,7 @@ DISHES = [
         "weight": 250,
     },
     {
-        "src": "ХАТАХТАРИ.webp",
-        "dest": "media/menu/khatakhari.webp",
+        "slug": "khatakhari",
         "category": "Горячие блюда",
         "name": "Хачапури хатахтари",
         "description": "Хачапури с начинкой из яиц, сыра и масла.",
@@ -75,7 +74,7 @@ DISHES = [
         "weight": 380,
     },
     {
-        "dest": "media/menu/khachapuri.jpg",
+        "slug": "khachapuri",
         "category": "Горячие блюда",
         "name": "Хачапури по-аджарски",
         "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
@@ -84,7 +83,7 @@ DISHES = [
         "is_recommended": True,
     },
     {
-        "dest": "media/menu/khachapuri-imeruli.jpg",
+        "slug": "khachapuri-imeruli",
         "category": "Горячие блюда",
         "name": "Хачапури по-имеретински",
         "description": "Круглый хачапури с сыром сулугуни внутри.",
@@ -92,7 +91,7 @@ DISHES = [
         "weight": 350,
     },
     {
-        "dest": "media/menu/khinkali.jpg",
+        "slug": "khinkali",
         "category": "Горячие блюда",
         "name": "Хинкали с мясом",
         "description": "Классические грузинские пельмени с сочной мясной начинкой.",
@@ -110,7 +109,7 @@ DISHES = [
         "weight": 300,
     },
     {
-        "dest": "media/menu/satsivi.jpg",
+        "slug": "satsivi",
         "category": "Горячие блюда",
         "name": "Сациви",
         "description": "Курица в густом ореховом соусе по грузинскому рецепту.",
@@ -138,7 +137,7 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "dest": "media/menu/badrijani.jpg",
+        "slug": "badrijani",
         "category": "Горячие блюда",
         "name": "Бадриджани",
         "description": "Маринованные баклажаны с чесноком и зеленью.",
@@ -157,7 +156,7 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "dest": "media/menu/lobio.jpg",
+        "slug": "lobio",
         "category": "Горячие блюда",
         "name": "Лобио",
         "description": "Традиционная фасоль с ароматными специями.",
@@ -232,7 +231,7 @@ DISHES = [
         "weight": 330,
     },
     {
-        "src": "mandarin marakuyya.webp",
+        "src": "МАНдарин маракуйя2.webp",
         "dest": "media/menu/mandarin-marakuja.webp",
         "category": "Напитки",
         "name": "Мандарин-маракуйя",
@@ -266,25 +265,28 @@ def copy_file(src_name: str, dest_rel: str) -> None:
     shutil.copy2(src, dest)
 
 
-def build_manifest() -> dict:
+def build_manifest(copied_photos: set[str]) -> dict:
     categories = [
         {"name": "Горячие блюда", "sort_order": 1},
         {"name": "Напитки", "sort_order": 2},
     ]
     dishes = []
     for item in DISHES:
-        dishes.append(
-            {
-                "category": item["category"],
-                "name": item["name"],
-                "slug": Path(item["dest"]).stem,
-                "description": item["description"],
-                "price": item["price"],
-                "weight": item["weight"],
-                "photo": item["dest"].replace("media/", "", 1),
-                **{k: item[k] for k in ("is_recommended", "is_vegetarian", "is_spicy") if k in item},
-            }
-        )
+        dest = item.get("dest", "")
+        rel_photo = dest.replace("media/", "", 1) if dest and dest in copied_photos else ""
+        slug = item.get("slug") or (Path(dest).stem if dest else "")
+        entry = {
+            "category": item["category"],
+            "name": item["name"],
+            "slug": slug,
+            "description": item["description"],
+            "price": item["price"],
+            "weight": item["weight"],
+            **{k: item[k] for k in ("is_recommended", "is_vegetarian", "is_spicy") if k in item},
+        }
+        if rel_photo:
+            entry["photo"] = rel_photo
+        dishes.append(entry)
     gallery = [
         {
             "title": f"Ресторан «Бебо» — фото {i}",
@@ -317,17 +319,21 @@ def main() -> None:
     if not SOURCE.is_dir():
         raise SystemExit(f"Photo folder not found: {SOURCE}")
 
+    copied_photos: set[str] = set()
+
     for src_name, dest_rel in SLIDES + GALLERY:
         copy_file(src_name, dest_rel)
 
     for item in DISHES:
         src = item.get("src")
-        if src:
-            copy_file(src, item["dest"])
+        dest = item.get("dest")
+        if src and dest:
+            copy_file(src, dest)
+            copied_photos.add(dest)
 
     copy_file(EVENT["src"], EVENT["dest"])
 
-    manifest = build_manifest()
+    manifest = build_manifest(copied_photos)
     (BUNDLED / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

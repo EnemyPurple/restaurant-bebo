@@ -7,6 +7,7 @@ from decimal import Decimal
 from pathlib import Path
 
 from django.conf import settings
+from django.core.cache import cache
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
@@ -44,6 +45,7 @@ class Command(BaseCommand):
         self._prune_categories(manifest.get("categories", []))
         self._seed_gallery(manifest.get("gallery", []))
         self._seed_events(manifest.get("events", []))
+        cache.delete("menu:categories")
         self.stdout.write(self.style.SUCCESS("Bundled media sync completed."))
 
     def _copy_tree(self, src: Path, dst: Path, *, overwrite: bool) -> int:
@@ -101,6 +103,8 @@ class Command(BaseCommand):
                 dish.slug = slug
             if photo:
                 dish.photo = photo
+            else:
+                dish.photo = ""
             dish.save()
 
     def _deactivate_dishes(self, names: list[str]) -> None:
@@ -121,13 +125,19 @@ class Command(BaseCommand):
     def _prune_categories(self, items: list[dict]) -> None:
         keep = {item["name"] for item in items}
         removed = 0
+        hidden = 0
         for category in Category.objects.exclude(name__in=keep):
             if category.dishes.exists():
-                continue
-            category.delete()
-            removed += 1
+                category.is_active = False
+                category.save(update_fields=["is_active"])
+                hidden += 1
+            else:
+                category.delete()
+                removed += 1
         if removed:
             self.stdout.write(f"Removed {removed} unused categor(ies).")
+        if hidden:
+            self.stdout.write(f"Hidden {hidden} obsolete categor(ies).")
 
     def _seed_gallery(self, items: list[dict]) -> None:
         for item in items:
