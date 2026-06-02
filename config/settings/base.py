@@ -109,6 +109,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+LOGIN_URL = "users:login"
+LOGIN_REDIRECT_URL = "users:cabinet"
+LOGOUT_REDIRECT_URL = "/"
+
 LANGUAGE_CODE = "ru"
 TIME_ZONE = "Europe/Moscow"
 USE_I18N = True

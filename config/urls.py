@@ -2,10 +2,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path, re_path
+from django.views.generic import RedirectView
 from django.views.static import serve
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path(
+        "accounts/login/",
+        RedirectView.as_view(pattern_name="users:login", query_string=True),
+        name="account_login",
+    ),
     path("", include("apps.core.urls")),
     path("menu/", include("apps.menu.urls")),
     path("booking/", include("apps.booking.urls")),
