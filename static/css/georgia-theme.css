@@ -729,7 +729,8 @@ main.container {
     width: 100%;
   }
 
-  .bebo-menu-page #menu-q {
+  .bebo-menu-page #menu-q,
+  .bebo-menu-page .bebo-menu-page__search {
     min-width: 0 !important;
   }
 
@@ -796,12 +797,15 @@ a.bebo-feature-item:hover {
   background: linear-gradient(150deg, rgba(252, 248, 241, 0.94), rgba(243, 233, 219, 0.92));
   border-radius: 20px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  box-sizing: border-box;
   color: #2a2320;
   display: grid;
   gap: 1.2rem;
   grid-template-columns: 1.1fr 1fr;
+  max-width: 100%;
   overflow: hidden;
   padding: 1rem;
+  width: 100%;
 }
 
 .bebo-gallery-story__text {
@@ -809,6 +813,8 @@ a.bebo-feature-item:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 100%;
+  min-width: 0;
   padding: 1.4rem 1.8rem;
   text-align: center;
 }
@@ -825,6 +831,7 @@ a.bebo-feature-item:hover {
   line-height: 1.72;
   margin-bottom: 1.05rem;
   max-width: 42rem;
+  width: 100%;
 }
 
 .bebo-gallery-story__ornament {
@@ -838,12 +845,16 @@ a.bebo-feature-item:hover {
   align-items: center;
   display: flex;
   justify-content: center;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .bebo-gallery-story__media {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  max-width: 100%;
+  min-width: 0;
   width: 100%;
 }
 
@@ -868,13 +879,15 @@ a.bebo-feature-item:hover {
 }
 
 .bebo-gallery-thumbs {
-  display: grid;
+  display: flex;
+  flex-wrap: nowrap;
   gap: 0.55rem;
-  grid-auto-columns: minmax(70px, 1fr);
-  grid-auto-flow: column;
+  max-width: 100%;
   overflow-x: auto;
-  padding-bottom: 0.15rem;
+  overscroll-behavior-x: contain;
+  padding-bottom: 0.25rem;
   scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 
 .bebo-gallery-thumb {
@@ -882,9 +895,14 @@ a.bebo-feature-item:hover {
   border: 2px solid rgba(43, 32, 26, 0.25);
   border-radius: 10px;
   cursor: pointer;
+  flex: 0 0 4.75rem;
+  height: 4.75rem;
+  min-height: 44px;
+  min-width: 4.75rem;
   overflow: hidden;
   padding: 0;
   transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 4.75rem;
 }
 
 .bebo-gallery-thumb img {
@@ -1069,15 +1087,27 @@ a.bebo-feature-item:hover {
 @media (max-width: 575.98px) {
   .bebo-gallery-story {
     grid-template-columns: 1fr;
-    padding: 0.8rem;
+    padding: 0.65rem;
   }
 
   .bebo-gallery-story__text {
-    padding: 1rem 0.85rem 0.5rem;
+    align-items: stretch;
+    padding: 0.75rem 0.55rem 0.35rem;
+    text-align: left;
+  }
+
+  .bebo-gallery-story__text h2 {
+    font-size: 1.75rem;
+    text-align: center;
   }
 
   .bebo-gallery-story__text p {
     font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .bebo-gallery-story__image {
+    max-height: 52vh;
   }
 
   .bebo-gallery-toolbar {
@@ -1347,6 +1377,8 @@ footer,
   }
 
   main.container {
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
     padding-top: 1.6rem !important;
   }
 
@@ -1361,6 +1393,74 @@ footer,
   .bebo-countdown__timer {
     justify-content: flex-start;
   }
+
+  .bebo-page-hero__title {
+    font-size: clamp(1.55rem, 6.5vw, 2.15rem);
+  }
+
+  .bebo-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .bebo-menu-page__toolbar {
+    align-items: stretch !important;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .bebo-menu-page__filters {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .bebo-menu-page__filters .form-control,
+  .bebo-menu-page__filters .form-select,
+  .bebo-menu-page__filters .btn {
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  .bebo-menu-card__head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .bebo-menu-card__price {
+    align-self: flex-start;
+  }
+
+  .bebo-countdown {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .bebo-countdown__timer {
+    flex-wrap: wrap;
+  }
+
+  .navbar .container {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+}
+
+.bebo-mobile-safe,
+.bebo-mobile-safe img,
+.bebo-mobile-safe video {
+  max-width: 100%;
+}
+
+html,
+body.bebo-site {
+  overflow-x: clip;
+}
+
+.bebo-site img:not(.bebo-home-bg-slider img) {
+  height: auto;
+  max-width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {

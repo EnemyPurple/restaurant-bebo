@@ -3,13 +3,13 @@
 {% block title %}{{ SITE_NAME }} — Меню{% endblock %}
 {% block content %}
   <div class="bebo-menu-page">
-  <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+  <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3 bebo-menu-page__toolbar">
     <div>
       <h1 class="h3 mb-0">Меню</h1>
 
     </div>
-    <div class="d-flex gap-2">
-      <input id="menu-q" class="form-control" placeholder="Поиск по названию" style="min-width: 260px" />
+    <div class="d-flex gap-2 bebo-menu-page__filters">
+      <input id="menu-q" class="form-control bebo-menu-page__search" placeholder="Поиск по названию" />
       <select id="menu-category" class="form-select">
         <option value="">Все категории</option>
         {% for c in categories %}
