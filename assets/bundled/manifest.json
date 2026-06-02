@@ -12,22 +12,33 @@
   "dishes": [
     {
       "category": "Горячие блюда",
-      "name": "Оджахури со свининой",
-      "slug": "odzhahuri-svinina",
-      "description": "Жареное мясо с картофелем, луком и специями.",
-      "price": "590.00",
-      "weight": 350,
-      "is_recommended": true,
-      "photo": "menu/odzhahuri-svinina.webp"
+      "name": "Аджапсандали",
+      "slug": "adjapsandali",
+      "description": "Тушёные баклажаны с перцем и томатами.",
+      "price": "360.00",
+      "weight": 260,
+      "is_vegetarian": true,
+      "photo": "menu/adjapsandali.webp"
     },
     {
       "category": "Горячие блюда",
-      "name": "Оджахури с говядиной",
-      "slug": "odzhahuri-govyadina",
-      "description": "Сочная говядина с картофелем по домашнему рецепту.",
-      "price": "620.00",
-      "weight": 350,
-      "photo": "menu/odzhahuri-govyadina.webp"
+      "name": "Бадриджани с паштетом из грецких орехов",
+      "slug": "badrijani-oreh",
+      "description": "Баклажаны с ореховой пастой и зеленью.",
+      "price": "340.00",
+      "weight": 220,
+      "is_vegetarian": true,
+      "photo": "menu/badrijani-oreh.webp"
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Баклажан с сыром",
+      "slug": "baklazhan-syr",
+      "description": "Запечённый баклажан с сырной начинкой.",
+      "price": "320.00",
+      "weight": 240,
+      "is_vegetarian": true,
+      "photo": "menu/baklazhan-syr.webp"
     },
     {
       "category": "Горячие блюда",
@@ -50,114 +61,6 @@
     },
     {
       "category": "Горячие блюда",
-      "name": "Шампиньоны фаршированные с сулугуни",
-      "slug": "shampinony-suluguni",
-      "description": "Запечённые шампиньоны с расплавленным сулугуни.",
-      "price": "420.00",
-      "weight": 250,
-      "photo": "menu/shampinony-suluguni.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Хачапури хатахтари",
-      "slug": "khatakhari",
-      "description": "Хачапури с начинкой из яиц, сыра и масла.",
-      "price": "510.00",
-      "weight": 380
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Хачапури по-аджарски",
-      "slug": "khachapuri",
-      "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
-      "price": "550.00",
-      "weight": 420,
-      "is_recommended": true
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Хачапури по-имеретински",
-      "slug": "khachapuri-imeruli",
-      "description": "Круглый хачапури с сыром сулугуни внутри.",
-      "price": "480.00",
-      "weight": 350
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Хинкали с мясом",
-      "slug": "khinkali",
-      "description": "Классические грузинские пельмени с сочной мясной начинкой.",
-      "price": "460.00",
-      "weight": 300,
-      "is_recommended": true
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Сациви с индейкой",
-      "slug": "satsivi-indejka",
-      "description": "Индейка в густом грузинском ореховом соусе.",
-      "price": "480.00",
-      "weight": 300,
-      "photo": "menu/satsivi-indejka.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Сациви",
-      "slug": "satsivi",
-      "description": "Курица в густом ореховом соусе по грузинскому рецепту.",
-      "price": "450.00",
-      "weight": 300
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Аджапсандали",
-      "slug": "adjapsandali",
-      "description": "Тушёные баклажаны с перцем и томатами.",
-      "price": "360.00",
-      "weight": 260,
-      "is_vegetarian": true,
-      "photo": "menu/adjapsandali.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Бадриджани с паштетом из грецких орехов",
-      "slug": "badrijani-oreh",
-      "description": "Баклажаны с ореховой пастой и зеленью.",
-      "price": "340.00",
-      "weight": 220,
-      "is_vegetarian": true,
-      "photo": "menu/badrijani-oreh.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Бадриджани",
-      "slug": "badrijani",
-      "description": "Маринованные баклажаны с чесноком и зеленью.",
-      "price": "320.00",
-      "weight": 200,
-      "is_vegetarian": true
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Баклажан с сыром",
-      "slug": "baklazhan-syr",
-      "description": "Запечённый баклажан с сырной начинкой.",
-      "price": "320.00",
-      "weight": 240,
-      "is_vegetarian": true,
-      "photo": "menu/baklazhan-syr.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Лобио",
-      "slug": "lobio",
-      "description": "Традиционная фасоль с ароматными специями.",
-      "price": "320.00",
-      "weight": 250,
-      "is_vegetarian": true
-    },
-    {
-      "category": "Горячие блюда",
       "name": "Лобио по-кахетински",
       "slug": "lobio-kakheti",
       "description": "Фасоль с ароматными специями и зеленью.",
@@ -168,22 +71,52 @@
     },
     {
       "category": "Горячие блюда",
-      "name": "Мцниве из бочки",
+      "name": "Мцнили из бочки",
       "slug": "mtsnili-bochka",
       "description": "Ассорти из капусты, огурцов, перца и черемши.",
       "price": "290.00",
       "weight": 200,
+      "is_spicy": true,
       "photo": "menu/mtsnili-bochka.webp"
     },
     {
       "category": "Горячие блюда",
-      "name": "Пхали из свеклы, шпината и фасоли",
+      "name": "Оджахури с говядиной",
+      "slug": "odzhahuri-govyadina",
+      "description": "Сочная говядина с картофелем по домашнему рецепту.",
+      "price": "620.00",
+      "weight": 350,
+      "photo": "menu/odzhahuri-govyadina.webp"
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Оджахури со свининой",
+      "slug": "odzhahuri-svinina",
+      "description": "Жареное мясо с картофелем, луком и специями.",
+      "price": "590.00",
+      "weight": 350,
+      "is_recommended": true,
+      "photo": "menu/odzhahuri-svinina.webp"
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Пхалеули из свеклы, шпината и фасоли",
       "slug": "phkali-assorti",
       "description": "Традиционные пасты из овощей с орехами и специями.",
       "price": "380.00",
       "weight": 250,
       "is_vegetarian": true,
+      "is_spicy": true,
       "photo": "menu/phkali-assorti.webp"
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Сациви с индейкой",
+      "slug": "satsivi-indejka",
+      "description": "Индейка в густом грузинском ореховом соусе.",
+      "price": "480.00",
+      "weight": 300,
+      "photo": "menu/satsivi-indejka.webp"
     },
     {
       "category": "Горячие блюда",
@@ -205,13 +138,30 @@
       "photo": "menu/suluguni-tomaty.webp"
     },
     {
-      "category": "Напитки",
-      "name": "Тархун",
-      "slug": "tarhun",
-      "description": "Освежающий лимонад из тархуна.",
-      "price": "220.00",
-      "weight": 300,
-      "photo": "menu/tarhun.webp"
+      "category": "Горячие блюда",
+      "name": "Хачапури по-аджарски",
+      "slug": "khachapuri",
+      "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
+      "price": "550.00",
+      "weight": 420,
+      "is_recommended": true
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Хачапури по-имеретински",
+      "slug": "khachapuri-imeruli",
+      "description": "Круглый хачапури с сыром сулугуни внутри.",
+      "price": "480.00",
+      "weight": 350
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Шампиньоны фаршированные с сулугуни",
+      "slug": "shampinony-suluguni",
+      "description": "Запечённые шампиньоны с расплавленным сулугуни.",
+      "price": "420.00",
+      "weight": 250,
+      "photo": "menu/shampinony-suluguni.webp"
     },
     {
       "category": "Напитки",
@@ -220,7 +170,7 @@
       "description": "Классический газированный напиток.",
       "price": "180.00",
       "weight": 330,
-      "photo": "menu/kola.webp"
+      "photo": "menu/cola.webp"
     },
     {
       "category": "Напитки",
@@ -230,6 +180,24 @@
       "price": "240.00",
       "weight": 300,
       "photo": "menu/mandarin-marakuja.webp"
+    },
+    {
+      "category": "Напитки",
+      "name": "Натахтари",
+      "slug": "natahtari",
+      "description": "Освежающий лимонад.",
+      "price": "330.00",
+      "weight": 330,
+      "photo": "menu/natahtari.webp"
+    },
+    {
+      "category": "Напитки",
+      "name": "Тархун",
+      "slug": "tarhun",
+      "description": "Освежающий лимонад из тархуна.",
+      "price": "220.00",
+      "weight": 300,
+      "photo": "menu/tarhun.webp"
     }
   ],
   "gallery": [

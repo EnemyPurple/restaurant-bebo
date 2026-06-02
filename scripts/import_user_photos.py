@@ -1,4 +1,4 @@
-"""Import ready photos from Desktop/ФОТО into assets/bundled/."""
+"""Import ready photos from Desktop/ФОТО or media/menu into assets/bundled/."""
 from __future__ import annotations
 
 import json
@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = Path(r"C:\Users\dmekh\Desktop\ФОТО")
+LOCAL_MENU = ROOT / "media" / "menu"
 BUNDLED = ROOT / "assets" / "bundled"
 
 SLIDES = [
@@ -19,114 +20,7 @@ GALLERY = [(f"ГАЛЛЕРЕЯ {i}.webp", f"media/gallery/gallery-{i:02d}.webp")
 
 DISHES = [
     {
-        "slug": "odzhahuri-svinina",
-        "sources": ["odzhahuri-svinina.webp"],
-        "category": "Горячие блюда",
-        "name": "Оджахури со свининой",
-        "description": "Жареное мясо с картофелем, луком и специями.",
-        "price": "590.00",
-        "weight": 350,
-        "is_recommended": True,
-    },
-    {
-        "slug": "odzhahuri-govyadina",
-        "sources": ["odzhahuri-govyadina.webp", "odzhakhuri s govyadinoy.webp"],
-        "category": "Горячие блюда",
-        "name": "Оджахури с говядиной",
-        "description": "Сочная говядина с картофелем по домашнему рецепту.",
-        "price": "620.00",
-        "weight": 350,
-    },
-    {
-        "slug": "zharkoe-semga",
-        "sources": ["zharkoe-semga.webp", "zharkoye s semgoy.webp"],
-        "category": "Горячие блюда",
-        "name": "Жаркое с семгой",
-        "description": "Нежная семга с овощами в ароматном соусе.",
-        "price": "780.00",
-        "weight": 320,
-    },
-    {
-        "slug": "krevetki-chkmeruli",
-        "sources": ["krevetki-chkmeruli.webp", "krevetki chkmeruli.webp"],
-        "category": "Горячие блюда",
-        "name": "Креветки чкмерули",
-        "description": "Креветки в сливочно-чесночном соусе с сыром.",
-        "price": "890.00",
-        "weight": 280,
-        "is_recommended": True,
-    },
-    {
-        "slug": "shampinony-suluguni",
-        "sources": [
-            "shampinony-suluguni.webp",
-            "Shampinony farshirovannyye s syrom suluguni.webp",
-        ],
-        "category": "Горячие блюда",
-        "name": "Шампиньоны фаршированные с сулугуни",
-        "description": "Запечённые шампиньоны с расплавленным сулугуни.",
-        "price": "420.00",
-        "weight": 250,
-    },
-    {
-        "slug": "khatakhari",
-        "sources": ["khatakhari.webp", "khatakhari.jpg"],
-        "category": "Горячие блюда",
-        "name": "Хачапури хатахтари",
-        "description": "Хачапури с начинкой из яиц, сыра и масла.",
-        "price": "510.00",
-        "weight": 380,
-    },
-    {
-        "slug": "khachapuri",
-        "sources": ["khachapuri.webp", "khachapuri.jpg", "khachapuri-adjaruli.webp"],
-        "category": "Горячие блюда",
-        "name": "Хачапури по-аджарски",
-        "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
-        "price": "550.00",
-        "weight": 420,
-        "is_recommended": True,
-    },
-    {
-        "slug": "khachapuri-imeruli",
-        "sources": ["khachapuri-imeruli.webp", "khachapuri-imeruli.jpg"],
-        "category": "Горячие блюда",
-        "name": "Хачапури по-имеретински",
-        "description": "Круглый хачапури с сыром сулугуни внутри.",
-        "price": "480.00",
-        "weight": 350,
-    },
-    {
-        "slug": "khinkali",
-        "sources": ["khinkali.webp", "khinkali.jpg"],
-        "category": "Горячие блюда",
-        "name": "Хинкали с мясом",
-        "description": "Классические грузинские пельмени с сочной мясной начинкой.",
-        "price": "460.00",
-        "weight": 300,
-        "is_recommended": True,
-    },
-    {
-        "slug": "satsivi-indejka",
-        "sources": ["satsivi-indejka.webp", "Satsivi s indeykoy.webp"],
-        "category": "Горячие блюда",
-        "name": "Сациви с индейкой",
-        "description": "Индейка в густом грузинском ореховом соусе.",
-        "price": "480.00",
-        "weight": 300,
-    },
-    {
-        "slug": "satsivi",
-        "sources": ["satsivi.webp", "satsivi.jpg"],
-        "category": "Горячие блюда",
-        "name": "Сациви",
-        "description": "Курица в густом ореховом соусе по грузинскому рецепту.",
-        "price": "450.00",
-        "weight": 300,
-    },
-    {
         "slug": "adjapsandali",
-        "sources": ["adjapsandali.webp", "Adzhapsandali.webp"],
         "category": "Горячие блюда",
         "name": "Аджапсандали",
         "description": "Тушёные баклажаны с перцем и томатами.",
@@ -136,10 +30,6 @@ DISHES = [
     },
     {
         "slug": "badrijani-oreh",
-        "sources": [
-            "badrijani-oreh.webp",
-            "Badridzhani s pashtetom iz gretskikh orekhov.webp",
-        ],
         "category": "Горячие блюда",
         "name": "Бадриджани с паштетом из грецких орехов",
         "description": "Баклажаны с ореховой пастой и зеленью.",
@@ -148,18 +38,7 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "slug": "badrijani",
-        "sources": ["badrijani.webp", "badrijani.jpg"],
-        "category": "Горячие блюда",
-        "name": "Бадриджани",
-        "description": "Маринованные баклажаны с чесноком и зеленью.",
-        "price": "320.00",
-        "weight": 200,
-        "is_vegetarian": True,
-    },
-    {
         "slug": "baklazhan-syr",
-        "sources": ["baklazhan-syr.webp", "baklazhan s syrom.webp"],
         "category": "Горячие блюда",
         "name": "Баклажан с сыром",
         "description": "Запечённый баклажан с сырной начинкой.",
@@ -168,18 +47,24 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "slug": "lobio",
-        "sources": ["lobio.webp", "lobio.jpg"],
+        "slug": "zharkoe-semga",
         "category": "Горячие блюда",
-        "name": "Лобио",
-        "description": "Традиционная фасоль с ароматными специями.",
-        "price": "320.00",
-        "weight": 250,
-        "is_vegetarian": True,
+        "name": "Жаркое с семгой",
+        "description": "Нежная семга с овощами в ароматном соусе.",
+        "price": "780.00",
+        "weight": 320,
+    },
+    {
+        "slug": "krevetki-chkmeruli",
+        "category": "Горячие блюда",
+        "name": "Креветки чкмерули",
+        "description": "Креветки в сливочно-чесночном соусе с сыром.",
+        "price": "890.00",
+        "weight": 280,
+        "is_recommended": True,
     },
     {
         "slug": "lobio-kakheti",
-        "sources": ["lobio-kakheti.webp", "lobio-kakheti.jpg", "lobio po kakhetinski.jpg"],
         "category": "Горячие блюда",
         "name": "Лобио по-кахетински",
         "description": "Фасоль с ароматными специями и зеленью.",
@@ -189,29 +74,50 @@ DISHES = [
     },
     {
         "slug": "mtsnili-bochka",
-        "sources": [
-            "mtsnili-bochka.webp",
-            "Mtsnili iz bochki (kapusta po guriyski. ostryy perets. ogurtsy. cheremsha i dzhondzholi).webp",
-        ],
         "category": "Горячие блюда",
-        "name": "Мцниве из бочки",
+        "name": "Мцнили из бочки",
         "description": "Ассорти из капусты, огурцов, перца и черемши.",
         "price": "290.00",
         "weight": 200,
+        "is_spicy": True,
+    },
+    {
+        "slug": "odzhahuri-govyadina",
+        "category": "Горячие блюда",
+        "name": "Оджахури с говядиной",
+        "description": "Сочная говядина с картофелем по домашнему рецепту.",
+        "price": "620.00",
+        "weight": 350,
+    },
+    {
+        "slug": "odzhahuri-svinina",
+        "category": "Горячие блюда",
+        "name": "Оджахури со свининой",
+        "description": "Жареное мясо с картофелем, луком и специями.",
+        "price": "590.00",
+        "weight": 350,
+        "is_recommended": True,
     },
     {
         "slug": "phkali-assorti",
-        "sources": ["phkali-assorti.webp", "Pkhaleuli iz svekly. shpinata i fasoli.webp"],
         "category": "Горячие блюда",
-        "name": "Пхали из свеклы, шпината и фасоли",
+        "name": "Пхалеули из свеклы, шпината и фасоли",
         "description": "Традиционные пасты из овощей с орехами и специями.",
         "price": "380.00",
         "weight": 250,
+        "is_spicy": True,
         "is_vegetarian": True,
     },
     {
+        "slug": "satsivi-indejka",
+        "category": "Горячие блюда",
+        "name": "Сациви с индейкой",
+        "description": "Индейка в густом грузинском ореховом соусе.",
+        "price": "480.00",
+        "weight": 300,
+    },
+    {
         "slug": "semga-tarhun",
-        "sources": ["semga-tarhun.webp", "Semga slabosolenaya s tarkhunom.webp"],
         "category": "Горячие блюда",
         "name": "Семга слабосоленая с тархуном",
         "description": "Нежная семга с ароматом свежего тархуна.",
@@ -220,7 +126,6 @@ DISHES = [
     },
     {
         "slug": "suluguni-tomaty",
-        "sources": ["suluguni-tomaty.webp", "suluguni s tomatami.webp"],
         "category": "Горячие блюда",
         "name": "Сулугуни с томатами",
         "description": "Сыр сулугуни с свежими томатами и зеленью.",
@@ -229,17 +134,32 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "slug": "tarhun",
-        "sources": ["tarhun.webp", "tarhun_v_stakane.webp"],
-        "category": "Напитки",
-        "name": "Тархун",
-        "description": "Освежающий лимонад из тархуна.",
-        "price": "220.00",
-        "weight": 300,
+        "slug": "khachapuri",
+        "category": "Горячие блюда",
+        "name": "Хачапури по-аджарски",
+        "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
+        "price": "550.00",
+        "weight": 420,
+        "is_recommended": True,
+    },
+    {
+        "slug": "khachapuri-imeruli",
+        "category": "Горячие блюда",
+        "name": "Хачапури по-имеретински",
+        "description": "Круглый хачапури с сыром сулугуни внутри.",
+        "price": "480.00",
+        "weight": 350,
+    },
+    {
+        "slug": "shampinony-suluguni",
+        "category": "Горячие блюда",
+        "name": "Шампиньоны фаршированные с сулугуни",
+        "description": "Запечённые шампиньоны с расплавленным сулугуни.",
+        "price": "420.00",
+        "weight": 250,
     },
     {
         "slug": "kola",
-        "sources": ["kola.webp", "Kola.webp"],
         "category": "Напитки",
         "name": "Кола",
         "description": "Классический газированный напиток.",
@@ -248,15 +168,26 @@ DISHES = [
     },
     {
         "slug": "mandarin-marakuja",
-        "sources": [
-            "МАНдарин маракуйя2.webp",
-            "mandarin-marakuja.webp",
-            "mandarin marakuyya.webp",
-        ],
         "category": "Напитки",
         "name": "Мандарин-маракуйя",
         "description": "Фруктовый микс из мандарина и маракуйи.",
         "price": "240.00",
+        "weight": 300,
+    },
+    {
+        "slug": "natahtari",
+        "category": "Напитки",
+        "name": "Натахтари",
+        "description": "Освежающий лимонад.",
+        "price": "330.00",
+        "weight": 330,
+    },
+    {
+        "slug": "tarhun",
+        "category": "Напитки",
+        "name": "Тархун",
+        "description": "Освежающий лимонад из тархуна.",
+        "price": "220.00",
         "weight": 300,
     },
 ]
@@ -267,40 +198,52 @@ EVENT = {
 }
 
 PHOTO_EXTENSIONS = (".webp", ".jpg", ".jpeg", ".png")
+FILENAME_ALIASES = {
+    "cola": "kola",
+    "tarhun_v_stakane": "tarhun",
+}
+DISH_PHOTO_FILES = {
+    "kola": "cola.webp",
+}
+
+
+def _photo_roots() -> list[Path]:
+    roots = [LOCAL_MENU]
+    if SOURCE.is_dir():
+        roots.append(SOURCE)
+    return roots
 
 
 def _source_index() -> dict[str, Path]:
     index: dict[str, Path] = {}
-    if not SOURCE.is_dir():
-        return index
-    for candidate in SOURCE.iterdir():
-        if candidate.is_file():
-            index[candidate.name.casefold()] = candidate
+    for root in _photo_roots():
+        if not root.is_dir():
+            continue
+        for candidate in root.iterdir():
+            if not candidate.is_file():
+                continue
+            slug = FILENAME_ALIASES.get(candidate.stem, candidate.stem)
+            key = f"{slug}{candidate.suffix.lower()}".casefold()
+            if key not in index:
+                index[key] = candidate
     return index
 
 
 def _resolve_source_name(src_name: str, index: dict[str, Path]) -> Path | None:
-    direct = index.get(src_name.casefold())
-    if direct is not None:
-        return direct
-    direct_path = SOURCE / src_name
-    if direct_path.is_file():
-        return direct_path
-    return None
+    slug = FILENAME_ALIASES.get(Path(src_name).stem, Path(src_name).stem)
+    ext = Path(src_name).suffix
+    return index.get(f"{slug}{ext}".casefold())
 
 
-def _resolve_dish_photo(slug: str, sources: list[str], index: dict[str, Path]) -> Path | None:
-    for name in sources:
-        found = _resolve_source_name(name, index)
-        if found is not None:
-            return found
+def _resolve_dish_photo(slug: str, index: dict[str, Path]) -> Path | None:
+    if slug == "kola":
+        cola = LOCAL_MENU / "cola.webp"
+        if cola.is_file():
+            return cola
     for ext in PHOTO_EXTENSIONS:
-        found = _resolve_source_name(f"{slug}{ext}", index)
+        found = index.get(f"{slug}{ext}".casefold())
         if found is not None:
             return found
-    bundled = BUNDLED / "media" / "menu" / f"{slug}{PHOTO_EXTENSIONS[0]}"
-    if bundled.is_file() and bundled.stat().st_size > 50_000:
-        return bundled
     return None
 
 
@@ -310,11 +253,16 @@ def copy_path(src: Path, dest_rel: str) -> None:
     shutil.copy2(src, dest)
 
 
-def copy_file(src_name: str, dest_rel: str) -> None:
-    index = _source_index()
+def copy_file(src_name: str, dest_rel: str, index: dict[str, Path]) -> None:
     src = _resolve_source_name(src_name, index)
     if src is None:
-        raise FileNotFoundError(f"Missing photo: {SOURCE / src_name}")
+        for root in _photo_roots():
+            direct = root / src_name
+            if direct.is_file():
+                src = direct
+                break
+    if src is None:
+        raise FileNotFoundError(f"Missing photo: {src_name}")
     copy_path(src, dest_rel)
 
 
@@ -327,8 +275,10 @@ def build_manifest(copied_photos: set[str]) -> dict:
     for item in DISHES:
         slug = item["slug"]
         rel_photo = ""
+        photo_file = DISH_PHOTO_FILES.get(slug, f"{slug}.webp")
+        photo_stem = Path(photo_file).stem
         for dest in copied_photos:
-            if Path(dest).stem == slug:
+            if Path(dest).stem in {slug, photo_stem}:
                 rel_photo = dest.replace("media/", "", 1)
                 break
         entry = {
@@ -372,35 +322,38 @@ def build_manifest(copied_photos: set[str]) -> dict:
 
 
 def main() -> None:
-    if not SOURCE.is_dir():
-        raise SystemExit(f"Photo folder not found: {SOURCE}")
-
     copied_photos: set[str] = set()
     index = _source_index()
     missing: list[str] = []
 
-    for src_name, dest_rel in SLIDES + GALLERY:
-        copy_file(src_name, dest_rel)
+    if SOURCE.is_dir():
+        for src_name, dest_rel in SLIDES + GALLERY:
+            copy_file(src_name, dest_rel, index)
+        copy_file(EVENT["src"], EVENT["dest"], index)
+
+    menu_dir = BUNDLED / "media" / "menu"
+    menu_dir.mkdir(parents=True, exist_ok=True)
+    for old in menu_dir.iterdir():
+        if old.is_file():
+            old.unlink()
 
     for item in DISHES:
         slug = item["slug"]
-        src = _resolve_dish_photo(slug, item.get("sources", []), index)
+        src = _resolve_dish_photo(slug, index)
         if src is None:
             missing.append(item["name"])
             continue
-        dest_rel = f"media/menu/{slug}{src.suffix.lower()}"
+        photo_name = DISH_PHOTO_FILES.get(slug, f"{slug}{src.suffix.lower()}")
+        dest_rel = f"media/menu/{photo_name}"
         copy_path(src, dest_rel)
         copied_photos.add(dest_rel)
-
-    copy_file(EVENT["src"], EVENT["dest"])
 
     manifest = build_manifest(copied_photos)
     (BUNDLED / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    imported = len(SLIDES) + len(GALLERY) + len(copied_photos) + 1
-    print(f"Imported {imported} photos into {BUNDLED}")
+    print(f"Menu: {len(DISHES)} dishes, {len(copied_photos)} with photos")
     if missing:
         print("Missing photos for:", ", ".join(missing))
 
