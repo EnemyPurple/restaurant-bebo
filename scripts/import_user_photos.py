@@ -29,7 +29,7 @@ DISHES = [
         "is_recommended": True,
     },
     {
-        "src": "ОДЖАХУРИ С ГОВЯД.webp",
+        "src": "odzhakhuri s govyadinoy.webp",
         "dest": "media/menu/odzhahuri-govyadina.webp",
         "category": "Горячие блюда",
         "name": "Оджахури с говядиной",
@@ -38,7 +38,7 @@ DISHES = [
         "weight": 350,
     },
     {
-        "src": "Жаркое с семгой.webp",
+        "src": "zharkoye s semgoy.webp",
         "dest": "media/menu/zharkoe-semga.webp",
         "category": "Горячие блюда",
         "name": "Жаркое с семгой",
@@ -47,7 +47,7 @@ DISHES = [
         "weight": 320,
     },
     {
-        "src": "КРЕВЕТКИ ЧКМЕРУЛИ.webp",
+        "src": "krevetki chkmeruli.webp",
         "dest": "media/menu/krevetki-chkmeruli.webp",
         "category": "Горячие блюда",
         "name": "Креветки чкмерули",
@@ -57,7 +57,7 @@ DISHES = [
         "is_recommended": True,
     },
     {
-        "src": "Шампиньоны фаршированные с сыром сулугуни.webp",
+        "src": "Shampinony farshirovannyye s syrom suluguni.webp",
         "dest": "media/menu/shampinony-suluguni.webp",
         "category": "Горячие блюда",
         "name": "Шампиньоны фаршированные с сулугуни",
@@ -75,7 +75,7 @@ DISHES = [
         "weight": 380,
     },
     {
-        "src": "Сациви с индейкой.webp",
+        "src": "Satsivi s indeykoy.webp",
         "dest": "media/menu/satsivi-indejka.webp",
         "category": "Горячие блюда",
         "name": "Сациви с индейкой",
@@ -84,7 +84,7 @@ DISHES = [
         "weight": 300,
     },
     {
-        "src": "Аджапсандали.webp",
+        "src": "Adzhapsandali.webp",
         "dest": "media/menu/adjapsandali.webp",
         "category": "Закуски",
         "name": "Аджапсандали",
@@ -94,7 +94,7 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "src": "Бадриджани с паштетом из грецких орехов.webp",
+        "src": "Badridzhani s pashtetom iz gretskikh orekhov.webp",
         "dest": "media/menu/badrijani-oreh.webp",
         "category": "Закуски",
         "name": "Бадриджани с паштетом из грецких орехов",
@@ -104,7 +104,7 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "src": "БАКЛАЖАН С СЫРОМ.webp",
+        "src": "baklazhan s syrom.webp",
         "dest": "media/menu/baklazhan-syr.webp",
         "category": "Закуски",
         "name": "Баклажан с сыром",
@@ -114,7 +114,7 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "src": "ЛОБИО ПО КАХЕТ.jpg",
+        "src": "lobio po kakhetinski.jpg",
         "dest": "media/menu/lobio-kakheti.jpg",
         "category": "Закуски",
         "name": "Лобио по-кахетински",
@@ -124,7 +124,7 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "src": "Мцнили из бочки (капуста по гурийски, острый перец, огурцы, черемша и джонджоли).webp",
+        "src": "Mtsnili iz bochki (kapusta po guriyski. ostryy perets. ogurtsy. cheremsha i dzhondzholi).webp",
         "dest": "media/menu/mtsnili-bochka.webp",
         "category": "Закуски",
         "name": "Мцниве из бочки",
@@ -133,7 +133,7 @@ DISHES = [
         "weight": 200,
     },
     {
-        "src": "Пхалеули из свеклы, шпината и фасоли.webp",
+        "src": "Pkhaleuli iz svekly. shpinata i fasoli.webp",
         "dest": "media/menu/phkali-assorti.webp",
         "category": "Закуски",
         "name": "Пхали из свеклы, шпината и фасоли",
@@ -143,7 +143,7 @@ DISHES = [
         "is_vegetarian": True,
     },
     {
-        "src": "Семга слабосоленая с тархуном.webp",
+        "src": "Semga slabosolenaya s tarkhunom.webp",
         "dest": "media/menu/semga-tarhun.webp",
         "category": "Закуски",
         "name": "Семга слабосоленая с тархуном",
@@ -152,7 +152,7 @@ DISHES = [
         "weight": 180,
     },
     {
-        "src": "сулугуни с томатами.webp",
+        "src": "suluguni s tomatami.webp",
         "dest": "media/menu/suluguni-tomaty.webp",
         "category": "Закуски",
         "name": "Сулугуни с томатами",
@@ -171,7 +171,7 @@ DISHES = [
         "weight": 300,
     },
     {
-        "src": "КОЛА.webp",
+        "src": "Kola.webp",
         "dest": "media/menu/kola.webp",
         "category": "Напитки",
         "name": "Кола",
@@ -180,7 +180,7 @@ DISHES = [
         "weight": 330,
     },
     {
-        "src": "МАНдарин маракуйя.webp",
+        "src": "mandarin marakuyya.webp",
         "dest": "media/menu/mandarin-marakuja.webp",
         "category": "Напитки",
         "name": "Мандарин-маракуйя",
@@ -191,15 +191,24 @@ DISHES = [
 ]
 
 EVENT = {
-    "src": "КРЕВЕТКИ ЧКМЕРУЛИ.webp",
+    "src": "krevetki chkmeruli.webp",
     "dest": "media/events/wine-evening.webp",
 }
 
 
+def _resolve_source(src_name: str) -> Path:
+    direct = SOURCE / src_name
+    if direct.is_file():
+        return direct
+    wanted = src_name.casefold()
+    for candidate in SOURCE.iterdir():
+        if candidate.is_file() and candidate.name.casefold() == wanted:
+            return candidate
+    raise FileNotFoundError(f"Missing photo: {SOURCE / src_name}")
+
+
 def copy_file(src_name: str, dest_rel: str) -> None:
-    src = SOURCE / src_name
-    if not src.exists():
-        raise FileNotFoundError(f"Missing photo: {src}")
+    src = _resolve_source(src_name)
     dest = BUNDLED / dest_rel
     dest.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(src, dest)

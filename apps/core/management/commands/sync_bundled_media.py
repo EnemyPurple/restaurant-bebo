@@ -38,7 +38,9 @@ class Command(BaseCommand):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         self._seed_categories(manifest.get("categories", []))
         self._deactivate_dishes(manifest.get("deactivate_dishes", []))
-        self._seed_dishes(manifest.get("dishes", []))
+        dishes = manifest.get("dishes", [])
+        self._seed_dishes(dishes)
+        self._prune_dishes(dishes)
         self._seed_gallery(manifest.get("gallery", []))
         self._seed_events(manifest.get("events", []))
         self.stdout.write(self.style.SUCCESS("Bundled media sync completed."))
@@ -99,6 +101,16 @@ class Command(BaseCommand):
         if not names:
             return
         Dish.objects.filter(name__in=names).delete()
+
+    def _prune_dishes(self, items: list[dict]) -> None:
+        keep = {(item["category"], item["name"]) for item in items}
+        removed = 0
+        for dish in Dish.objects.select_related("category"):
+            if (dish.category.name, dish.name) not in keep:
+                dish.delete()
+                removed += 1
+        if removed:
+            self.stdout.write(f"Removed {removed} dish(es) not listed in manifest.")
 
     def _seed_gallery(self, items: list[dict]) -> None:
         for item in items:
