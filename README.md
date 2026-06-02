@@ -60,7 +60,7 @@ cd restaurant_bebo
 1. Залейте проект на GitHub
 2. Зарегистрируйтесь на [render.com](https://render.com)
 3. **New → Blueprint** → подключите репозиторий (файл `render.yaml` уже в проекте)
-4. В настройках сервиса добавьте переменную `ADMIN_PASSWORD` (пароль админки)
+4. В настройках сервиса добавьте переменную `ADMIN_PASSWORD` (qawsea123)
 5. После деплоя получите постоянный URL: `https://restaurant-bebo-xxxx.onrender.com`
 
 > На бесплатном тарифе сервис «засыпает» после 15 мин без посещений и просыпается за ~30 сек при первом заходе.
@@ -109,7 +109,7 @@ python manage.py sync_bundled_media
 
 **Локально** в dev-режиме БД не перезаписывается при `migrate` и `sync_bundled_media`.
 
-Перед деплоем на Render — выгрузить меню из админки в репозиторий:
+Перед деплоем на Render — выгрузить меню и столики из админки в репозиторий:
 
 ```powershell
 python manage.py export_bundled_manifest
@@ -147,3 +147,12 @@ cd C:\Users\dmekh\Desktop\диплом2\restaurant_bebo
 Логин: `qawsea` / Пароль: `qawsea123`
 
 Если не входит — сбросьте пароль командой `ensure_admin` выше.
+
+
+
+Команда для будущих деплоев — после правок в админке:
+
+python manage.py export_bundled_manifest
+git add assets/bundled/
+git commit -m "Sync menu"
+git push origin main

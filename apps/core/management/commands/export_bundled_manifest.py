@@ -7,11 +7,12 @@ from pathlib import Path
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
+from apps.booking.models import Table
 from apps.menu.models import Category, Dish
 
 
 class Command(BaseCommand):
-    help = "Export active menu from DB into assets/bundled/manifest.json and copy dish photos"
+    help = "Export menu and booking tables from DB into assets/bundled/manifest.json"
 
     def handle(self, *args, **options):
         bundled_root = settings.BASE_DIR / "assets" / "bundled"
@@ -65,6 +66,15 @@ class Command(BaseCommand):
 
         manifest["categories"] = categories
         manifest["dishes"] = dishes
+        manifest["tables"] = [
+            {
+                "number": table.number,
+                "seats": table.seats,
+                "location": table.location,
+                "is_active": table.is_active,
+            }
+            for table in Table.objects.order_by("number")
+        ]
         manifest.setdefault("deactivate_dishes", [])
 
         manifest_path.parent.mkdir(parents=True, exist_ok=True)
@@ -76,6 +86,7 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.SUCCESS(
                 f"Exported {len(categories)} categor(ies), {len(dishes)} dish(es), "
-                f"{copied} photo(s) → {manifest_path.relative_to(settings.BASE_DIR)}"
+                f"{len(manifest['tables'])} table(s), {copied} photo(s) → "
+                f"{manifest_path.relative_to(settings.BASE_DIR)}"
             )
         )

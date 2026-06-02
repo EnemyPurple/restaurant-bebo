@@ -11,6 +11,7 @@ from django.core.cache import cache
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
+from apps.booking.models import Table
 from apps.events.models import Event
 from apps.gallery.models import GalleryImage
 from apps.menu.models import Category, Dish
@@ -68,6 +69,8 @@ class Command(BaseCommand):
         self._prune_categories(manifest.get("categories", []))
         self._seed_gallery(manifest.get("gallery", []))
         self._seed_events(manifest.get("events", []))
+        self._seed_tables(manifest.get("tables", []))
+        self._prune_tables(manifest.get("tables", []))
         cache.delete("menu:categories")
         self.stdout.write(self.style.SUCCESS("Bundled media sync completed."))
 
@@ -185,3 +188,34 @@ class Command(BaseCommand):
             if photo:
                 event.photo = photo
                 event.save(update_fields=["photo"])
+
+    def _seed_tables(self, items: list[dict]) -> None:
+        for item in items:
+            Table.objects.update_or_create(
+                number=item["number"],
+                defaults={
+                    "seats": item["seats"],
+                    "location": item.get("location", Table.Location.HALL),
+                    "is_active": item.get("is_active", True),
+                },
+            )
+
+    def _prune_tables(self, items: list[dict]) -> None:
+        keep = {item["number"] for item in items}
+        if not keep:
+            return
+        removed = 0
+        hidden = 0
+        for table in Table.objects.exclude(number__in=keep):
+            if table.bookings.exists():
+                if table.is_active:
+                    table.is_active = False
+                    table.save(update_fields=["is_active"])
+                    hidden += 1
+            else:
+                table.delete()
+                removed += 1
+        if removed:
+            self.stdout.write(f"Removed {removed} table(s) not listed in manifest.")
+        if hidden:
+            self.stdout.write(f"Deactivated {hidden} obsolete table(s) with bookings.")

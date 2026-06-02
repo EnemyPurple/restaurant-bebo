@@ -260,5 +260,127 @@
       "max_guests": 40
     }
   ],
-  "deactivate_dishes": []
+  "deactivate_dishes": [],
+  "tables": [
+    {
+      "number": 1,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 2,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 3,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 4,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 5,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 6,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 7,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 8,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 9,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 10,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 11,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 12,
+      "seats": 6,
+      "location": "hall",
+      "is_active": true
+    },
+    {
+      "number": 13,
+      "seats": 4,
+      "location": "terrace",
+      "is_active": true
+    },
+    {
+      "number": 14,
+      "seats": 4,
+      "location": "terrace",
+      "is_active": true
+    },
+    {
+      "number": 15,
+      "seats": 4,
+      "location": "terrace",
+      "is_active": true
+    },
+    {
+      "number": 16,
+      "seats": 4,
+      "location": "terrace",
+      "is_active": true
+    },
+    {
+      "number": 17,
+      "seats": 10,
+      "location": "vip",
+      "is_active": true
+    },
+    {
+      "number": 18,
+      "seats": 10,
+      "location": "vip",
+      "is_active": true
+    },
+    {
+      "number": 19,
+      "seats": 10,
+      "location": "vip",
+      "is_active": true
+    },
+    {
+      "number": 20,
+      "seats": 10,
+      "location": "vip",
+      "is_active": true
+    }
+  ]
 }
