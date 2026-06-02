@@ -1,53 +1,66 @@
 async function loadMenu() {
-  const q = document.getElementById("menu-q").value.trim();
-  const category = document.getElementById("menu-category").value;
+  const q = document.getElementById("menu-q")?.value.trim() || "";
+  const category = document.getElementById("menu-category")?.value || "";
   const toggles = [...document.querySelectorAll(".bebo-menu-toggle.is-active")].map((el) => el.dataset.filter);
   const params = new URLSearchParams();
   if (q) params.set("q", q);
   if (category) params.set("category", category);
 
-  const res = await fetch(`/api/menu/dishes/?${params.toString()}`, { headers: { "Accept": "application/json" } });
-  const data = await res.json();
-
   const root = document.getElementById("menu-results");
   const empty = document.getElementById("menu-empty");
+  if (!root || !empty) return;
+
   root.innerHTML = "";
 
-  const results = (data.results || []).filter((dish) => {
-    if (toggles.includes("recommended") && !dish.is_recommended) return false;
-    if (toggles.includes("vegetarian") && !dish.is_vegetarian) return false;
-    if (toggles.includes("spicy") && !dish.is_spicy) return false;
-    return true;
-  });
+  try {
+    const res = await fetch(`/api/menu/dishes/?${params.toString()}`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) {
+      throw new Error(`Menu API error: ${res.status}`);
+    }
+    const data = await res.json();
 
-  if (results.length === 0) {
-    empty.classList.remove("d-none");
-    return;
-  }
-  empty.classList.add("d-none");
+    const results = (data.results || []).filter((dish) => {
+      if (toggles.includes("recommended") && !dish.is_recommended) return false;
+      if (toggles.includes("vegetarian") && !dish.is_vegetarian) return false;
+      if (toggles.includes("spicy") && !dish.is_spicy) return false;
+      return true;
+    });
 
-  for (const d of results) {
-    const col = document.createElement("div");
-    col.className = "col-md-6 col-lg-4";
-    col.innerHTML = `
-      <div class="card h-100">
-        ${d.photo ? `<img src="${d.photo}" class="card-img-top" alt="${d.name}">` : ""}
-        <div class="card-body d-flex flex-column">
-          <div class="d-flex justify-content-between">
-            <h5 class="card-title mb-1">${d.name}</h5>
-            <span class="badge text-bg-primary">${d.price} ₽</span>
+    if (results.length === 0) {
+      empty.classList.remove("d-none");
+      return;
+    }
+    empty.classList.add("d-none");
+
+    for (const d of results) {
+      const col = document.createElement("div");
+      col.className = "col-md-6 col-lg-4";
+      col.innerHTML = `
+      <div class="card h-100 bebo-menu-card">
+        ${d.photo ? `<img src="${d.photo}" class="card-img-top bebo-menu-card__img" alt="${d.name}">` : ""}
+        <div class="card-body d-flex flex-column bebo-menu-card__body">
+          <div class="bebo-menu-card__head">
+            <h5 class="bebo-menu-card__title">${d.name}</h5>
+            <span class="bebo-menu-card__price">${d.price}&nbsp;₽</span>
           </div>
-          <div class="card-text small text-muted mt-2">${(d.description || "").slice(0, 120)}</div>
-          <div class="mt-2 d-flex gap-1 flex-wrap">
+          <p class="bebo-menu-card__desc">${(d.description || "").slice(0, 120)}</p>
+          <div class="bebo-menu-card__badges d-flex gap-1 flex-wrap">
             ${d.is_spicy ? `<span class="badge text-bg-danger">Острое</span>` : ""}
             ${d.is_vegetarian ? `<span class="badge text-bg-success">Вегет.</span>` : ""}
             ${d.is_recommended ? `<span class="badge text-bg-warning">Реком.</span>` : ""}
           </div>
-          <a class="btn btn-sm btn-outline-secondary mt-auto" href="/menu/dish/${d.slug}/">Подробнее</a>
+          <a class="btn btn-sm btn-outline-secondary bebo-menu-card__link mt-auto" href="/menu/dish/${d.slug}/">Подробнее</a>
         </div>
       </div>
     `;
-    root.appendChild(col);
+      root.appendChild(col);
+    }
+  } catch (error) {
+    console.error("Failed to load menu:", error);
+    empty.textContent = "Не удалось загрузить меню. Обновите страницу.";
+    empty.classList.remove("d-none");
   }
 }
 

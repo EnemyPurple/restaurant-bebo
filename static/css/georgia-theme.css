@@ -631,6 +631,117 @@ main.container {
   color: #fff0da;
 }
 
+.bebo-menu-page h1 {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.bebo-menu-page .bebo-menu-toggle {
+  background: rgba(18, 10, 12, 0.92);
+  border-color: rgba(240, 209, 160, 0.32);
+  color: #f6eee6;
+  font-weight: 500;
+}
+
+.bebo-menu-page #menu-empty {
+  color: rgba(246, 238, 230, 0.78) !important;
+}
+
+.bebo-menu-card__img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.bebo-menu-card__body {
+  gap: 0.35rem;
+  padding: 1rem 1.05rem 1.1rem;
+}
+
+.bebo-menu-card__head {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.bebo-menu-card__title {
+  color: #fff8f2;
+  flex: 1 1 auto;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0;
+  min-width: 0;
+}
+
+.bebo-menu-card__price {
+  align-items: center;
+  background: linear-gradient(135deg, var(--accent-wine), var(--accent-wine-soft));
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  color: #fff5ee;
+  display: inline-flex;
+  flex: 0 0 5.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  height: 2.1rem;
+  justify-content: center;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  min-width: 5.75rem;
+  padding: 0 0.45rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bebo-menu-card__desc {
+  color: rgba(246, 238, 230, 0.9);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0.15rem 0 0.35rem;
+}
+
+.bebo-menu-card__badges {
+  margin-bottom: 0.35rem;
+}
+
+.bebo-menu-card__link {
+  border-color: rgba(240, 209, 160, 0.42);
+  color: #f6eee6;
+  margin-top: auto;
+}
+
+.bebo-menu-card__link:hover {
+  background: rgba(240, 209, 160, 0.12);
+  border-color: rgba(240, 209, 160, 0.65);
+  color: #fff8f2;
+}
+
+@media (max-width: 991.98px) {
+  .bebo-menu-page .d-flex.gap-2 {
+    width: 100%;
+  }
+
+  .bebo-menu-page #menu-q,
+  .bebo-menu-page #menu-category,
+  .bebo-menu-page #menu-apply {
+    width: 100%;
+  }
+
+  .bebo-menu-page #menu-q {
+    min-width: 0 !important;
+  }
+
+  .bebo-menu-card__title {
+    font-size: 1rem;
+  }
+
+  .bebo-menu-card__desc {
+    font-size: 0.95rem;
+  }
+}
+
 a.bebo-feature-item {
   color: inherit;
   display: block;

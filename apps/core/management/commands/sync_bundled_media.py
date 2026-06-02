@@ -81,7 +81,11 @@ class Command(BaseCommand):
             category = Category.objects.get(name=item["category"])
             photo = item.get("photo", "")
             slug = item.get("slug") or (Path(photo).stem if photo else "")
+            if not slug:
+                continue
             defaults = {
+                "category": category,
+                "name": item["name"],
                 "description": item.get("description", ""),
                 "price": Decimal(item["price"]),
                 "weight": item.get("weight", 0),
@@ -90,21 +94,8 @@ class Command(BaseCommand):
                 "is_recommended": item.get("is_recommended", False),
                 "is_active": True,
             }
-            if slug:
-                Dish.objects.filter(category=category, name=item["name"]).exclude(slug=slug).delete()
-                Dish.objects.filter(slug=slug).exclude(category=category, name=item["name"]).delete()
-                defaults["slug"] = slug
-            dish, _ = Dish.objects.update_or_create(
-                category=category,
-                name=item["name"],
-                defaults=defaults,
-            )
-            if slug and dish.slug != slug:
-                dish.slug = slug
-            if photo:
-                dish.photo = photo
-            else:
-                dish.photo = ""
+            dish, _ = Dish.objects.update_or_create(slug=slug, defaults=defaults)
+            dish.photo = photo if photo else ""
             dish.save()
 
     def _deactivate_dishes(self, names: list[str]) -> None:
@@ -113,12 +104,11 @@ class Command(BaseCommand):
         Dish.objects.filter(name__in=names).delete()
 
     def _prune_dishes(self, items: list[dict]) -> None:
-        keep = {(item["category"], item["name"]) for item in items}
+        keep_slugs = {item["slug"] for item in items if item.get("slug")}
         removed = 0
-        for dish in Dish.objects.select_related("category"):
-            if (dish.category.name, dish.name) not in keep:
-                dish.delete()
-                removed += 1
+        for dish in Dish.objects.exclude(slug__in=keep_slugs):
+            dish.delete()
+            removed += 1
         if removed:
             self.stdout.write(f"Removed {removed} dish(es) not listed in manifest.")
 
