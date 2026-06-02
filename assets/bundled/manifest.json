@@ -1,0 +1,263 @@
+{
+  "categories": [
+    {
+      "name": "Горячие блюда",
+      "sort_order": 1
+    },
+    {
+      "name": "Выпечка",
+      "sort_order": 2
+    },
+    {
+      "name": "Закуски",
+      "sort_order": 3
+    },
+    {
+      "name": "Напитки",
+      "sort_order": 4
+    }
+  ],
+  "dishes": [
+    {
+      "category": "Горячие блюда",
+      "name": "Оджахури со свининой",
+      "slug": "odzhahuri-svinina",
+      "description": "Жареное мясо с картофелем, луком и специями.",
+      "price": "590.00",
+      "weight": 350,
+      "photo": "menu/odzhahuri-svinina.webp",
+      "is_recommended": true
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Оджахури с говядиной",
+      "slug": "odzhahuri-govyadina",
+      "description": "Сочная говядина с картофелем по домашнему рецепту.",
+      "price": "620.00",
+      "weight": 350,
+      "photo": "menu/odzhahuri-govyadina.webp"
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Жаркое с семгой",
+      "slug": "zharkoe-semga",
+      "description": "Нежная семга с овощами в ароматном соусе.",
+      "price": "780.00",
+      "weight": 320,
+      "photo": "menu/zharkoe-semga.webp"
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Креветки чкмерули",
+      "slug": "krevetki-chkmeruli",
+      "description": "Креветки в сливочно-чесночном соусе с сыром.",
+      "price": "890.00",
+      "weight": 280,
+      "photo": "menu/krevetki-chkmeruli.webp",
+      "is_recommended": true
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Шампиньоны фаршированные с сулугуни",
+      "slug": "shampinony-suluguni",
+      "description": "Запечённые шампиньоны с расплавленным сулугуни.",
+      "price": "420.00",
+      "weight": 250,
+      "photo": "menu/shampinony-suluguni.webp"
+    },
+    {
+      "category": "Выпечка",
+      "name": "Хачапури хатахтари",
+      "slug": "khatakhari",
+      "description": "Хачапури с начинкой из яиц, сыра и масла.",
+      "price": "510.00",
+      "weight": 380,
+      "photo": "menu/khatakhari.webp"
+    },
+    {
+      "category": "Горячие блюда",
+      "name": "Сациви с индейкой",
+      "slug": "satsivi-indejka",
+      "description": "Индейка в густом грузинском ореховом соусе.",
+      "price": "480.00",
+      "weight": 300,
+      "photo": "menu/satsivi-indejka.webp"
+    },
+    {
+      "category": "Закуски",
+      "name": "Аджапсандали",
+      "slug": "adjapsandali",
+      "description": "Тушёные баклажаны с перцем и томатами.",
+      "price": "360.00",
+      "weight": 260,
+      "photo": "menu/adjapsandali.webp",
+      "is_vegetarian": true
+    },
+    {
+      "category": "Закуски",
+      "name": "Бадриджани с паштетом из грецких орехов",
+      "slug": "badrijani-oreh",
+      "description": "Баклажаны с ореховой пастой и зеленью.",
+      "price": "340.00",
+      "weight": 220,
+      "photo": "menu/badrijani-oreh.webp",
+      "is_vegetarian": true
+    },
+    {
+      "category": "Закуски",
+      "name": "Баклажан с сыром",
+      "slug": "baklazhan-syr",
+      "description": "Запечённый баклажан с сырной начинкой.",
+      "price": "320.00",
+      "weight": 240,
+      "photo": "menu/baklazhan-syr.webp",
+      "is_vegetarian": true
+    },
+    {
+      "category": "Закуски",
+      "name": "Лобио по-кахетински",
+      "slug": "lobio-kakheti",
+      "description": "Фасоль с ароматными специями и зеленью.",
+      "price": "350.00",
+      "weight": 280,
+      "photo": "menu/lobio-kakheti.jpg",
+      "is_vegetarian": true
+    },
+    {
+      "category": "Закуски",
+      "name": "Мцниве из бочки",
+      "slug": "mtsnili-bochka",
+      "description": "Ассорти из капусты, огурцов, перца и черемши.",
+      "price": "290.00",
+      "weight": 200,
+      "photo": "menu/mtsnili-bochka.webp"
+    },
+    {
+      "category": "Закуски",
+      "name": "Пхали из свеклы, шпината и фасоли",
+      "slug": "phkali-assorti",
+      "description": "Традиционные пасты из овощей с орехами и специями.",
+      "price": "380.00",
+      "weight": 250,
+      "photo": "menu/phkali-assorti.webp",
+      "is_vegetarian": true
+    },
+    {
+      "category": "Закуски",
+      "name": "Семга слабосоленая с тархуном",
+      "slug": "semga-tarhun",
+      "description": "Нежная семга с ароматом свежего тархуна.",
+      "price": "560.00",
+      "weight": 180,
+      "photo": "menu/semga-tarhun.webp"
+    },
+    {
+      "category": "Закуски",
+      "name": "Сулугуни с томатами",
+      "slug": "suluguni-tomaty",
+      "description": "Сыр сулугуни с свежими томатами и зеленью.",
+      "price": "410.00",
+      "weight": 220,
+      "photo": "menu/suluguni-tomaty.webp",
+      "is_vegetarian": true
+    },
+    {
+      "category": "Напитки",
+      "name": "Тархун",
+      "slug": "tarhun",
+      "description": "Освежающий лимонад из тархуна.",
+      "price": "220.00",
+      "weight": 300,
+      "photo": "menu/tarhun.webp"
+    },
+    {
+      "category": "Напитки",
+      "name": "Кола",
+      "slug": "kola",
+      "description": "Классический газированный напиток.",
+      "price": "180.00",
+      "weight": 330,
+      "photo": "menu/kola.webp"
+    },
+    {
+      "category": "Напитки",
+      "name": "Мандарин-маракуйя",
+      "slug": "mandarin-marakuja",
+      "description": "Фруктовый микс из мандарина и маракуйи.",
+      "price": "240.00",
+      "weight": 300,
+      "photo": "menu/mandarin-marakuja.webp"
+    }
+  ],
+  "gallery": [
+    {
+      "title": "Ресторан «Бебо» — фото 1",
+      "image": "gallery/gallery-01.webp",
+      "category": "interior"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 2",
+      "image": "gallery/gallery-02.webp",
+      "category": "interior"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 3",
+      "image": "gallery/gallery-03.webp",
+      "category": "interior"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 4",
+      "image": "gallery/gallery-04.webp",
+      "category": "interior"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 5",
+      "image": "gallery/gallery-05.webp",
+      "category": "interior"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 6",
+      "image": "gallery/gallery-06.webp",
+      "category": "interior"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 7",
+      "image": "gallery/gallery-07.webp",
+      "category": "interior"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 8",
+      "image": "gallery/gallery-08.webp",
+      "category": "food"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 9",
+      "image": "gallery/gallery-09.webp",
+      "category": "food"
+    },
+    {
+      "title": "Ресторан «Бебо» — фото 10",
+      "image": "gallery/gallery-10.webp",
+      "category": "food"
+    }
+  ],
+  "events": [
+    {
+      "title": "Вечер грузинской кухни",
+      "description": "Авторское меню, живая музыка и атмосфера настоящей Грузии.",
+      "photo": "events/wine-evening.webp",
+      "days_from_now": 14,
+      "duration_hours": 3,
+      "price": "1500.00",
+      "max_guests": 40
+    }
+  ],
+  "deactivate_dishes": [
+    "Хачапури по-аджарски",
+    "Хинкали с мясом",
+    "Лобио",
+    "Сациви",
+    "Хачапури по-имеретински",
+    "Бадриджани"
+  ]
+}

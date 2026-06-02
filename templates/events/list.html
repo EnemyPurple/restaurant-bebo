@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ SITE_NAME }} — События{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Афиша" title="События" subtitle="Дегустации, музыкальные вечера и праздники в ресторане — записывайтесь заранее." action_url="/booking/" action_text="Забронировать столик" %}
+
+  {% if events %}
+    <div class="row g-3">
+      {% for e in events %}
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            {% if e.photo %}<img src="{{ e.photo.url }}" class="card-img-top" alt="{{ e.title }}"/>{% endif %}
+            <div class="card-body">
+              <h5 class="card-title"><a href="{{ e.get_absolute_url }}">{{ e.title }}</a></h5>
+              <div class="text-muted small">{{ e.date_start|date:"d.m.Y H:i" }}</div>
+              <div class="mt-2 small text-muted">{{ e.description|truncatechars:160 }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="bebo-info-card">
+      <div class="bebo-info-card__title">Скоро здесь появится афиша</div>
+      <p class="text-muted mb-3">Следите за обновлениями — мы готовим новые вечера с живой музыкой и дегустациями.</p>
+      <a class="btn btn-sm btn-outline-primary" href="/contacts/">Узнать первым</a>
+    </div>
+  {% endif %}
+
+  <div class="bebo-page-tip">
+    <strong>Совет:</strong> на события с ограниченным числом мест лучше записаться заранее — кнопка «Записаться» есть на странице каждого мероприятия.
+  </div>
+{% endblock %}

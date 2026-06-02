@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Регистрация — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Добро пожаловать" title="Регистрация" subtitle="Заполните профиль — можно пропустить и вернуться позже." %}
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <form method="post" class="vstack gap-3">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div>
+              <label class="form-label">{{ form.full_name.label }}</label>
+              {{ form.full_name }}
+              {{ form.full_name.errors }}
+            </div>
+            <div>
+              <label class="form-label">{{ form.email.label }}</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+            <div>
+              <label class="form-label">{{ form.birthday.label }}</label>
+              {{ form.birthday }}
+              {{ form.birthday.errors }}
+              <div class="form-text">Нужно для скидки 50% в день рождения.</div>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+              <button class="btn btn-primary">Сохранить</button>
+              <a class="btn btn-outline-secondary" href="{% url 'users:cabinet' %}">Пропустить</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Программа лояльности</div>
+        <ul>
+          <li>Скидка растёт с каждым визитом.</li>
+          <li>В день рождения — особое предложение 50%.</li>
+          <li>Email нужен для подтверждения бронирований.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

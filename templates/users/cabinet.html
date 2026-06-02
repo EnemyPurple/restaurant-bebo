@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Личный кабинет — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+  {% url 'users:logout' as logout_url %}
+  {% include "partials/page_hero.html" with badge="Ваш аккаунт" title="Личный кабинет" subtitle="Бронирования, события, скидки и история визитов." action_url=logout_url action_text="Выйти" %}
+
+  <div class="bebo-feature-grid mb-4">
+    <a class="bebo-feature-item text-decoration-none" href="/booking/">
+      <div class="bebo-feature-item__label">Быстро</div>
+      <div class="bebo-feature-item__title">Забронировать столик</div>
+      <p>Выберите дату и время — мы подтвердим бронь.</p>
+    </a>
+    <a class="bebo-feature-item text-decoration-none" href="/events/">
+      <div class="bebo-feature-item__label">Афиша</div>
+      <div class="bebo-feature-item__title">Мероприятия</div>
+      <p>Запишитесь на дегустации и вечера с музыкой.</p>
+    </a>
+    <a class="bebo-feature-item text-decoration-none" href="/reviews/add/">
+      <div class="bebo-feature-item__label">Отзыв</div>
+      <div class="bebo-feature-item__title">Поделиться впечатлением</div>
+      <p>Расскажите о визите после подтверждённого бронирования.</p>
+    </a>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start gap-2">
+            <h2 class="h6 mb-0">Профиль</h2>
+            <a class="btn btn-sm btn-outline-primary" href="{% url 'users:edit_profile' %}">Редактировать</a>
+          </div>
+          <div class="text-muted small">Телефон</div>
+          <div class="mb-2">{{ profile.phone }}</div>
+          <div class="text-muted small">Имя</div>
+          <div class="mb-2">{{ profile.full_name|default:"—" }}</div>
+          <div class="text-muted small">Email</div>
+          <div class="mb-2">{{ profile.email|default:"—" }}</div>
+          <div class="text-muted small">Скидка</div>
+          <div class="mb-2 d-flex gap-2 flex-wrap">
+            <span class="badge text-bg-warning">{{ profile.discount_percent }}%</span>
+            {% if profile.birthday_discount_percent %}
+              <span class="badge text-bg-danger">ДР: {{ profile.birthday_discount_percent }}% сегодня</span>
+            {% endif %}
+          </div>
+          <div class="text-muted small">Посещений / Потрачено</div>
+          <div>{{ profile.visits_count }} / {{ profile.total_spent }} ₽</div>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="h6">Отзывы</h2>
+          <a class="btn btn-sm btn-outline-primary" href="/reviews/add/">Оставить отзыв</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card bebo-history-card">
+        <div class="card-body">
+          <h2 class="h6">История бронирований</h2>
+          {% if bookings %}
+            <div class="table-responsive bebo-history-table-wrap">
+              <table class="table table-sm align-middle bebo-history-table">
+                <thead>
+                  <tr>
+                    <th>Дата</th>
+                    <th>Время</th>
+                    <th>Столик</th>
+                    <th>Гостей</th>
+                    <th>Статус</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for b in bookings %}
+                    <tr>
+                      <td>{{ b.date|date:"d.m.Y" }}</td>
+                      <td>{{ b.time|time:"H:i" }}</td>
+                      <td>#{{ b.table.number }}</td>
+                      <td>{{ b.guests }}</td>
+                      <td>{{ b.get_status_display }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% else %}
+            <div class="text-muted">Бронирований пока нет.</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="h6">Мои мероприятия</h2>
+          {% if registrations %}
+            <ul class="list-group">
+              {% for r in registrations %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <a href="{{ r.event.get_absolute_url }}">{{ r.event.title }}</a>
+                  <span class="badge text-bg-secondary">{{ r.event.date_start|date:"d.m H:i" }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <div class="text-muted">Записей на мероприятия пока нет.</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="card mt-4 bebo-ops-card bebo-history-card">
+        <div class="card-body">
+          <h2 class="h6">История операций</h2>
+          {% if operations %}
+            <div class="table-responsive bebo-history-table-wrap">
+              <table class="table table-sm align-middle bebo-history-table bebo-history-table--ops">
+                <thead>
+                  <tr>
+                    <th>Дата</th>
+                    <th>Событие</th>
+                    <th class="text-end">Сумма</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for op in operations %}
+                    <tr>
+                      <td class="text-muted">{{ op.created_at|date:"d.m.Y H:i" }}</td>
+                      <td>{{ op.get_kind_display }}{% if op.description %}: <span class="text-muted">{{ op.description }}</span>{% endif %}</td>
+                      <td class="text-end">{% if op.amount %}{{ op.amount }} ₽{% else %}—{% endif %}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% else %}
+            <div class="text-muted">Пока пусто.</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

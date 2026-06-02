@@ -1,0 +1,1261 @@
+/* Грузинская тёплая тема для сайта ресторана "Бебо" */
+
+:root {
+  --bg-deep: #0f0706;
+  --bg-soft: #1a100d;
+  --bg-card: #181012;
+  --bg-card-soft: #211418;
+  --bg-ink: #070304;
+
+  --text-main: #f6eee6;
+  --text-muted: #c6b7aa;
+
+  --accent-wine: #a7353f;
+  --accent-wine-soft: #7c2430;
+  --accent-gold: #f0d1a0;
+  --accent-gold-soft: #c89a63;
+
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.7);
+  --radius-lg: 24px;
+}
+
+.bebo-scroll-progress {
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-wine));
+  box-shadow: 0 0 16px rgba(240, 209, 160, 0.55);
+  height: 3px;
+  inset: 0 auto auto 0;
+  pointer-events: none;
+  position: fixed;
+  transform: scaleX(0);
+  transform-origin: left center;
+  width: 100%;
+  z-index: 1300;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body.bebo-site {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  max-width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+body.bebo-site > .navbar {
+  flex-shrink: 0;
+}
+
+body.bebo-site > main.container {
+  flex: 1 0 auto;
+  min-width: 0;
+  width: 100%;
+}
+
+body.bebo-site > .bebo-site__footer {
+  flex-shrink: 0;
+  min-width: 0;
+  width: 100%;
+}
+
+body {
+  background:
+      radial-gradient(1100px 700px at 10% 0%, rgba(240, 209, 160, 0.14), transparent 60%),
+      radial-gradient(900px 600px at 85% 20%, rgba(167, 53, 63, 0.18), transparent 60%),
+      linear-gradient(180deg, var(--bg-deep), var(--bg-soft) 45%, var(--bg-ink));
+  color: var(--text-main);
+  animation: bebo-fade-in 0.7s ease-out;
+  position: relative;
+}
+
+body::before {
+  background:
+    radial-gradient(900px 380px at 15% 30%, rgba(240, 209, 160, 0.05), transparent 70%),
+    radial-gradient(700px 300px at 85% 72%, rgba(167, 53, 63, 0.1), transparent 72%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
+@keyframes bebo-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Общая типографика */
+body,
+.form-control,
+.btn {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.navbar-brand {
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--text-main);
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Navbar */
+.navbar.navbar-dark.bg-dark {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(24, 10, 8, 0.9)) !important;
+  border-bottom: 1px solid var(--border-soft);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navbar.navbar-dark.bg-dark:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  border-radius: 10px;
+  color: rgba(246, 238, 230, 0.8);
+  padding: 0.35rem 0.6rem;
+  transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  background-color: rgba(240, 209, 160, 0.08);
+  color: var(--accent-gold);
+  transform: translateY(-1px);
+}
+
+/* Карточки и контейнеры */
+.card {
+  background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.05), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.6));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  color: var(--text-main);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.85);
+  border-color: rgba(240, 209, 160, 0.32);
+}
+
+.card .table {
+  color: var(--text-main);
+}
+
+.card .table thead th {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.card .table tbody td {
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+.list-group-item {
+  background-color: rgba(12, 6, 7, 0.85);
+  border-color: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+}
+
+.border {
+  border-color: var(--border-soft) !important;
+}
+
+/* Переопределяем светлый фон Bootstrap, чтобы не было белого на белом */
+.bg-light {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+}
+
+/* Ссылки */
+a {
+  color: var(--accent-gold);
+  text-decoration-color: rgba(240, 209, 160, 0.55);
+}
+
+a:hover {
+  color: #ffe5b8;
+  text-decoration-color: rgba(255, 229, 184, 0.9);
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
+/* Кнопки */
+.btn-primary {
+  background-image: linear-gradient(120deg, var(--accent-gold), var(--accent-gold-soft));
+  border: none;
+  color: #3c2513;
+  font-weight: 600;
+  box-shadow: 0 12px 28px rgba(200, 154, 99, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-image 0.15s ease, filter 0.15s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-image: linear-gradient(120deg, #ffe1b3, var(--accent-gold));
+  color: #2e1b0f;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(200, 154, 99, 0.6);
+  filter: saturate(1.06);
+}
+
+.btn-outline-primary {
+  background-color: rgba(167, 53, 63, 0.2);
+  border-color: var(--accent-wine-soft);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.34);
+  color: #ffe3bb;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: rgba(167, 53, 63, 0.48);
+  border-color: #c34957;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  color: #fff4e2;
+  transform: translateY(-1px);
+}
+
+.btn-outline-secondary {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--text-main);
+}
+
+.btn-outline-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Формы */
+.form-label {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.form-text {
+  color: var(--text-muted) !important;
+}
+
+.bebo-site form input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]),
+.bebo-site form select,
+.bebo-site form textarea,
+.form-control,
+.form-select {
+  background-color: rgba(18, 10, 12, 0.92) !important;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: var(--text-main) !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.bebo-site form input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):focus,
+.bebo-site form select:focus,
+.bebo-site form textarea:focus,
+.form-control:focus,
+.form-select:focus {
+  background-color: rgba(24, 14, 17, 0.98) !important;
+  border-color: var(--accent-gold-soft) !important;
+  box-shadow: 0 0 0 0.15rem rgba(240, 209, 160, 0.18) !important;
+  color: var(--text-main) !important;
+}
+
+.form-control::placeholder,
+.bebo-site form input::placeholder,
+.bebo-site form textarea::placeholder {
+  color: rgba(198, 183, 170, 0.55);
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f0d1a0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 14px 10px;
+}
+
+/* date / time / number — тёмная системная палитра */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="number"] {
+  color-scheme: dark;
+}
+
+/* Загрузка файлов */
+.bebo-site input[type="file"].form-control,
+.bebo-site form input[type="file"] {
+  padding: 0.55rem 0.75rem;
+}
+
+.bebo-site input[type="file"]::file-selector-button {
+  background: linear-gradient(120deg, rgba(240, 209, 160, 0.18), rgba(200, 154, 99, 0.12));
+  border: 1px solid rgba(240, 209, 160, 0.35);
+  border-radius: 8px;
+  color: var(--accent-gold);
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.bebo-site input[type="file"]::file-selector-button:hover {
+  background: linear-gradient(120deg, rgba(240, 209, 160, 0.28), rgba(200, 154, 99, 0.2));
+  border-color: rgba(240, 209, 160, 0.55);
+}
+
+/* Ошибки полей */
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: rgba(220, 90, 90, 0.65) !important;
+}
+
+.bebo-site form .errorlist {
+  background: transparent;
+  border: 0;
+  color: #ffb3b3;
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+}
+
+.form-check-input {
+  background-color: rgba(18, 10, 12, 0.92);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.form-check-input:checked {
+  background-color: var(--accent-wine);
+  border-color: var(--accent-wine);
+}
+
+.form-check-input:focus {
+  border-color: var(--accent-gold-soft);
+  box-shadow: 0 0 0 0.15rem rgba(240, 209, 160, 0.18);
+}
+
+/* Специальный фон для блока истории операций */
+.bebo-ops-card {
+  background:
+    radial-gradient(800px 420px at 20% 0%, rgba(167, 53, 63, 0.22), transparent 60%),
+    radial-gradient(700px 380px at 85% 10%, rgba(240, 209, 160, 0.12), transparent 60%),
+    linear-gradient(180deg, rgba(6, 3, 4, 0.85), rgba(0, 0, 0, 0.75));
+  border-color: rgba(240, 209, 160, 0.18);
+}
+
+/* Таблицы истории в личном кабинете */
+.bebo-history-card .card-body {
+  position: relative;
+}
+
+.bebo-history-table-wrap {
+  background: linear-gradient(180deg, rgba(19, 11, 13, 0.9), rgba(9, 5, 6, 0.85));
+  border: 1px solid rgba(240, 209, 160, 0.14);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.bebo-history-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text-main);
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
+  --bs-table-striped-color: var(--text-main);
+  --bs-table-hover-bg: rgba(240, 209, 160, 0.08);
+  --bs-table-hover-color: #fff4e7;
+  margin-bottom: 0;
+}
+
+.bebo-history-table thead th {
+  background: linear-gradient(180deg, rgba(240, 209, 160, 0.12), rgba(240, 209, 160, 0.04));
+  border-bottom: 1px solid rgba(240, 209, 160, 0.2);
+  border-top: 0;
+  color: var(--accent-gold);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.bebo-history-table tbody td {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+
+.bebo-history-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.bebo-history-table--ops td:nth-child(2) {
+  line-height: 1.35;
+}
+
+.badge.text-bg-warning {
+  background-image: linear-gradient(120deg, var(--accent-gold), var(--accent-gold-soft));
+  color: #3c2513;
+}
+
+.badge.text-bg-secondary {
+  background-color: rgba(120, 111, 103, 0.85) !important;
+}
+
+.badge.text-bg-primary {
+  background-color: var(--accent-wine-soft) !important;
+}
+
+/* Главный контейнер */
+main.container {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2rem !important;
+}
+/* Сообщения Django */
+.alert {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.alert-info {
+  background-color: rgba(58, 114, 168, 0.2);
+  color: #d9e7ff;
+}
+
+.alert-success {
+  background-color: rgba(39, 121, 89, 0.25);
+  color: #d4f5e6;
+}
+
+.alert-danger {
+  background-color: rgba(153, 40, 40, 0.35);
+  color: #ffe5e5;
+}
+
+/* Декоративные блоки страниц */
+.bebo-page-hero {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(240, 209, 160, 0.14);
+  background:
+    radial-gradient(700px 320px at 0% 0%, rgba(167, 53, 63, 0.22), transparent 60%),
+    radial-gradient(600px 280px at 100% 0%, rgba(240, 209, 160, 0.12), transparent 55%),
+    linear-gradient(135deg, rgba(24, 12, 14, 0.95), rgba(10, 5, 6, 0.92));
+  box-shadow: var(--shadow-soft);
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.bebo-page-hero::after {
+  background: linear-gradient(90deg, rgba(240, 209, 160, 0.35), rgba(240, 209, 160, 0));
+  content: "";
+  height: 1px;
+  inset: auto 0 0 0;
+  position: absolute;
+}
+
+.bebo-page-hero__inner {
+  padding: 1.75rem 2rem;
+}
+
+.bebo-page-hero__badge {
+  color: var(--accent-gold);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+}
+
+.bebo-page-hero__title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 0.5rem;
+}
+
+.bebo-page-hero__subtitle {
+  color: var(--text-muted);
+  max-width: 42rem;
+}
+
+.bebo-home-bg-slider {
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -3;
+}
+
+.bebo-home-bg-slider .carousel-item img {
+  filter: brightness(0.42) saturate(0.92);
+  height: 100vh;
+  object-fit: cover;
+}
+
+.bebo-home-bg-slider::after {
+  background: linear-gradient(180deg, rgba(7, 3, 4, 0.42), rgba(7, 3, 4, 0.72));
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.bebo-home-content {
+  position: relative;
+  z-index: 1;
+}
+
+.bebo-home-content .bebo-feature-item {
+  background: linear-gradient(180deg, rgba(16, 9, 11, 0.94), rgba(7, 3, 4, 0.92));
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.bebo-home-content .list-group-item,
+.bebo-home-content .border.rounded {
+  background-color: rgba(10, 6, 7, 0.93);
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+.bebo-info-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.35));
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 1.25rem 1.35rem;
+}
+
+.bebo-info-card__title {
+  color: var(--accent-gold);
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.bebo-info-card ul {
+  color: var(--text-muted);
+  margin-bottom: 0;
+  padding-left: 1.1rem;
+}
+
+.bebo-info-card li + li {
+  margin-top: 0.45rem;
+}
+
+.bebo-feature-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.bebo-feature-item {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.35));
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 1.25rem;
+}
+
+.bebo-feature-item__label {
+  color: var(--accent-gold);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.bebo-feature-item__title {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.bebo-feature-item p {
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.bebo-menu-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bebo-menu-toggle {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 0.86rem;
+  padding: 0.4rem 0.8rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.bebo-menu-toggle:hover {
+  border-color: rgba(240, 209, 160, 0.42);
+  transform: translateY(-1px);
+}
+
+.bebo-menu-toggle.is-active {
+  background: linear-gradient(120deg, rgba(240, 209, 160, 0.28), rgba(167, 53, 63, 0.3));
+  border-color: rgba(240, 209, 160, 0.78);
+  color: #fff0da;
+}
+
+a.bebo-feature-item {
+  color: inherit;
+  display: block;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+a.bebo-feature-item:hover {
+  border-color: rgba(240, 209, 160, 0.32);
+  color: inherit;
+  transform: translateY(-2px);
+}
+
+.bebo-feature-item:hover {
+  border-color: rgba(240, 209, 160, 0.24);
+}
+
+.bebo-stat-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 0.9rem 1.1rem;
+}
+
+.bebo-stat-pill strong {
+  color: var(--accent-gold);
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.bebo-stat-pill span {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.bebo-page-tip {
+  background: rgba(167, 53, 63, 0.12);
+  border: 1px solid rgba(167, 53, 63, 0.28);
+  border-radius: 16px;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  padding: 1rem 1.15rem;
+}
+
+.bebo-page-tip strong {
+  color: var(--text-main);
+}
+
+/* Галерея */
+.bebo-gallery-story {
+  align-items: stretch;
+  background: linear-gradient(150deg, rgba(252, 248, 241, 0.94), rgba(243, 233, 219, 0.92));
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  color: #2a2320;
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 1.1fr 1fr;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.bebo-gallery-story__text {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.4rem 1.8rem;
+  text-align: center;
+}
+
+.bebo-gallery-story__text h2 {
+  color: #251d19;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  margin-bottom: 1.1rem;
+}
+
+.bebo-gallery-story__text p {
+  color: #3a302c;
+  font-size: 1rem;
+  line-height: 1.72;
+  margin-bottom: 1.05rem;
+  max-width: 42rem;
+}
+
+.bebo-gallery-story__ornament {
+  color: #b89662;
+  font-size: 1.15rem;
+  letter-spacing: 0.16em;
+  margin-top: 0.35rem;
+}
+
+.bebo-gallery-story__image-wrap {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.bebo-gallery-story__media {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.bebo-gallery-story__image {
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.3);
+  display: block;
+  height: 100%;
+  max-height: 760px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.bebo-gallery-story__image--empty {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.65);
+  color: #5b4a41;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 320px;
+}
+
+.bebo-gallery-thumbs {
+  display: grid;
+  gap: 0.55rem;
+  grid-auto-columns: minmax(70px, 1fr);
+  grid-auto-flow: column;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+  scrollbar-width: thin;
+}
+
+.bebo-gallery-thumb {
+  background: transparent;
+  border: 2px solid rgba(43, 32, 26, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.bebo-gallery-thumb img {
+  aspect-ratio: 1 / 1;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.bebo-gallery-thumb:hover {
+  border-color: rgba(184, 150, 98, 0.75);
+  transform: translateY(-1px);
+}
+
+.bebo-gallery-thumb.is-active {
+  border-color: #b89662;
+  box-shadow: 0 0 0 2px rgba(184, 150, 98, 0.2);
+}
+
+.bebo-gallery-thumb:focus-visible {
+  outline: 2px solid rgba(184, 150, 98, 0.65);
+  outline-offset: 2px;
+}
+
+.bebo-gallery-toolbar {
+  align-items: center;
+  background: linear-gradient(145deg, rgba(18, 9, 11, 0.88), rgba(8, 4, 5, 0.9));
+  border: 1px solid rgba(240, 209, 160, 0.14);
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+}
+
+.bebo-gallery-toolbar__label {
+  color: var(--accent-gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.bebo-gallery-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.bebo-gallery-card {
+  background: rgba(12, 6, 7, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  text-align: left;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bebo-gallery-card img {
+  aspect-ratio: 4 / 5;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.35s ease, filter 0.25s ease;
+  width: 100%;
+}
+
+.bebo-gallery-card__overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(3, 1, 1, 0.88));
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  inset-inline: 0;
+  padding: 0.6rem 0.7rem 0.7rem;
+  position: absolute;
+}
+
+.bebo-gallery-card__index {
+  align-items: center;
+  background: rgba(167, 53, 63, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 700;
+  height: 1.4rem;
+  justify-content: center;
+  width: 1.4rem;
+}
+
+.bebo-gallery-card__title {
+  color: #f7eee6;
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.bebo-gallery-card:hover {
+  border-color: rgba(240, 209, 160, 0.36);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
+}
+
+.bebo-gallery-card:hover img {
+  filter: saturate(1.05);
+  transform: scale(1.03);
+}
+
+.bebo-gallery-card:focus-visible {
+  border-color: rgba(240, 209, 160, 0.6);
+  outline: 2px solid rgba(240, 209, 160, 0.65);
+  outline-offset: 2px;
+}
+
+.bebo-lightbox {
+  inset: 0;
+  position: fixed;
+  z-index: 1200;
+}
+
+.bebo-lightbox[hidden] {
+  display: none !important;
+}
+
+.bebo-lightbox__backdrop {
+  backdrop-filter: blur(3px);
+  background: rgba(4, 2, 2, 0.84);
+  inset: 0;
+  position: absolute;
+}
+
+.bebo-lightbox__dialog {
+  inset: 50% auto auto 50%;
+  max-height: 90vh;
+  max-width: min(94vw, 1060px);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+}
+
+.bebo-lightbox__dialog img {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.78);
+  display: block;
+  max-height: calc(90vh - 4.2rem);
+  max-width: min(94vw, 1060px);
+  width: auto;
+}
+
+.bebo-lightbox__caption {
+  color: var(--text-main);
+  font-size: 0.95rem;
+  margin-top: 0.55rem;
+  text-align: center;
+}
+
+.bebo-lightbox__close {
+  align-items: center;
+  background: rgba(6, 3, 4, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  color: #f4e8dd;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 2rem;
+  justify-content: center;
+  position: absolute;
+  right: 0.4rem;
+  top: 0.4rem;
+  width: 2rem;
+}
+
+@media (max-width: 575.98px) {
+  .bebo-gallery-story {
+    grid-template-columns: 1fr;
+    padding: 0.8rem;
+  }
+
+  .bebo-gallery-story__text {
+    padding: 1rem 0.85rem 0.5rem;
+  }
+
+  .bebo-gallery-story__text p {
+    font-size: 0.95rem;
+  }
+
+  .bebo-gallery-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .bebo-gallery-story {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bebo-signature {
+  background:
+    radial-gradient(900px 280px at 15% 0%, rgba(240, 209, 160, 0.1), transparent 60%),
+    linear-gradient(165deg, rgba(20, 10, 12, 0.94), rgba(8, 4, 5, 0.95));
+  border: 1px solid rgba(240, 209, 160, 0.16);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 1.2rem;
+}
+
+.bebo-bottom-slider {
+  border: 1px solid rgba(240, 209, 160, 0.18);
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  position: relative;
+}
+
+.bebo-bottom-slider .carousel-item img {
+  aspect-ratio: 16 / 7;
+  filter: brightness(0.72);
+  object-fit: cover;
+}
+
+.bebo-bottom-slider__overlay {
+  align-items: center;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  inset: 0;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+}
+
+.bebo-bottom-slider__subtitle {
+  color: rgba(246, 238, 230, 0.94);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+}
+
+.bebo-bottom-slider__title {
+  color: #fff7ed;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(2.2rem, 7vw, 5rem);
+  line-height: 1;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+}
+
+.bebo-bottom-slider .carousel-control-prev,
+.bebo-bottom-slider .carousel-control-next {
+  width: 10%;
+}
+
+.bebo-signature__panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 1.25rem;
+}
+
+.bebo-signature__label {
+  color: var(--accent-gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.55rem;
+  text-transform: uppercase;
+}
+
+.bebo-signature__carousel .carousel-item {
+  min-height: 100%;
+}
+
+.bebo-signature__pick {
+  overflow: hidden;
+}
+
+.bebo-signature__pick .card-img-top {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.bebo-signature__carousel .carousel-control-prev,
+.bebo-signature__carousel .carousel-control-next {
+  width: 14%;
+}
+
+.bebo-signature__carousel .carousel-control-prev-icon,
+.bebo-signature__carousel .carousel-control-next-icon {
+  background-color: rgba(8, 4, 5, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 0.85rem;
+}
+
+.bebo-countdown {
+  align-items: center;
+  background:
+    radial-gradient(700px 220px at 0% 0%, rgba(167, 53, 63, 0.2), transparent 58%),
+    linear-gradient(145deg, rgba(18, 9, 11, 0.92), rgba(8, 4, 5, 0.9));
+  border: 1px solid rgba(240, 209, 160, 0.18);
+  border-radius: 20px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.2fr auto auto;
+  padding: 1rem 1.15rem;
+}
+
+.bebo-countdown__label {
+  color: var(--accent-gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.bebo-countdown__timer {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.bebo-countdown__cell {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  min-width: 68px;
+  padding: 0.45rem 0.55rem;
+  text-align: center;
+}
+
+.bebo-countdown__cell strong {
+  color: var(--accent-gold);
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+
+.bebo-countdown__cell span {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.bebo-countdown--done .bebo-countdown__cell strong {
+  color: #ffe5b8;
+}
+
+.bebo-map-embed {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  height: 320px;
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.bebo-map-embed iframe {
+  border: 0;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* Футер */
+footer,
+.bebo-site__footer {
+  background:
+    radial-gradient(circle at 50% 0, rgba(240, 209, 160, 0.08), transparent 55%),
+    linear-gradient(180deg, rgba(20, 10, 12, 0.96), rgba(8, 4, 5, 1));
+  border-top: 1px solid rgba(240, 209, 160, 0.12) !important;
+  box-sizing: border-box;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.bebo-site__footer .container {
+  max-width: 1140px;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  width: 100%;
+}
+
+.bebo-site__footer-inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  justify-content: space-between;
+}
+
+.bebo-site__footer-inner > div {
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 767.98px) {
+  .bebo-site__footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bebo-site__footer-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bebo-site__footer-sep {
+    display: none;
+  }
+}
+
+.bebo-site__footer-brand {
+  color: var(--text-main);
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.bebo-site__footer-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.bebo-site__footer-sep {
+  color: rgba(198, 183, 170, 0.45);
+}
+
+.bebo-site__footer-meta a {
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.bebo-site__footer-meta a:hover {
+  color: #ffe5b8;
+}
+
+@media (max-width: 991.98px) {
+  .bebo-page-hero__inner {
+    padding: 1.35rem 1.2rem;
+  }
+
+  .bebo-bottom-slider .carousel-item img {
+    aspect-ratio: 4 / 3;
+  }
+
+  main.container {
+    padding-top: 1.6rem !important;
+  }
+
+  .bebo-signature {
+    padding: 0.9rem;
+  }
+
+  .bebo-countdown {
+    grid-template-columns: 1fr;
+  }
+
+  .bebo-countdown__timer {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

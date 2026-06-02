@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}{{ SITE_NAME }} — Контакты{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Мы на связи" title="Контакты" subtitle="Приезжайте в гости, звоните или напишите — ответим в рабочие часы." %}
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="bebo-info-card mb-3">
+        <div class="bebo-info-card__title">Как нас найти</div>
+        <p class="text-muted mb-1"><strong class="text-light">Адрес:</strong> {{ contact_settings.address }}</p>
+        <p class="text-muted mb-1"><strong class="text-light">Телефон:</strong> {{ contact_settings.phone }}</p>
+        <p class="text-muted mb-0"><strong class="text-light">Часы работы:</strong> {{ contact_settings.working_hours }}</p>
+      </div>
+      <div class="bebo-map-embed">
+        <iframe
+          src="{{ contact_settings.get_map_embed_url }}"
+          title="Карта ресторана"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="h5 mb-3">Написать нам</h2>
+          <form method="post" class="vstack gap-3">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div>
+              <label class="form-label">Имя</label>
+              {{ form.name }}{{ form.name.errors }}
+            </div>
+            <div>
+              <label class="form-label">Email</label>
+              {{ form.email }}{{ form.email.errors }}
+            </div>
+            <div>
+              <label class="form-label">Телефон</label>
+              {{ form.phone }}{{ form.phone.errors }}
+            </div>
+            <div>
+              <label class="form-label">Тема</label>
+              {{ form.subject }}{{ form.subject.errors }}
+            </div>
+            <div>
+              <label class="form-label">Сообщение</label>
+              {{ form.message }}{{ form.message.errors }}
+            </div>
+            {% if form.captcha %}{{ form.captcha }}{% endif %}
+            <button class="btn btn-primary">Отправить</button>
+          </form>
+        </div>
+      </div>
+      <div class="bebo-page-tip mb-0 mt-3">
+        <strong>Бронирование на сегодня?</strong> Позвоните — так мы быстрее подберём свободный столик.
+      </div>
+    </div>
+  </div>
+{% endblock %}

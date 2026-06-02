@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ SITE_NAME }} — Заявка принята{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Готово" title="Заявка принята" subtitle="Мы свяжемся с вами для подтверждения бронирования." %}
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="alert alert-success mb-0">
+        Проверьте почту — туда может прийти письмо с деталями. Если нужно изменить время, напишите нам на странице контактов.
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Что дальше</div>
+        <ul>
+          <li>Мы перезвоним или ответим на email в течение дня.</li>
+          <li>После подтверждения столик будет закреплён за вами.</li>
+          <li>За сутки можно уточнить детали по телефону.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap mt-4">
+    <a class="btn btn-primary" href="/menu/">Посмотреть меню</a>
+    <a class="btn btn-outline-secondary" href="/">На главную</a>
+  </div>
+{% endblock %}

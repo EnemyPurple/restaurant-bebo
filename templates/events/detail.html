@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}{{ event.title }} — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+  <nav class="mb-3">
+    <a href="/events/" class="link-secondary">← Все события</a>
+  </nav>
+  <div class="row g-4">
+    <div class="col-md-5">
+      {% if event.photo %}
+        <img class="img-fluid rounded" src="{{ event.photo.url }}" alt="{{ event.title }}"/>
+      {% else %}
+        <div class="bebo-info-card d-flex align-items-center justify-content-center" style="min-height: 280px;">
+          <span class="text-muted">Фото скоро появится</span>
+        </div>
+      {% endif %}
+    </div>
+    <div class="col-md-7">
+      <h1 class="h3">{{ event.title }}</h1>
+      <div class="text-muted">
+        {{ event.date_start|date:"d.m.Y H:i" }} — {{ event.date_end|date:"d.m.Y H:i" }}
+      </div>
+      <div class="mt-3">{{ event.description|linebreaksbr }}</div>
+      <div class="mt-3 d-flex gap-2 flex-wrap">
+        {% if event.max_guests %}<span class="badge text-bg-secondary">Мест: {{ event.max_guests }}</span>{% endif %}
+        {% if event.price %}<span class="badge text-bg-primary">{{ event.price }} ₽</span>{% endif %}
+      </div>
+      <div class="mt-4 d-flex gap-2 flex-wrap">
+        {% if request.user.is_authenticated %}
+          {% if registration and not registration.is_cancelled %}
+            <form method="post" action="{% url 'events:cancel' slug=event.slug %}">
+              {% csrf_token %}
+              <button class="btn btn-outline-danger">Отменить запись</button>
+            </form>
+          {% else %}
+            <form method="post" action="{% url 'events:register' slug=event.slug %}">
+              {% csrf_token %}
+              <button class="btn btn-primary">Записаться</button>
+            </form>
+          {% endif %}
+        {% else %}
+          <a class="btn btn-primary" href="/users/login/?next={{ request.path }}">Войти и записаться</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3 mt-2">
+    <div class="col-md-6">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Перед визитом</div>
+        <ul>
+          <li>Приходите за 10–15 минут до начала.</li>
+          <li>Можно заранее забронировать столик на ужин после события.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Вопросы</div>
+        <p class="text-muted mb-2">Уточните детали по телефону или через форму на странице контактов.</p>
+        <a class="btn btn-sm btn-outline-secondary" href="/contacts/">Связаться с нами</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Оставить отзыв — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Обратная связь" title="Оставить отзыв" subtitle="Отзыв будет опубликован после модерации." %}
+
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data" class="vstack gap-3">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div>
+              <label class="form-label">Визит (бронирование)</label>
+              {{ form.booking }}
+              {{ form.booking.errors }}
+            </div>
+            <div>
+              <label class="form-label">Оценка (1–5)</label>
+              {{ form.rating }}
+              {{ form.rating.errors }}
+            </div>
+            <div>
+              <label class="form-label">Отзыв</label>
+              {{ form.text }}
+              {{ form.text.errors }}
+            </div>
+            <div>
+              <label class="form-label">Фото блюд (необязательно)</label>
+              {{ form.photos }}
+              {{ form.photos.errors }}
+              <div class="form-text">Можно выбрать несколько файлов.</div>
+            </div>
+            <button class="btn btn-primary">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Как написать полезный отзыв</div>
+        <ul>
+          <li>Расскажите, что заказывали и что понравилось больше всего.</li>
+          <li>Фото блюд помогают другим гостям с выбором.</li>
+          <li>Критику тоже ценим — так мы становимся лучше.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

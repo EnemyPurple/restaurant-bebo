@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ SITE_NAME }} — Бронирование{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Столик ждёт" title="Бронирование столика" subtitle="Выберите дату, время и количество гостей — мы покажем доступные столики." action_url="/menu/" action_text="Посмотреть меню" %}
+
+  <div class="row g-4 align-items-start">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <form method="post" class="row g-3" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+              <div class="col-12">
+                <div class="alert alert-danger mb-0">{{ form.non_field_errors }}</div>
+              </div>
+            {% endif %}
+
+            <div class="col-md-6">
+              <label class="form-label">Имя</label>
+              {{ form.name }}
+              {{ form.name.errors }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Телефон</label>
+              {{ form.phone }}
+              {{ form.phone.errors }}
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Email (для подтверждения)</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Дата</label>
+              {{ form.date }}
+              {{ form.date.errors }}
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Время</label>
+              {{ form.time }}
+              {{ form.time.errors }}
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label">Гостей</label>
+              {{ form.guests }}
+              {{ form.guests.errors }}
+            </div>
+            <div class="col-md-9">
+              <label class="form-label">Столик</label>
+              {{ form.table }}
+              {{ form.table.errors }}
+              <div id="booking-availability" class="form-text"></div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Комментарий</label>
+              {{ form.comment }}
+              {{ form.comment.errors }}
+            </div>
+
+            {% if form.captcha %}
+              <div class="col-12">
+                {{ form.captcha }}
+              </div>
+            {% endif %}
+
+            <div class="col-12 d-flex gap-2 flex-wrap">
+              <button class="btn btn-primary">Отправить</button>
+              <a class="btn btn-outline-secondary" href="/contacts/">Связаться с нами</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 d-flex flex-column gap-3">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Как это работает</div>
+        <ul>
+          <li>Отправьте заявку — мы проверим свободные столики.</li>
+          <li>Подтверждение придёт на email или по телефону.</li>
+          <li>Столик держим 15 минут после времени брони.</li>
+        </ul>
+      </div>
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Для больших компаний</div>
+        <p class="text-muted mb-0">Если гостей больше 8 — напишите в форме комментарий или позвоните нам, подберём зал.</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/booking.js' %}"></script>
+{% endblock %}

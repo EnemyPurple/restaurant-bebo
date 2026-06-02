@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Подтверждение — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Почти готово" title="Подтверждение входа" subtitle="Введите 6‑значный код из SMS." %}
+
+  <div class="row g-4">
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="card-body">
+          <form method="post" class="vstack gap-3">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.phone }}
+            {% if next %}<input type="hidden" name="next" value="{{ next }}"/>{% endif %}
+            <div>
+              <label class="form-label">Код</label>
+              {{ form.code }}
+              {{ form.code.errors }}
+            </div>
+            <button class="btn btn-primary">Войти</button>
+          </form>
+          <div class="mt-3">
+            <a class="link-secondary" href="{% url 'users:login' %}">Запросить новый код</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Не пришёл код</div>
+        <ul>
+          <li>Проверьте правильность номера телефона.</li>
+          <li>В режиме разработки код показывается на экране после отправки.</li>
+          <li>Можно запросить новый код на предыдущем шаге.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

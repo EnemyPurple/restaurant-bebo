@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ SITE_NAME }} — Меню{% endblock %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+    <div>
+      <h1 class="h3 mb-0">Меню</h1>
+
+    </div>
+    <div class="d-flex gap-2">
+      <input id="menu-q" class="form-control" placeholder="Поиск по названию" style="min-width: 260px" />
+      <select id="menu-category" class="form-select">
+        <option value="">Все категории</option>
+        {% for c in categories %}
+          <option value="{{ c.slug }}">{{ c.name }}</option>
+        {% endfor %}
+      </select>
+      <button id="menu-apply" class="btn btn-primary">Показать</button>
+    </div>
+  </div>
+
+  <div class="bebo-menu-toggles mb-3" role="group" aria-label="Быстрые фильтры">
+    <button type="button" class="bebo-menu-toggle" data-filter="recommended">Рекомендуем</button>
+    <button type="button" class="bebo-menu-toggle" data-filter="vegetarian">Вегетарианское</button>
+    <button type="button" class="bebo-menu-toggle" data-filter="spicy">Острое</button>
+  </div>
+
+  <div id="menu-results" class="row g-3"></div>
+  <div id="menu-empty" class="text-muted d-none">Ничего не найдено.</div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/menu.js' %}"></script>
+{% endblock %}
+

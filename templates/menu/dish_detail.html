@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}{{ dish.name }} — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+  <nav class="mb-3">
+    <a href="/menu/" class="link-secondary">← Назад в меню</a>
+  </nav>
+
+  <div class="row g-4">
+    <div class="col-md-5">
+      {% if dish.photo %}
+        <img class="img-fluid rounded" src="{{ dish.photo.url }}" alt="{{ dish.name }}" />
+      {% else %}
+        <div class="bebo-info-card d-flex align-items-center justify-content-center" style="height: 280px;">
+          <span class="text-muted">Нет фото</span>
+        </div>
+      {% endif %}
+    </div>
+    <div class="col-md-7">
+      <h1 class="h3">{{ dish.name }}</h1>
+      <div class="text-muted">{{ dish.category.name }}</div>
+      <div class="my-3">{{ dish.description|linebreaksbr }}</div>
+      <div class="d-flex gap-2 flex-wrap">
+        <span class="badge text-bg-primary">{{ dish.price }} ₽</span>
+        {% if dish.weight %}<span class="badge text-bg-secondary">{{ dish.weight }} г</span>{% endif %}
+        {% if dish.is_spicy %}<span class="badge text-bg-danger">Острое</span>{% endif %}
+        {% if dish.is_vegetarian %}<span class="badge text-bg-success">Вегетарианское</span>{% endif %}
+        {% if dish.is_recommended %}<span class="badge text-bg-warning">Рекомендуем</span>{% endif %}
+      </div>
+      {% if dish.allergens %}
+        <div class="mt-3 small text-muted">
+          Аллергены: {{ dish.allergens|join:", " }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row g-3 mt-2">
+    <div class="col-md-6">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Совет сомелье</div>
+        <p class="text-muted mb-0">
+          {% if dish.is_spicy %}
+            К острому блюду подойдёт полусладкое грузинское вино или лимонад с мятой.
+          {% elif dish.is_vegetarian %}
+            Попробуйте с белым rkatsiteli — он подчеркнёт свежие ноты овощей и зелени.
+          {% else %}
+            Классическая пара — саперави или домашний лимонад с tarragon.
+          {% endif %}
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Заказать в зале</div>
+        <p class="text-muted mb-2">Назовите официанту название блюда или покажите эту страницу.</p>
+        <a class="btn btn-sm btn-primary" href="/booking/">Забронировать столик</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

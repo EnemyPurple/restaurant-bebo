@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}{{ SITE_NAME }} — Галерея{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Интерьер и атмосфера" title="Галерея" subtitle="Интерьер, детали и настроение ресторана Bebo." %}
+
+  <section class="bebo-gallery-story mb-4">
+    <div class="bebo-gallery-story__text">
+      <h2>Bebo</h2>
+      <p>Интерьер заведения выполнен в традиционном грузинском стиле, что создает атмосферу уюта и домашнего тепла.</p>
+      <p>В зале ресторана расположены деревянные столы и стулья, которые украшены национальными узорами и орнаментами. Светильники, выполненные в форме глиняных кувшинов, создают приятное освещение и добавляют в интерьер элементы народного творчества.</p>
+      <p>Стены ресторана украшены картинами грузинских художников, а также фотографиями известных достопримечательностей Грузии.</p>
+      <p>Здесь можно попробовать настоящий грузинский виноградный бренди или другие напитки из Грузии.</p>
+      <p>Интерьер ресторана Bebo создает атмосферу настоящей грузинской гостеприимности и комфорта, что позволяет посетителям насладиться не только вкусной едой, но и приятной обстановкой.</p>
+      <div class="bebo-gallery-story__ornament">⸻ ◇ ⸻</div>
+    </div>
+    <div class="bebo-gallery-story__image-wrap">
+      {% if images %}
+        <div class="bebo-gallery-story__media">
+          <img
+            id="bebo-gallery-main-image"
+            src="{{ images.0.image.url }}"
+            alt="{{ images.0.title|default:'Интерьер ресторана Bebo' }}"
+            class="bebo-gallery-story__image"
+          />
+          {% if images|length > 1 %}
+            <div class="bebo-gallery-thumbs" id="bebo-gallery-thumbs">
+              {% for img in images %}
+                <button
+                  type="button"
+                  class="bebo-gallery-thumb{% if forloop.first %} is-active{% endif %}"
+                  data-full="{{ img.image.url }}"
+                  data-alt="{{ img.title|default:'Интерьер ресторана Bebo' }}"
+                  aria-label="Показать фото {{ forloop.counter }}"
+                >
+                  <img src="{{ img.image.url }}" alt="{{ img.title|default:'Фото ресторана Бебо' }}" loading="lazy" />
+                </button>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="bebo-gallery-story__image bebo-gallery-story__image--empty">Фото скоро появятся</div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    (() => {
+      const mainImage = document.getElementById("bebo-gallery-main-image");
+      const thumbsRoot = document.getElementById("bebo-gallery-thumbs");
+      if (!mainImage || !thumbsRoot) return;
+
+      const thumbs = [...thumbsRoot.querySelectorAll(".bebo-gallery-thumb")];
+      thumbs.forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+          mainImage.src = thumb.dataset.full;
+          mainImage.alt = thumb.dataset.alt;
+          thumbs.forEach((item) => item.classList.remove("is-active"));
+          thumb.classList.add("is-active");
+        });
+      });
+    })();
+  </script>
+{% endblock %}

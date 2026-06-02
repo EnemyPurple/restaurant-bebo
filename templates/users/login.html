@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Вход по телефону — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+  {% include "partials/page_hero.html" with badge="Личный кабинет" title="Вход по телефону" subtitle="Введите номер — мы отправим код (в dev он показывается на странице)." %}
+
+  <div class="row g-4">
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="card-body">
+          <form method="post" class="vstack gap-3">
+            {% csrf_token %}
+            {% if next %}<input type="hidden" name="next" value="{{ next }}"/>{% endif %}
+            {{ form.non_field_errors }}
+            <div>
+              <label class="form-label">Телефон</label>
+              {{ form.phone }}
+              {{ form.phone.errors }}
+            </div>
+            <button class="btn btn-primary">Получить код</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="bebo-info-card">
+        <div class="bebo-info-card__title">Зачем входить</div>
+        <ul>
+          <li>История бронирований и записей на события.</li>
+          <li>Накопительная скидка и бонус в день рождения.</li>
+          <li>Отзывы после подтверждённого визита.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
