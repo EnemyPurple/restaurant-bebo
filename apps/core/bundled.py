@@ -3,10 +3,13 @@ from __future__ import annotations
 import io
 import json
 import shutil
+from contextlib import contextmanager
 from pathlib import Path
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.core.management import call_command
+from django.db.models.signals import post_save
 
 DB_SNAPSHOT_NAME = "db.json"
 
@@ -31,6 +34,23 @@ def bundled_root() -> Path:
 
 def db_snapshot_path() -> Path:
     return bundled_root() / DB_SNAPSHOT_NAME
+
+
+@contextmanager
+def _suspend_fixture_side_effects():
+    """Signals must not create duplicate rows while loaddata restores the snapshot."""
+    from apps.booking.models import Booking
+    from apps.booking.signals import booking_created
+    from apps.users.signals import ensure_profile
+
+    user_model = get_user_model()
+    post_save.disconnect(ensure_profile, sender=user_model)
+    post_save.disconnect(booking_created, sender=Booking)
+    try:
+        yield
+    finally:
+        post_save.connect(ensure_profile, sender=user_model)
+        post_save.connect(booking_created, sender=Booking)
 
 
 def copy_media_to_bundled() -> int:
@@ -73,7 +93,8 @@ def restore_db_snapshot() -> int:
         raise FileNotFoundError(f"Missing DB snapshot: {path}")
     call_command("flush", interactive=False, verbosity=0)
     buffer = io.StringIO()
-    call_command("loaddata", str(path), verbosity=1, stdout=buffer)
+    with _suspend_fixture_side_effects():
+        call_command("loaddata", str(path), verbosity=1, stdout=buffer)
     loaded = 0
     for line in buffer.getvalue().splitlines():
         if "Installed" in line:
