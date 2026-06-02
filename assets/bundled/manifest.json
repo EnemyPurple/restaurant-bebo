@@ -5,16 +5,8 @@
       "sort_order": 1
     },
     {
-      "name": "Выпечка",
-      "sort_order": 2
-    },
-    {
-      "name": "Закуски",
-      "sort_order": 3
-    },
-    {
       "name": "Напитки",
-      "sort_order": 4
+      "sort_order": 2
     }
   ],
   "dishes": [
@@ -66,7 +58,7 @@
       "photo": "menu/shampinony-suluguni.webp"
     },
     {
-      "category": "Выпечка",
+      "category": "Горячие блюда",
       "name": "Хачапури хатахтари",
       "slug": "khatakhari",
       "description": "Хачапури с начинкой из яиц, сыра и масла.",
@@ -75,7 +67,7 @@
       "photo": "menu/khatakhari.webp"
     },
     {
-      "category": "Выпечка",
+      "category": "Горячие блюда",
       "name": "Хачапури по-аджарски",
       "slug": "khachapuri",
       "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
@@ -85,7 +77,7 @@
       "is_recommended": true
     },
     {
-      "category": "Выпечка",
+      "category": "Горячие блюда",
       "name": "Хачапури по-имеретински",
       "slug": "khachapuri-imeruli",
       "description": "Круглый хачапури с сыром сулугуни внутри.",
@@ -94,7 +86,7 @@
       "photo": "menu/khachapuri-imeruli.jpg"
     },
     {
-      "category": "Выпечка",
+      "category": "Горячие блюда",
       "name": "Хинкали с мясом",
       "slug": "khinkali",
       "description": "Классические грузинские пельмени с сочной мясной начинкой.",
@@ -122,7 +114,7 @@
       "photo": "menu/satsivi.jpg"
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Аджапсандали",
       "slug": "adjapsandali",
       "description": "Тушёные баклажаны с перцем и томатами.",
@@ -132,7 +124,7 @@
       "is_vegetarian": true
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Бадриджани с паштетом из грецких орехов",
       "slug": "badrijani-oreh",
       "description": "Баклажаны с ореховой пастой и зеленью.",
@@ -142,7 +134,7 @@
       "is_vegetarian": true
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Бадриджани",
       "slug": "badrijani",
       "description": "Маринованные баклажаны с чесноком и зеленью.",
@@ -152,7 +144,7 @@
       "is_vegetarian": true
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Баклажан с сыром",
       "slug": "baklazhan-syr",
       "description": "Запечённый баклажан с сырной начинкой.",
@@ -162,7 +154,7 @@
       "is_vegetarian": true
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Лобио",
       "slug": "lobio",
       "description": "Традиционная фасоль с ароматными специями.",
@@ -172,7 +164,7 @@
       "is_vegetarian": true
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Лобио по-кахетински",
       "slug": "lobio-kakheti",
       "description": "Фасоль с ароматными специями и зеленью.",
@@ -182,7 +174,7 @@
       "is_vegetarian": true
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Мцниве из бочки",
       "slug": "mtsnili-bochka",
       "description": "Ассорти из капусты, огурцов, перца и черемши.",
@@ -191,7 +183,7 @@
       "photo": "menu/mtsnili-bochka.webp"
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Пхали из свеклы, шпината и фасоли",
       "slug": "phkali-assorti",
       "description": "Традиционные пасты из овощей с орехами и специями.",
@@ -201,7 +193,7 @@
       "is_vegetarian": true
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Семга слабосоленая с тархуном",
       "slug": "semga-tarhun",
       "description": "Нежная семга с ароматом свежего тархуна.",
@@ -210,7 +202,7 @@
       "photo": "menu/semga-tarhun.webp"
     },
     {
-      "category": "Закуски",
+      "category": "Горячие блюда",
       "name": "Сулугуни с томатами",
       "slug": "suluguni-tomaty",
       "description": "Сыр сулугуни с свежими томатами и зеленью.",

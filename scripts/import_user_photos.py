@@ -68,7 +68,7 @@ DISHES = [
     {
         "src": "ХАТАХТАРИ.webp",
         "dest": "media/menu/khatakhari.webp",
-        "category": "Выпечка",
+        "category": "Горячие блюда",
         "name": "Хачапури хатахтари",
         "description": "Хачапури с начинкой из яиц, сыра и масла.",
         "price": "510.00",
@@ -76,7 +76,7 @@ DISHES = [
     },
     {
         "dest": "media/menu/khachapuri.jpg",
-        "category": "Выпечка",
+        "category": "Горячие блюда",
         "name": "Хачапури по-аджарски",
         "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
         "price": "550.00",
@@ -85,7 +85,7 @@ DISHES = [
     },
     {
         "dest": "media/menu/khachapuri-imeruli.jpg",
-        "category": "Выпечка",
+        "category": "Горячие блюда",
         "name": "Хачапури по-имеретински",
         "description": "Круглый хачапури с сыром сулугуни внутри.",
         "price": "480.00",
@@ -93,7 +93,7 @@ DISHES = [
     },
     {
         "dest": "media/menu/khinkali.jpg",
-        "category": "Выпечка",
+        "category": "Горячие блюда",
         "name": "Хинкали с мясом",
         "description": "Классические грузинские пельмени с сочной мясной начинкой.",
         "price": "460.00",
@@ -120,7 +120,7 @@ DISHES = [
     {
         "src": "Adzhapsandali.webp",
         "dest": "media/menu/adjapsandali.webp",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Аджапсандали",
         "description": "Тушёные баклажаны с перцем и томатами.",
         "price": "360.00",
@@ -130,7 +130,7 @@ DISHES = [
     {
         "src": "Badridzhani s pashtetom iz gretskikh orekhov.webp",
         "dest": "media/menu/badrijani-oreh.webp",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Бадриджани с паштетом из грецких орехов",
         "description": "Баклажаны с ореховой пастой и зеленью.",
         "price": "340.00",
@@ -139,7 +139,7 @@ DISHES = [
     },
     {
         "dest": "media/menu/badrijani.jpg",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Бадриджани",
         "description": "Маринованные баклажаны с чесноком и зеленью.",
         "price": "320.00",
@@ -149,7 +149,7 @@ DISHES = [
     {
         "src": "baklazhan s syrom.webp",
         "dest": "media/menu/baklazhan-syr.webp",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Баклажан с сыром",
         "description": "Запечённый баклажан с сырной начинкой.",
         "price": "320.00",
@@ -158,7 +158,7 @@ DISHES = [
     },
     {
         "dest": "media/menu/lobio.jpg",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Лобио",
         "description": "Традиционная фасоль с ароматными специями.",
         "price": "320.00",
@@ -168,7 +168,7 @@ DISHES = [
     {
         "src": "lobio po kakhetinski.jpg",
         "dest": "media/menu/lobio-kakheti.jpg",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Лобио по-кахетински",
         "description": "Фасоль с ароматными специями и зеленью.",
         "price": "350.00",
@@ -178,7 +178,7 @@ DISHES = [
     {
         "src": "Mtsnili iz bochki (kapusta po guriyski. ostryy perets. ogurtsy. cheremsha i dzhondzholi).webp",
         "dest": "media/menu/mtsnili-bochka.webp",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Мцниве из бочки",
         "description": "Ассорти из капусты, огурцов, перца и черемши.",
         "price": "290.00",
@@ -187,7 +187,7 @@ DISHES = [
     {
         "src": "Pkhaleuli iz svekly. shpinata i fasoli.webp",
         "dest": "media/menu/phkali-assorti.webp",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Пхали из свеклы, шпината и фасоли",
         "description": "Традиционные пасты из овощей с орехами и специями.",
         "price": "380.00",
@@ -197,7 +197,7 @@ DISHES = [
     {
         "src": "Semga slabosolenaya s tarkhunom.webp",
         "dest": "media/menu/semga-tarhun.webp",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Семга слабосоленая с тархуном",
         "description": "Нежная семга с ароматом свежего тархуна.",
         "price": "560.00",
@@ -206,7 +206,7 @@ DISHES = [
     {
         "src": "suluguni s tomatami.webp",
         "dest": "media/menu/suluguni-tomaty.webp",
-        "category": "Закуски",
+        "category": "Горячие блюда",
         "name": "Сулугуни с томатами",
         "description": "Сыр сулугуни с свежими томатами и зеленью.",
         "price": "410.00",
@@ -269,9 +269,7 @@ def copy_file(src_name: str, dest_rel: str) -> None:
 def build_manifest() -> dict:
     categories = [
         {"name": "Горячие блюда", "sort_order": 1},
-        {"name": "Выпечка", "sort_order": 2},
-        {"name": "Закуски", "sort_order": 3},
-        {"name": "Напитки", "sort_order": 4},
+        {"name": "Напитки", "sort_order": 2},
     ]
     dishes = []
     for item in DISHES:

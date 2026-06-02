@@ -41,6 +41,7 @@ class Command(BaseCommand):
         dishes = manifest.get("dishes", [])
         self._seed_dishes(dishes)
         self._prune_dishes(dishes)
+        self._prune_categories(manifest.get("categories", []))
         self._seed_gallery(manifest.get("gallery", []))
         self._seed_events(manifest.get("events", []))
         self.stdout.write(self.style.SUCCESS("Bundled media sync completed."))
@@ -63,10 +64,15 @@ class Command(BaseCommand):
 
     def _seed_categories(self, items: list[dict]) -> None:
         for item in items:
-            Category.objects.get_or_create(
+            category, _ = Category.objects.get_or_create(
                 name=item["name"],
                 defaults={"sort_order": item.get("sort_order", 0), "is_active": True},
             )
+            sort_order = item.get("sort_order", 0)
+            if category.sort_order != sort_order or not category.is_active:
+                category.sort_order = sort_order
+                category.is_active = True
+                category.save(update_fields=["sort_order", "is_active"])
 
     def _seed_dishes(self, items: list[dict]) -> None:
         for item in items:
@@ -111,6 +117,17 @@ class Command(BaseCommand):
                 removed += 1
         if removed:
             self.stdout.write(f"Removed {removed} dish(es) not listed in manifest.")
+
+    def _prune_categories(self, items: list[dict]) -> None:
+        keep = {item["name"] for item in items}
+        removed = 0
+        for category in Category.objects.exclude(name__in=keep):
+            if category.dishes.exists():
+                continue
+            category.delete()
+            removed += 1
+        if removed:
+            self.stdout.write(f"Removed {removed} unused categor(ies).")
 
     def _seed_gallery(self, items: list[dict]) -> None:
         for item in items:
