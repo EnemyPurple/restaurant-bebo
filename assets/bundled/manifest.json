@@ -2,24 +2,22 @@
   "categories": [
     {
       "name": "Горячие блюда",
+      "sort_order": 0
+    },
+    {
+      "name": "Холодные закуски",
       "sort_order": 1
     },
     {
-      "name": "Напитки",
+      "name": "Из печи",
       "sort_order": 2
+    },
+    {
+      "name": "Напитки",
+      "sort_order": 3
     }
   ],
   "dishes": [
-    {
-      "category": "Горячие блюда",
-      "name": "Аджапсандали",
-      "slug": "adjapsandali",
-      "description": "Тушёные баклажаны с перцем и томатами.",
-      "price": "360.00",
-      "weight": 260,
-      "is_vegetarian": true,
-      "photo": "menu/adjapsandali.webp"
-    },
     {
       "category": "Горячие блюда",
       "name": "Бадриджани с паштетом из грецких орехов",
@@ -27,7 +25,6 @@
       "description": "Баклажаны с ореховой пастой и зеленью.",
       "price": "340.00",
       "weight": 220,
-      "is_vegetarian": true,
       "photo": "menu/badrijani-oreh.webp"
     },
     {
@@ -37,7 +34,6 @@
       "description": "Запечённый баклажан с сырной начинкой.",
       "price": "320.00",
       "weight": 240,
-      "is_vegetarian": true,
       "photo": "menu/baklazhan-syr.webp"
     },
     {
@@ -56,7 +52,6 @@
       "description": "Креветки в сливочно-чесночном соусе с сыром.",
       "price": "890.00",
       "weight": 280,
-      "is_recommended": true,
       "photo": "menu/krevetki-chkmeruli.webp"
     },
     {
@@ -66,18 +61,7 @@
       "description": "Фасоль с ароматными специями и зеленью.",
       "price": "350.00",
       "weight": 280,
-      "is_vegetarian": true,
       "photo": "menu/lobio-kakheti.jpg"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Мцнили из бочки",
-      "slug": "mtsnili-bochka",
-      "description": "Ассорти из капусты, огурцов, перца и черемши.",
-      "price": "290.00",
-      "weight": 200,
-      "is_spicy": true,
-      "photo": "menu/mtsnili-bochka.webp"
     },
     {
       "category": "Горячие блюда",
@@ -95,37 +79,7 @@
       "description": "Жареное мясо с картофелем, луком и специями.",
       "price": "590.00",
       "weight": 350,
-      "is_recommended": true,
       "photo": "menu/odzhahuri-svinina.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Пхалеули из свеклы, шпината и фасоли",
-      "slug": "phkali-assorti",
-      "description": "Традиционные пасты из овощей с орехами и специями.",
-      "price": "380.00",
-      "weight": 250,
-      "is_vegetarian": true,
-      "is_spicy": true,
-      "photo": "menu/phkali-assorti.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Сациви с индейкой",
-      "slug": "satsivi-indejka",
-      "description": "Индейка в густом грузинском ореховом соусе.",
-      "price": "480.00",
-      "weight": 300,
-      "photo": "menu/satsivi-indejka.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Семга слабосоленая с тархуном",
-      "slug": "semga-tarhun",
-      "description": "Нежная семга с ароматом свежего тархуна.",
-      "price": "560.00",
-      "weight": 180,
-      "photo": "menu/semga-tarhun.webp"
     },
     {
       "category": "Горячие блюда",
@@ -134,25 +88,7 @@
       "description": "Сыр сулугуни с свежими томатами и зеленью.",
       "price": "410.00",
       "weight": 220,
-      "is_vegetarian": true,
       "photo": "menu/suluguni-tomaty.webp"
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Хачапури по-аджарски",
-      "slug": "khachapuri",
-      "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
-      "price": "550.00",
-      "weight": 420,
-      "is_recommended": true
-    },
-    {
-      "category": "Горячие блюда",
-      "name": "Хачапури по-имеретински",
-      "slug": "khachapuri-imeruli",
-      "description": "Круглый хачапури с сыром сулугуни внутри.",
-      "price": "480.00",
-      "weight": 350
     },
     {
       "category": "Горячие блюда",
@@ -164,6 +100,67 @@
       "photo": "menu/shampinony-suluguni.webp"
     },
     {
+      "category": "Холодные закуски",
+      "name": "Аджапсандали",
+      "slug": "adjapsandali",
+      "description": "Тушёные баклажаны с перцем и томатами.",
+      "price": "360.00",
+      "weight": 260,
+      "photo": "menu/adjapsandali.webp"
+    },
+    {
+      "category": "Холодные закуски",
+      "name": "Мцнили из бочки",
+      "slug": "mtsnili-bochka",
+      "description": "Ассорти из капусты, огурцов, перца и черемши.",
+      "price": "290.00",
+      "weight": 200,
+      "photo": "menu/mtsnili-bochka.webp"
+    },
+    {
+      "category": "Холодные закуски",
+      "name": "Пхалеули из свеклы, шпината и фасоли",
+      "slug": "phkali-assorti",
+      "description": "Традиционные пасты из овощей с орехами и специями.",
+      "price": "380.00",
+      "weight": 250,
+      "photo": "menu/phkali-assorti.webp"
+    },
+    {
+      "category": "Холодные закуски",
+      "name": "Сациви с индейкой",
+      "slug": "satsivi-indejka",
+      "description": "Индейка в густом грузинском ореховом соусе.",
+      "price": "480.00",
+      "weight": 300,
+      "photo": "menu/satsivi-indejka.webp"
+    },
+    {
+      "category": "Холодные закуски",
+      "name": "Семга слабосоленая с тархуном",
+      "slug": "semga-tarhun",
+      "description": "Нежная семга с ароматом свежего тархуна.",
+      "price": "560.00",
+      "weight": 180,
+      "photo": "menu/semga-tarhun.webp"
+    },
+    {
+      "category": "Из печи",
+      "name": "Хачапури по-аджарски",
+      "slug": "khachapuri",
+      "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
+      "price": "550.00",
+      "weight": 420
+    },
+    {
+      "category": "Из печи",
+      "name": "Хачапури по-имеретински",
+      "slug": "khachapuri-imeruli",
+      "description": "Круглый хачапури с сыром сулугуни внутри.",
+      "price": "480.00",
+      "weight": 350
+    },
+    {
       "category": "Напитки",
       "name": "Кола",
       "slug": "kola",
@@ -171,15 +168,6 @@
       "price": "180.00",
       "weight": 330,
       "photo": "menu/cola.webp"
-    },
-    {
-      "category": "Напитки",
-      "name": "Мандарин-маракуйя",
-      "slug": "mandarin-marakuja",
-      "description": "Фруктовый микс из мандарина и маракуйи.",
-      "price": "240.00",
-      "weight": 300,
-      "photo": "menu/mandarin-marakuja.webp"
     },
     {
       "category": "Напитки",
@@ -198,6 +186,15 @@
       "price": "220.00",
       "weight": 300,
       "photo": "menu/tarhun.webp"
+    },
+    {
+      "category": "Напитки",
+      "name": "Фейхоа личи",
+      "slug": "fejhoa-lichi",
+      "description": "Фруктовый микс фейхоа личи",
+      "price": "240.00",
+      "weight": 300,
+      "photo": "menu/fejhoa-lichi.webp"
     }
   ],
   "gallery": [

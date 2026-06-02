@@ -8,6 +8,10 @@ from django.db.models.signals import post_migrate
 def sync_bundled_media_after_migrate(sender, **kwargs):
     if sender.name != "apps.core":
         return
+    from django.conf import settings
+
+    if getattr(settings, "BUNDLED_MEDIA_MODE", "full") != "full":
+        return
     call_command("sync_bundled_media", verbosity=0)
 
 

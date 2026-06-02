@@ -78,6 +78,7 @@ function Start-Tunnel {
 Write-Log "Watchdog started."
 
 & $python manage.py migrate --noinput | Out-Null
+# sync only copies files in preserve mode; DB is not touched
 & $python manage.py sync_bundled_media | Out-Null
 
 Stop-DjangoOnPort

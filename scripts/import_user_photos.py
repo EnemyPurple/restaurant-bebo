@@ -167,10 +167,10 @@ DISHES = [
         "weight": 330,
     },
     {
-        "slug": "mandarin-marakuja",
+        "slug": "fejhoa-lichi",
         "category": "Напитки",
-        "name": "Мандарин-маракуйя",
-        "description": "Фруктовый микс из мандарина и маракуйи.",
+        "name": "Фейхоа личи",
+        "description": "Фруктовый микс фейхоа личи.",
         "price": "240.00",
         "weight": 300,
     },
@@ -333,9 +333,6 @@ def main() -> None:
 
     menu_dir = BUNDLED / "media" / "menu"
     menu_dir.mkdir(parents=True, exist_ok=True)
-    for old in menu_dir.iterdir():
-        if old.is_file():
-            old.unlink()
 
     for item in DISHES:
         slug = item["slug"]

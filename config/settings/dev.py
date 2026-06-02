@@ -2,6 +2,9 @@ from .base import *  # noqa: F403
 
 DEBUG = True
 
+# Локально админка — источник правды; manifest не перезаписывает БД.
+BUNDLED_MEDIA_MODE = "preserve"  # noqa: F405
+
 # Для туннеля (localhost.run / cloudflare): разрешить любой Host в dev.
 if "*" in ALLOWED_HOSTS:  # noqa: F405
     ALLOWED_HOSTS = ["*"]  # noqa: F405

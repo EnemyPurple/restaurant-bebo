@@ -8,8 +8,9 @@ if (-not (Test-Path $python)) {
     throw "Virtual env not found. Run: python -m venv .venv && .\.venv\Scripts\pip install -r requirements\dev.txt"
 }
 
-Write-Host "Applying migrations and syncing media..."
+Write-Host "Applying migrations (DB is preserved in dev)..."
 & $python manage.py migrate --noinput
+Write-Host "Syncing photo files only (BUNDLED_MEDIA_MODE=preserve in .env)..."
 & $python manage.py sync_bundled_media
 & $python manage.py collectstatic --noinput
 

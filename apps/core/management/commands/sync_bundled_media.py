@@ -20,7 +20,11 @@ class Command(BaseCommand):
     help = "Copy bundled images into static/media and ensure demo DB records exist"
 
     def add_arguments(self, parser):
-        pass
+        parser.add_argument(
+            "--seed-db",
+            action="store_true",
+            help="Force menu/gallery/events seed from manifest (ignores preserve mode)",
+        )
 
     def handle(self, *args, **options):
         bundled_root = settings.BASE_DIR / "assets" / "bundled"
@@ -29,9 +33,28 @@ class Command(BaseCommand):
             self.stdout.write(self.style.WARNING("No assets/bundled folder found, skipping."))
             return
 
+        mode = getattr(settings, "BUNDLED_MEDIA_MODE", "full")
+        if options.get("seed_db"):
+            mode = "full"
+        if mode == "off":
+            self.stdout.write(self.style.WARNING("Bundled media sync disabled (BUNDLED_MEDIA_MODE=off)."))
+            return
+
         copied = self._copy_tree(bundled_root / "static", settings.BASE_DIR / "static", overwrite=True)
         copied += self._copy_tree(bundled_root / "media", settings.MEDIA_ROOT, overwrite=True)
         self.stdout.write(f"Synced {copied} bundled file(s) to static/media.")
+
+        if mode in ("media-only", "preserve"):
+            cache.delete("menu:categories")
+            if mode == "preserve":
+                self.stdout.write(
+                    self.style.WARNING(
+                        "Preserve mode: database left unchanged. "
+                        "Use BUNDLED_MEDIA_MODE=full for manual re-seed from manifest."
+                    )
+                )
+            self.stdout.write(self.style.SUCCESS("Bundled media sync completed."))
+            return
 
         if not manifest_path.exists():
             return

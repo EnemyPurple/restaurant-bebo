@@ -3,6 +3,8 @@ import os
 
 DEBUG = False
 
+BUNDLED_MEDIA_MODE = "full"  # noqa: F405
+
 _render_host = os.environ.get("RENDER_EXTERNAL_HOSTNAME", "")
 if _render_host:
     ALLOWED_HOSTS = list({*ALLOWED_HOSTS, _render_host, ".onrender.com"})  # noqa: F405
