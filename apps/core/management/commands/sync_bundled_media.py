@@ -12,19 +12,20 @@ from django.core.management.base import BaseCommand
 from django.utils import timezone
 
 from apps.booking.models import Table
+from apps.core.bundled import db_snapshot_path, restore_db_snapshot
 from apps.events.models import Event
 from apps.gallery.models import GalleryImage
 from apps.menu.models import Category, Dish
 
 
 class Command(BaseCommand):
-    help = "Copy bundled images into static/media and ensure demo DB records exist"
+    help = "Copy bundled assets and restore full DB snapshot on deploy (Render)"
 
     def add_arguments(self, parser):
         parser.add_argument(
             "--seed-db",
             action="store_true",
-            help="Force menu/gallery/events seed from manifest (ignores preserve mode)",
+            help="Force full DB restore from assets/bundled/db.json (ignores preserve mode)",
         )
 
     def handle(self, *args, **options):
@@ -51,15 +52,25 @@ class Command(BaseCommand):
                 self.stdout.write(
                     self.style.WARNING(
                         "Preserve mode: database left unchanged. "
-                        "Use BUNDLED_MEDIA_MODE=full for manual re-seed from manifest."
+                        "Use sync_bundled_media --seed-db to restore from db.json."
                     )
                 )
             self.stdout.write(self.style.SUCCESS("Bundled media sync completed."))
             return
 
-        if not manifest_path.exists():
+        snapshot = db_snapshot_path()
+        if snapshot.is_file():
+            loaded = restore_db_snapshot()
+            cache.delete("menu:categories")
+            self.stdout.write(self.style.SUCCESS(f"Restored full DB snapshot ({loaded} object(s))."))
+            self.stdout.write(self.style.SUCCESS("Bundled media sync completed."))
             return
 
+        if not manifest_path.exists():
+            self.stdout.write(self.style.WARNING("No db.json or manifest.json found, skipping DB seed."))
+            return
+
+        self.stdout.write(self.style.WARNING("db.json missing — falling back to manifest.json seed."))
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         self._seed_categories(manifest.get("categories", []))
         self._deactivate_dishes(manifest.get("deactivate_dishes", []))

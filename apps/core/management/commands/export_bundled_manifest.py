@@ -8,11 +8,12 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from apps.booking.models import Table
+from apps.core.bundled import copy_media_to_bundled, export_db_snapshot
 from apps.menu.models import Category, Dish
 
 
 class Command(BaseCommand):
-    help = "Export menu and booking tables from DB into assets/bundled/manifest.json"
+    help = "Export full DB snapshot, all media, and manifest for Render deploy"
 
     def handle(self, *args, **options):
         bundled_root = settings.BASE_DIR / "assets" / "bundled"
@@ -83,10 +84,13 @@ class Command(BaseCommand):
             encoding="utf-8",
         )
 
+        media_files = copy_media_to_bundled()
+        db_objects = export_db_snapshot()
+
         self.stdout.write(
             self.style.SUCCESS(
-                f"Exported {len(categories)} categor(ies), {len(dishes)} dish(es), "
-                f"{len(manifest['tables'])} table(s), {copied} photo(s) → "
-                f"{manifest_path.relative_to(settings.BASE_DIR)}"
+                f"Exported DB snapshot ({db_objects} objects), {media_files} media file(s), "
+                f"{len(categories)} categor(ies), {len(dishes)} dish(es), "
+                f"{len(manifest['tables'])} table(s) → assets/bundled/"
             )
         )

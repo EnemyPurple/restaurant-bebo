@@ -18,8 +18,8 @@ SECRET_KEY = env("DJANGO_SECRET_KEY", default="dev-insecure-key")
 DEBUG = env("DJANGO_DEBUG")
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=[])
 
-# full — перезаписывает меню из manifest (Render).
-# preserve — не трогает БД, если блюда уже есть (локальная разработка).
+# full — восстанавливает всю БД из assets/bundled/db.json (Render).
+# preserve — не трогает БД (локальная разработка).
 # media-only — только копирует файлы в static/media.
 BUNDLED_MEDIA_MODE = env("BUNDLED_MEDIA_MODE", default="full")
 

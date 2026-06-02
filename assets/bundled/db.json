@@ -1,0 +1,953 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$R77JfDjJJh2cY19m8tmkOl$5btmpv0gk0lao0t1QLpNFfJxELuFugm5SFz8whlj3YE=",
+    "last_login": "2026-04-15T21:06:20.227Z",
+    "is_superuser": true,
+    "username": "scrn11",
+    "first_name": "",
+    "last_name": "",
+    "email": "asdqwe123@qwe.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-17T14:00:04.135Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": "2026-03-18T14:48:45.401Z",
+    "is_superuser": false,
+    "username": "+79684419130",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-18T14:48:45.382Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": "2026-03-20T19:30:42.664Z",
+    "is_superuser": false,
+    "username": "+78888885522",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-20T19:30:42.645Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$G8tAt6VEDPcmMcLKDAX3Z1$xjmLQ8bR5/mJKmddIMnF50JoLgM3ydTbe0yT0fR5mJM=",
+    "last_login": "2026-03-20T19:32:43.344Z",
+    "is_superuser": true,
+    "username": "sxmpra",
+    "first_name": "",
+    "last_name": "",
+    "email": "asd@asd.asd",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-20T19:32:22.565Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": "2026-06-02T07:31:36.108Z",
+    "is_superuser": false,
+    "username": "86631248253",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-06-02T07:31:36.091Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$41ENqU8G1wLtaK3ZTX1NIh$HpSkXSIlFEFYUf9hoxAjvem9n7Mg0mzZ2qRkvdScBAI=",
+    "last_login": "2026-06-02T08:44:20.658Z",
+    "is_superuser": true,
+    "username": "qawsea",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-06-02T07:33:49.803Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sites.site",
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 1,
+  "fields": {
+    "name": "Горячие блюда",
+    "slug": "goryachie-blyuda",
+    "sort_order": 0,
+    "is_active": true
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 3,
+  "fields": {
+    "name": "Напитки",
+    "slug": "napitki",
+    "sort_order": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 12,
+  "fields": {
+    "name": "Из печи",
+    "slug": "iz-pechi",
+    "sort_order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "menu.category",
+  "pk": 13,
+  "fields": {
+    "name": "Холодные закуски",
+    "slug": "holodnye-zakuski",
+    "sort_order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 9,
+  "fields": {
+    "category": 1,
+    "name": "Креветки чкмерули",
+    "slug": "krevetki-chkmeruli",
+    "description": "Креветки в сливочно-чесночном соусе с сыром.",
+    "price": "890.00",
+    "weight": 280,
+    "photo": "menu/krevetki-chkmeruli.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-03-17T14:56:26.756Z",
+    "updated_at": "2026-06-02T17:33:43.534Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 26,
+  "fields": {
+    "category": 1,
+    "name": "Оджахури со свининой",
+    "slug": "odzhahuri-svinina",
+    "description": "Жареное мясо с картофелем, луком и специями.",
+    "price": "590.00",
+    "weight": 350,
+    "photo": "menu/odzhahuri-svinina.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T07:07:09.689Z",
+    "updated_at": "2026-06-02T17:33:43.535Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 27,
+  "fields": {
+    "category": 1,
+    "name": "Оджахури с говядиной",
+    "slug": "odzhahuri-govyadina",
+    "description": "Сочная говядина с картофелем по домашнему рецепту.",
+    "price": "620.00",
+    "weight": 350,
+    "photo": "menu/odzhahuri-govyadina.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T07:07:09.710Z",
+    "updated_at": "2026-06-02T17:24:54.638Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 29,
+  "fields": {
+    "category": 1,
+    "name": "Шампиньоны фаршированные с сулугуни",
+    "slug": "shampinony-suluguni",
+    "description": "Запечённые шампиньоны с расплавленным сулугуни.",
+    "price": "420.00",
+    "weight": 250,
+    "photo": "menu/shampinony-suluguni.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T07:07:09.767Z",
+    "updated_at": "2026-06-02T17:24:54.753Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 58,
+  "fields": {
+    "category": 1,
+    "name": "Лобио по-кахетински",
+    "slug": "lobio-kakheti",
+    "description": "Фасоль с ароматными специями и зеленью.",
+    "price": "350.00",
+    "weight": 280,
+    "photo": "menu/lobio-kakheti.jpg",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T09:05:05.007Z",
+    "updated_at": "2026-06-02T17:33:43.534Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 62,
+  "fields": {
+    "category": 1,
+    "name": "Сулугуни с томатами",
+    "slug": "suluguni-tomaty",
+    "description": "Сыр сулугуни с свежими томатами и зеленью.",
+    "price": "410.00",
+    "weight": 220,
+    "photo": "menu/suluguni-tomaty.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T09:05:05.085Z",
+    "updated_at": "2026-06-02T17:33:43.536Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 63,
+  "fields": {
+    "category": 1,
+    "name": "Жаркое с семгой",
+    "slug": "zharkoe-semga",
+    "description": "Нежная семга с овощами в ароматном соусе.",
+    "price": "780.00",
+    "weight": 320,
+    "photo": "menu/zharkoe-semga.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T13:28:16.431Z",
+    "updated_at": "2026-06-02T17:24:54.580Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 65,
+  "fields": {
+    "category": 12,
+    "name": "Хачапури по-аджарски",
+    "slug": "khachapuri",
+    "description": "Лодочка из теста с сыром, яйцом и сливочным маслом.",
+    "price": "550.00",
+    "weight": 420,
+    "photo": "",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T13:28:16.490Z",
+    "updated_at": "2026-06-02T17:43:11.690Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 66,
+  "fields": {
+    "category": 12,
+    "name": "Хачапури по-имеретински",
+    "slug": "khachapuri-imeruli",
+    "description": "Круглый хачапури с сыром сулугуни внутри.",
+    "price": "480.00",
+    "weight": 350,
+    "photo": "",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T13:28:16.512Z",
+    "updated_at": "2026-06-02T17:43:15.819Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 68,
+  "fields": {
+    "category": 13,
+    "name": "Сациви с индейкой",
+    "slug": "satsivi-indejka",
+    "description": "Индейка в густом грузинском ореховом соусе.",
+    "price": "480.00",
+    "weight": 300,
+    "photo": "menu/satsivi-indejka.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T13:28:16.548Z",
+    "updated_at": "2026-06-02T17:43:05.647Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 70,
+  "fields": {
+    "category": 13,
+    "name": "Аджапсандали",
+    "slug": "adjapsandali",
+    "description": "Тушёные баклажаны с перцем и томатами.",
+    "price": "360.00",
+    "weight": 260,
+    "photo": "menu/adjapsandali.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T13:28:16.585Z",
+    "updated_at": "2026-06-02T17:42:41.655Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 71,
+  "fields": {
+    "category": 1,
+    "name": "Бадриджани с паштетом из грецких орехов",
+    "slug": "badrijani-oreh",
+    "description": "Баклажаны с ореховой пастой и зеленью.",
+    "price": "340.00",
+    "weight": 220,
+    "photo": "menu/badrijani-oreh.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T13:28:16.607Z",
+    "updated_at": "2026-06-02T17:33:43.532Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 73,
+  "fields": {
+    "category": 1,
+    "name": "Баклажан с сыром",
+    "slug": "baklazhan-syr",
+    "description": "Запечённый баклажан с сырной начинкой.",
+    "price": "320.00",
+    "weight": 240,
+    "photo": "menu/baklazhan-syr.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T13:28:16.643Z",
+    "updated_at": "2026-06-02T17:33:43.533Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 77,
+  "fields": {
+    "category": 13,
+    "name": "Семга слабосоленая с тархуном",
+    "slug": "semga-tarhun",
+    "description": "Нежная семга с ароматом свежего тархуна.",
+    "price": "560.00",
+    "weight": 180,
+    "photo": "menu/semga-tarhun.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T13:28:16.735Z",
+    "updated_at": "2026-06-02T17:43:30.448Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 87,
+  "fields": {
+    "category": 3,
+    "name": "Тархун",
+    "slug": "tarhun",
+    "description": "Освежающий лимонад из тархуна.",
+    "price": "220.00",
+    "weight": 300,
+    "photo": "menu/tarhun.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T15:10:27.145Z",
+    "updated_at": "2026-06-02T17:24:54.806Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 88,
+  "fields": {
+    "category": 3,
+    "name": "Кола",
+    "slug": "kola",
+    "description": "Классический газированный напиток.",
+    "price": "180.00",
+    "weight": 330,
+    "photo": "menu/cola.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T15:10:27.165Z",
+    "updated_at": "2026-06-02T17:24:54.767Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 89,
+  "fields": {
+    "category": 13,
+    "name": "Мцнили из бочки",
+    "slug": "mtsnili-bochka",
+    "description": "Ассорти из капусты, огурцов, перца и черемши.",
+    "price": "290.00",
+    "weight": 200,
+    "photo": "menu/mtsnili-bochka.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T15:14:29.099Z",
+    "updated_at": "2026-06-02T17:42:29.627Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 90,
+  "fields": {
+    "category": 13,
+    "name": "Пхалеули из свеклы, шпината и фасоли",
+    "slug": "phkali-assorti",
+    "description": "Традиционные пасты из овощей с орехами и специями.",
+    "price": "380.00",
+    "weight": 250,
+    "photo": "menu/phkali-assorti.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T15:14:29.146Z",
+    "updated_at": "2026-06-02T17:42:56.916Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 91,
+  "fields": {
+    "category": 3,
+    "name": "Натахтари",
+    "slug": "natahtari",
+    "description": "Освежающий лимонад.",
+    "price": "330.00",
+    "weight": 330,
+    "photo": "menu/natahtari.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T15:14:29.271Z",
+    "updated_at": "2026-06-02T17:24:54.795Z"
+  }
+},
+{
+  "model": "menu.dish",
+  "pk": 94,
+  "fields": {
+    "category": 3,
+    "name": "Фейхоа личи",
+    "slug": "fejhoa-lichi",
+    "description": "Фруктовый микс фейхоа личи",
+    "price": "240.00",
+    "weight": 300,
+    "photo": "menu/fejhoa-lichi.webp",
+    "is_spicy": false,
+    "is_vegetarian": false,
+    "is_recommended": false,
+    "allergens": [],
+    "is_active": true,
+    "created_at": "2026-06-02T17:30:19.906Z",
+    "updated_at": "2026-06-02T17:31:28.808Z"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 1,
+  "fields": {
+    "number": 1,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 2,
+  "fields": {
+    "number": 2,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 3,
+  "fields": {
+    "number": 3,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 4,
+  "fields": {
+    "number": 4,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 5,
+  "fields": {
+    "number": 5,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 6,
+  "fields": {
+    "number": 6,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 7,
+  "fields": {
+    "number": 7,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 8,
+  "fields": {
+    "number": 8,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 9,
+  "fields": {
+    "number": 9,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 10,
+  "fields": {
+    "number": 10,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 11,
+  "fields": {
+    "number": 11,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 12,
+  "fields": {
+    "number": 12,
+    "seats": 6,
+    "is_active": true,
+    "location": "hall"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 13,
+  "fields": {
+    "number": 13,
+    "seats": 4,
+    "is_active": true,
+    "location": "terrace"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 14,
+  "fields": {
+    "number": 14,
+    "seats": 4,
+    "is_active": true,
+    "location": "terrace"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 15,
+  "fields": {
+    "number": 15,
+    "seats": 4,
+    "is_active": true,
+    "location": "terrace"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 16,
+  "fields": {
+    "number": 16,
+    "seats": 4,
+    "is_active": true,
+    "location": "terrace"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 17,
+  "fields": {
+    "number": 17,
+    "seats": 10,
+    "is_active": true,
+    "location": "vip"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 18,
+  "fields": {
+    "number": 18,
+    "seats": 10,
+    "is_active": true,
+    "location": "vip"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 19,
+  "fields": {
+    "number": 19,
+    "seats": 10,
+    "is_active": true,
+    "location": "vip"
+  }
+},
+{
+  "model": "booking.table",
+  "pk": 20,
+  "fields": {
+    "number": 20,
+    "seats": 10,
+    "is_active": true,
+    "location": "vip"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 5,
+  "fields": {
+    "title": "Вечер грузинской кухни",
+    "slug": "vecher-gruzinskoi-kukhni",
+    "description": "Авторское меню, живая музыка и атмосфера настоящей Грузии.",
+    "photo": "events/wine-evening.webp",
+    "date_start": "2026-06-16T07:07:24.255Z",
+    "date_end": "2026-06-16T10:07:24.255Z",
+    "max_guests": 40,
+    "price": "1500.00",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.256Z",
+    "updated_at": "2026-06-02T07:07:24.256Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 1,
+  "fields": {
+    "title": "Интерьер зала",
+    "image": "gallery/interior-1.jpg",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T06:59:12.632Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 2,
+  "fields": {
+    "title": "VIP-зона",
+    "image": "gallery/interior-2.jpg",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T06:59:12.638Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 3,
+  "fields": {
+    "title": "Блюда шефа",
+    "image": "gallery/food-1.jpg",
+    "category": "food",
+    "is_published": true,
+    "created_at": "2026-06-02T06:59:12.644Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 4,
+  "fields": {
+    "title": "Вечер живой музыки",
+    "image": "gallery/event-1.jpg",
+    "category": "event",
+    "is_published": true,
+    "created_at": "2026-06-02T06:59:12.650Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 5,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 1",
+    "image": "gallery/gallery-01.webp",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.196Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 6,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 2",
+    "image": "gallery/gallery-02.webp",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.203Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 7,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 3",
+    "image": "gallery/gallery-03.webp",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.210Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 8,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 4",
+    "image": "gallery/gallery-04.webp",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.216Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 9,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 5",
+    "image": "gallery/gallery-05.webp",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.224Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 10,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 6",
+    "image": "gallery/gallery-06.webp",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.230Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 11,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 7",
+    "image": "gallery/gallery-07.webp",
+    "category": "interior",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.236Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 12,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 8",
+    "image": "gallery/gallery-08.webp",
+    "category": "food",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.242Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 13,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 9",
+    "image": "gallery/gallery-09.webp",
+    "category": "food",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.248Z"
+  }
+},
+{
+  "model": "gallery.galleryimage",
+  "pk": 14,
+  "fields": {
+    "title": "Ресторан «Бебо» — фото 10",
+    "image": "gallery/gallery-10.webp",
+    "category": "food",
+    "is_published": true,
+    "created_at": "2026-06-02T07:07:24.252Z"
+  }
+},
+{
+  "model": "contacts.contactsettings",
+  "pk": 1,
+  "fields": {
+    "address": "Йошкар-Ола, ул. Ленина, 1",
+    "phone": "8 800 555-35-35",
+    "working_hours": "ежедневно 10:00–23:00",
+    "map_embed_url": "",
+    "map_longitude": "47.894742",
+    "map_latitude": "56.634407",
+    "map_zoom": 16
+  }
+},
+{
+  "model": "users.profile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "qawsea"
+    ],
+    "phone": "qawsea",
+    "email": "",
+    "full_name": "",
+    "birthday": null,
+    "visits_count": 0,
+    "total_spent": "0.00",
+    "manual_discount_percent": null,
+    "created_at": "2026-06-02T07:33:49.812Z",
+    "updated_at": "2026-06-02T07:33:49.812Z"
+  }
+}
+]

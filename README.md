@@ -109,22 +109,24 @@ python manage.py sync_bundled_media
 
 **Локально** в dev-режиме БД не перезаписывается при `migrate` и `sync_bundled_media`.
 
-Перед деплоем на Render — выгрузить меню и столики из админки в репозиторий:
+Перед деплоем на Render — выгрузить **всю БД и все медиа** в репозиторий:
 
 ```powershell
 python manage.py export_bundled_manifest
 git add assets/bundled/
-git commit -m "Sync menu from local admin"
+git commit -m "Sync full DB for Render"
 git push origin main
 ```
 
-Принудительно восстановить меню из `manifest.json` локально:
+Команда создаёт `assets/bundled/db.json` (полный дамп: меню, столы, брони, пользователи, отзывы, контакты и т.д.) и копирует всю папку `media/`.
+
+Принудительно восстановить локальную БД из снимка (осторожно, перезапишет всё):
 
 ```powershell
 python manage.py sync_bundled_media --seed-db
 ```
 
-На Render всегда `full` (см. `config/settings/prod.py`).
+На Render при каждом деплое БД полностью восстанавливается из `db.json` (режим `full` в `config/settings/prod.py`).
 
 - Бэкап БД и медиа:
 
