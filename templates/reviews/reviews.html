@@ -1,43 +1,37 @@
 {% extends "base.html" %}
 {% block title %}{{ SITE_NAME }} — Отзывы{% endblock %}
 {% block content %}
-  {% include "partials/page_hero.html" with badge="Мнение гостей" title="Отзывы" subtitle="Честные впечатления о кухне, сервисе и атмосфере — только после реального визита." %}
+  {% include "partials/page_hero.html" with badge="Отзывы" title="Отзывы гостей" subtitle="Впечатления о кухне, сервисе и атмосфере." %}
 
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
-    <div class="d-flex gap-3 flex-wrap">
-      <div class="bebo-stat-pill">
-        <strong>{{ stats.total|default:0 }}</strong>
-        <span>отзывов</span>
-      </div>
+    <div class="d-flex gap-3 text-muted small">
+      <span><strong class="text-dark">{{ stats.total|default:0 }}</strong> отзывов</span>
       {% if stats.avg_rating %}
-        <div class="bebo-stat-pill">
-          <strong>{{ stats.avg_rating|floatformat:1 }}</strong>
-          <span>средняя оценка</span>
-        </div>
+        <span>средняя <strong class="text-dark">{{ stats.avg_rating|floatformat:1 }}</strong>/5</span>
       {% endif %}
     </div>
     {% if request.user.is_authenticated %}
-      <a class="btn btn-sm btn-outline-primary" href="{% url 'reviews:add' %}">Оставить отзыв</a>
+      <a class="wr-btn wr-btn--fill wr-btn--on-dark" href="{% url 'reviews:add' %}">Оставить отзыв</a>
     {% else %}
-      <a class="btn btn-sm btn-outline-secondary" href="/users/login/?next={% url 'reviews:add' %}">Войти и написать отзыв</a>
+      <a class="wr-btn wr-btn--on-light" href="/users/login/?next={% url 'reviews:add' %}">Войти</a>
     {% endif %}
   </div>
 
   {% if reviews %}
-    <div class="vstack gap-3">
+    <div class="wr-reviews__grid" style="margin-top:0">
       {% for r in reviews %}
-        <div class="border rounded p-3">
-          <div class="d-flex justify-content-between">
+        <div class="wr-review-item">
+          <div class="d-flex justify-content-between mb-2">
             <strong>{{ r.name }}</strong>
-            <span class="badge text-bg-warning">{{ r.rating }}/5</span>
+            <span class="text-muted small">{{ r.rating }}/5</span>
           </div>
-          <div class="text-muted small">{{ r.created_at|date:"d.m.Y" }}</div>
-          <div class="mt-2">{{ r.text|linebreaksbr }}</div>
+          <div class="text-muted small mb-2">{{ r.created_at|date:"d.m.Y" }}</div>
+          <div class="small">{{ r.text|linebreaksbr }}</div>
           {% if r.photos.all %}
             <div class="d-flex flex-wrap gap-2 mt-3">
               {% for p in r.photos.all %}
                 <a href="{{ p.image.url }}" target="_blank">
-                  <img src="{{ p.image.url }}" alt="" style="width: 96px; height: 72px; object-fit: cover;" class="rounded" loading="lazy"/>
+                  <img src="{{ p.image.url }}" alt="" style="width:96px;height:72px;object-fit:cover" loading="lazy" />
                 </a>
               {% endfor %}
             </div>
@@ -46,9 +40,8 @@
       {% endfor %}
     </div>
   {% else %}
-    <div class="bebo-info-card">
-      <div class="bebo-info-card__title">Будьте первым</div>
-      <p class="text-muted mb-0">После визита оставьте отзыв — он поможет другим гостям выбрать блюда.</p>
+    <div class="wr-info-card">
+      <p class="text-muted mb-0">После визита оставьте первый отзыв.</p>
     </div>
   {% endif %}
 {% endblock %}

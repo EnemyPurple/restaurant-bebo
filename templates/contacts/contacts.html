@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block title %}{{ SITE_NAME }} — Контакты{% endblock %}
 {% block content %}
-  {% include "partials/page_hero.html" with badge="Мы на связи" title="Контакты" subtitle="Приезжайте в гости, звоните или напишите — ответим в рабочие часы." %}
+  {% include "partials/page_hero.html" with badge="Контакты" title="Контакты" subtitle=contact_settings.working_hours %}
 
   <div class="row g-4">
     <div class="col-lg-6">
-      <div class="bebo-info-card mb-3">
-        <div class="bebo-info-card__title">Как нас найти</div>
-        <p class="text-muted mb-1"><strong class="text-light">Адрес:</strong> {{ contact_settings.address }}</p>
-        <p class="text-muted mb-1"><strong class="text-light">Телефон:</strong> {{ contact_settings.phone }}</p>
-        <p class="text-muted mb-0"><strong class="text-light">Часы работы:</strong> {{ contact_settings.working_hours }}</p>
+      <div class="wr-info-card mb-3">
+        <div class="wr-info-card__title">Как нас найти</div>
+        <p class="text-muted mb-1">{{ contact_settings.address }}</p>
+        <p class="text-muted mb-1"><a href="tel:{{ contact_settings.phone|cut:' '|cut:'-'|cut:'('|cut:')' }}">{{ contact_settings.phone }}</a></p>
+        <p class="text-muted mb-0">{{ contact_settings.working_hours }}</p>
       </div>
-      <div class="bebo-map-embed">
+      <div class="wr-map">
         <iframe
           src="{{ contact_settings.get_map_embed_url }}"
           title="Карта ресторана"
@@ -22,9 +22,9 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="h5 mb-3">Написать нам</h2>
+      <div class="card border-0">
+        <div class="card-body p-4">
+          <h2 class="h5 wr-serif mb-3">Написать нам</h2>
           <form method="post" class="vstack gap-3">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -49,12 +49,9 @@
               {{ form.message }}{{ form.message.errors }}
             </div>
             {% if form.captcha %}{{ form.captcha }}{% endif %}
-            <button class="btn btn-primary">Отправить</button>
+            <button class="wr-btn wr-btn--fill">Отправить</button>
           </form>
         </div>
-      </div>
-      <div class="bebo-page-tip mb-0 mt-3">
-        <strong>Бронирование на сегодня?</strong> Позвоните — так мы быстрее подберём свободный столик.
       </div>
     </div>
   </div>

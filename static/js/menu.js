@@ -1,7 +1,7 @@
 async function loadMenu() {
   const q = document.getElementById("menu-q")?.value.trim() || "";
   const category = document.getElementById("menu-category")?.value || "";
-  const toggles = [...document.querySelectorAll(".bebo-menu-toggle.is-active")].map((el) => el.dataset.filter);
+  const toggles = [...document.querySelectorAll(".wr-menu-toggle.is-active, .bebo-menu-toggle.is-active")].map((el) => el.dataset.filter);
   const params = new URLSearchParams();
   if (q) params.set("q", q);
   if (category) params.set("category", category);
@@ -38,20 +38,20 @@ async function loadMenu() {
       const col = document.createElement("div");
       col.className = "col-md-6 col-lg-4";
       col.innerHTML = `
-      <div class="card h-100 bebo-menu-card">
-        ${d.photo ? `<img src="${d.photo}" class="card-img-top bebo-menu-card__img" alt="${d.name}">` : ""}
-        <div class="card-body d-flex flex-column bebo-menu-card__body">
-          <div class="bebo-menu-card__head">
-            <h5 class="bebo-menu-card__title">${d.name}</h5>
-            <span class="bebo-menu-card__price">${d.price}&nbsp;₽</span>
+      <div class="wr-menu-card h-100 d-flex flex-column">
+        ${d.photo ? `<img src="${d.photo}" alt="${d.name}">` : ""}
+        <div class="p-3 d-flex flex-column flex-grow-1">
+          <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+            <h5 class="h6 mb-0 wr-serif">${d.name}</h5>
+            <span class="small text-nowrap">${d.price}&nbsp;₽</span>
           </div>
-          <p class="bebo-menu-card__desc">${(d.description || "").slice(0, 120)}</p>
-          <div class="bebo-menu-card__badges d-flex gap-1 flex-wrap">
-            ${d.is_spicy ? `<span class="badge text-bg-danger">Острое</span>` : ""}
-            ${d.is_vegetarian ? `<span class="badge text-bg-success">Вегет.</span>` : ""}
-            ${d.is_recommended ? `<span class="badge text-bg-warning">Реком.</span>` : ""}
+          <p class="small text-muted flex-grow-1">${(d.description || "").slice(0, 120)}</p>
+          <div class="d-flex gap-1 flex-wrap mb-2">
+            ${d.is_spicy ? `<span class="badge rounded-0 text-bg-dark">Острое</span>` : ""}
+            ${d.is_vegetarian ? `<span class="badge rounded-0 text-bg-secondary">Вегет.</span>` : ""}
+            ${d.is_recommended ? `<span class="badge rounded-0 border">Реком.</span>` : ""}
           </div>
-          <a class="btn btn-sm btn-outline-secondary bebo-menu-card__link mt-auto" href="/menu/dish/${d.slug}/">Подробнее</a>
+          <a class="wr-link-arrow small mt-auto" href="/menu/dish/${d.slug}/">Подробнее</a>
         </div>
       </div>
     `;
@@ -68,7 +68,7 @@ document.getElementById("menu-apply")?.addEventListener("click", loadMenu);
 document.getElementById("menu-q")?.addEventListener("keydown", (e) => {
   if (e.key === "Enter") loadMenu();
 });
-document.querySelectorAll(".bebo-menu-toggle").forEach((toggle) => {
+document.querySelectorAll(".wr-menu-toggle, .bebo-menu-toggle").forEach((toggle) => {
   toggle.addEventListener("click", () => {
     toggle.classList.toggle("is-active");
     loadMenu();

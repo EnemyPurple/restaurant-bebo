@@ -4,31 +4,31 @@
   {% url 'users:logout' as logout_url %}
   {% include "partials/page_hero.html" with badge="Ваш аккаунт" title="Личный кабинет" subtitle="Бронирования, события, скидки и история визитов." action_url=logout_url action_text="Выйти" %}
 
-  <div class="bebo-feature-grid mb-4">
-    <a class="bebo-feature-item text-decoration-none" href="/booking/">
-      <div class="bebo-feature-item__label">Быстро</div>
-      <div class="bebo-feature-item__title">Забронировать столик</div>
-      <p>Выберите дату и время — мы подтвердим бронь.</p>
+  <div class="wr-quick-links mb-4">
+    <a class="wr-quick-links__item" href="/booking/">
+      <span class="wr-quick-links__label">Быстро</span>
+      <span class="wr-quick-links__title">Забронировать столик</span>
+      <span class="wr-quick-links__text">Выберите дату и время — мы подтвердим бронь.</span>
     </a>
-    <a class="bebo-feature-item text-decoration-none" href="/events/">
-      <div class="bebo-feature-item__label">Афиша</div>
-      <div class="bebo-feature-item__title">Мероприятия</div>
-      <p>Запишитесь на дегустации и вечера с музыкой.</p>
+    <a class="wr-quick-links__item" href="/events/">
+      <span class="wr-quick-links__label">Афиша</span>
+      <span class="wr-quick-links__title">Мероприятия</span>
+      <span class="wr-quick-links__text">Запишитесь на дегустации и вечера с музыкой.</span>
     </a>
-    <a class="bebo-feature-item text-decoration-none" href="/reviews/add/">
-      <div class="bebo-feature-item__label">Отзыв</div>
-      <div class="bebo-feature-item__title">Поделиться впечатлением</div>
-      <p>Расскажите о визите после подтверждённого бронирования.</p>
+    <a class="wr-quick-links__item" href="/reviews/add/">
+      <span class="wr-quick-links__label">Отзыв</span>
+      <span class="wr-quick-links__title">Поделиться впечатлением</span>
+      <span class="wr-quick-links__text">Расскажите о визите после подтверждённого бронирования.</span>
     </a>
   </div>
 
   <div class="row g-4">
     <div class="col-lg-4">
-      <div class="card">
+      <div class="card wr-cabinet-card">
         <div class="card-body">
-          <div class="d-flex justify-content-between align-items-start gap-2">
+          <div class="wr-cabinet-card__head">
             <h2 class="h6 mb-0">Профиль</h2>
-            <a class="btn btn-sm btn-outline-primary" href="{% url 'users:edit_profile' %}">Редактировать</a>
+            <a class="wr-btn wr-btn--sm" href="{% url 'users:edit_profile' %}">Редактировать</a>
           </div>
           <div class="text-muted small">Телефон</div>
           <div class="mb-2">{{ profile.phone }}</div>
@@ -48,10 +48,10 @@
         </div>
       </div>
 
-      <div class="card mt-4">
+      <div class="card wr-cabinet-card mt-4">
         <div class="card-body">
-          <h2 class="h6">Отзывы</h2>
-          <a class="btn btn-sm btn-outline-primary" href="/reviews/add/">Оставить отзыв</a>
+          <h2 class="h6 mb-3">Отзывы</h2>
+          <a class="wr-btn wr-btn--sm" href="/reviews/add/">Оставить отзыв</a>
         </div>
       </div>
     </div>

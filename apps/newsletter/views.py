@@ -1,10 +1,14 @@
 from __future__ import annotations
 
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.utils.timezone import now
 
 from .models import Subscriber
+
+
+def newsletter_page(request):
+    return render(request, "newsletter/subscribe.html")
 
 
 def subscribe(request):

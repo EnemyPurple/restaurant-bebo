@@ -88,7 +88,7 @@
   "model": "auth.user",
   "fields": {
     "password": "pbkdf2_sha256$1000000$41ENqU8G1wLtaK3ZTX1NIh$HpSkXSIlFEFYUf9hoxAjvem9n7Mg0mzZ2qRkvdScBAI=",
-    "last_login": "2026-06-02T08:44:20.658Z",
+    "last_login": "2026-06-04T19:04:13.212Z",
     "is_superuser": true,
     "username": "qawsea",
     "first_name": "",

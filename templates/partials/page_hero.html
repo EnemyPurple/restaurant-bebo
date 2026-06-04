@@ -1,14 +1,8 @@
-<section class="bebo-page-hero mb-4">
-  <div class="bebo-page-hero__inner">
-    {% if badge %}<div class="bebo-page-hero__badge">{{ badge }}</div>{% endif %}
-    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
-      <div>
-        <h1 class="bebo-page-hero__title">{{ title }}</h1>
-        {% if subtitle %}<p class="bebo-page-hero__subtitle mb-0">{{ subtitle }}</p>{% endif %}
-      </div>
-      {% if action_url and action_text %}
-        <a class="btn btn-sm btn-outline-secondary align-self-center" href="{{ action_url }}">{{ action_text }}</a>
-      {% endif %}
-    </div>
-  </div>
+<section class="wr-page-hero">
+  {% if badge %}<div class="wr-page-hero__badge">{{ badge }}</div>{% endif %}
+  <h1 class="wr-page-hero__title wr-serif">{{ title }}</h1>
+  {% if subtitle %}<p class="text-muted mb-0">{{ subtitle }}</p>{% endif %}
+  {% if action_url and action_text %}
+    <a class="wr-link-arrow mt-3 d-inline-flex" href="{{ action_url }}">{{ action_text }}</a>
+  {% endif %}
 </section>

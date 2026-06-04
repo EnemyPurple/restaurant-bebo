@@ -158,3 +158,5 @@ python manage.py export_bundled_manifest
 git add assets/bundled/
 git commit -m "Sync menu"
 git push origin main
+
+

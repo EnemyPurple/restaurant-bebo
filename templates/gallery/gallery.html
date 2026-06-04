@@ -1,17 +1,13 @@
 {% extends "base.html" %}
 {% block title %}{{ SITE_NAME }} — Галерея{% endblock %}
 {% block content %}
-  {% include "partials/page_hero.html" with badge="Интерьер и атмосфера" title="Галерея" subtitle="Интерьер, детали и настроение ресторана Bebo." %}
+  {% include "partials/page_hero.html" with badge="Галерея" title="Интерьер и атмосфера" subtitle="Настроение ресторана «{{ SITE_NAME }}»." %}
 
-  <section class="bebo-gallery-story mb-4 bebo-mobile-safe">
+  <section class="bebo-gallery-story mb-4">
     <div class="bebo-gallery-story__text">
-      <h2>Bebo</h2>
-      <p>Интерьер заведения выполнен в традиционном грузинском стиле, что создает атмосферу уюта и домашнего тепла.</p>
-      <p>В зале ресторана расположены деревянные столы и стулья, которые украшены национальными узорами и орнаментами. Светильники, выполненные в форме глиняных кувшинов, создают приятное освещение и добавляют в интерьер элементы народного творчества.</p>
-      <p>Стены ресторана украшены картинами грузинских художников, а также фотографиями известных достопримечательностей Грузии.</p>
-      <p>Здесь можно попробовать настоящий грузинский виноградный бренди или другие напитки из Грузии.</p>
-      <p>Интерьер ресторана Bebo создает атмосферу настоящей грузинской гостеприимности и комфорта, что позволяет посетителям насладиться не только вкусной едой, но и приятной обстановкой.</p>
-      <div class="bebo-gallery-story__ornament">⸻ ◇ ⸻</div>
+      <h2 class="wr-serif">Атмосфера</h2>
+      <p class="text-muted">Интерьер в традиционном грузинском стиле — дерево, орнаменты и тёплый свет создают ощущение домашнего уюта.</p>
+      <a class="wr-link-arrow" href="/booking/">Забронировать визит</a>
     </div>
     <div class="bebo-gallery-story__image-wrap">
       {% if images %}
@@ -19,27 +15,29 @@
           <img
             id="bebo-gallery-main-image"
             src="{{ images.0.image.url }}"
-            alt="{{ images.0.title|default:'Интерьер ресторана Bebo' }}"
-            class="bebo-gallery-story__image"
+            alt="{{ images.0.title|default:'Интерьер ресторана' }}"
+            class="w-100"
+            style="object-fit:cover;aspect-ratio:4/3"
           />
           {% if images|length > 1 %}
-            <div class="bebo-gallery-thumbs" id="bebo-gallery-thumbs">
+            <div class="d-flex flex-wrap gap-2 mt-2" id="bebo-gallery-thumbs">
               {% for img in images %}
                 <button
                   type="button"
-                  class="bebo-gallery-thumb{% if forloop.first %} is-active{% endif %}"
+                  class="border-0 p-0{% if forloop.first %} opacity-100{% else %} opacity-50{% endif %}"
+                  style="width:72px;height:72px;overflow:hidden"
                   data-full="{{ img.image.url }}"
-                  data-alt="{{ img.title|default:'Интерьер ресторана Bebo' }}"
-                  aria-label="Показать фото {{ forloop.counter }}"
+                  data-alt="{{ img.title|default:'Фото ресторана' }}"
+                  aria-label="Фото {{ forloop.counter }}"
                 >
-                  <img src="{{ img.image.url }}" alt="{{ img.title|default:'Фото ресторана Бебо' }}" loading="lazy" />
+                  <img src="{{ img.image.url }}" alt="" class="w-100 h-100" style="object-fit:cover" loading="lazy" />
                 </button>
               {% endfor %}
             </div>
           {% endif %}
         </div>
       {% else %}
-        <div class="bebo-gallery-story__image bebo-gallery-story__image--empty">Фото скоро появятся</div>
+        <p class="text-muted">Фото скоро появятся.</p>
       {% endif %}
     </div>
   </section>
@@ -51,14 +49,12 @@
       const mainImage = document.getElementById("bebo-gallery-main-image");
       const thumbsRoot = document.getElementById("bebo-gallery-thumbs");
       if (!mainImage || !thumbsRoot) return;
-
-      const thumbs = [...thumbsRoot.querySelectorAll(".bebo-gallery-thumb")];
-      thumbs.forEach((thumb) => {
+      thumbsRoot.querySelectorAll("button").forEach((thumb) => {
         thumb.addEventListener("click", () => {
           mainImage.src = thumb.dataset.full;
           mainImage.alt = thumb.dataset.alt;
-          thumbs.forEach((item) => item.classList.remove("is-active"));
-          thumb.classList.add("is-active");
+          thumbsRoot.querySelectorAll("button").forEach((b) => b.classList.add("opacity-50"));
+          thumb.classList.remove("opacity-50");
         });
       });
     })();

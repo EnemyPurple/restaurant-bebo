@@ -5,12 +5,21 @@ DEBUG = False
 
 BUNDLED_MEDIA_MODE = "full"  # noqa: F405
 
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+
 _render_host = os.environ.get("RENDER_EXTERNAL_HOSTNAME", "")
+_render_url = os.environ.get("RENDER_EXTERNAL_URL", "").rstrip("/")
+
 if _render_host:
     ALLOWED_HOSTS = list({*ALLOWED_HOSTS, _render_host, ".onrender.com"})  # noqa: F405
-    CSRF_TRUSTED_ORIGINS = list(  # noqa: F405
-        {*CSRF_TRUSTED_ORIGINS, f"https://{_render_host}", "https://*.onrender.com"}
-    )
+
+_csrf_origins = set(CSRF_TRUSTED_ORIGINS)  # noqa: F405
+if _render_host:
+    _csrf_origins.add(f"https://{_render_host}")
+if _render_url:
+    _csrf_origins.add(_render_url)
+CSRF_TRUSTED_ORIGINS = sorted(_csrf_origins)  # noqa: F405
 
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)  # type: ignore[name-defined] # noqa: F405
 SESSION_COOKIE_SECURE = env.bool("DJANGO_SESSION_COOKIE_SECURE", default=True)  # type: ignore[name-defined] # noqa: F405

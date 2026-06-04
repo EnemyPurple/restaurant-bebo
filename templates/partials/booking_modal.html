@@ -1,0 +1,57 @@
+{% load static %}
+<div class="wr-modal" id="wrBookingModal" role="dialog" aria-modal="true" aria-labelledby="wrBookingTitle">
+  <div class="wr-modal__dialog">
+    <button type="button" class="wr-modal__close" data-wr-booking-close aria-label="Закрыть">&times;</button>
+    <h2 class="wr-modal__title wr-serif" id="wrBookingTitle">{{ SITE_NAME }}</h2>
+    <p class="wr-modal__hint">Подтверждение о бронировании придёт на e-mail</p>
+
+    <form method="post" action="/booking/" class="vstack gap-3" id="wrBookingModalForm">
+      {% csrf_token %}
+      <div>
+        <label class="form-label">Ваше имя</label>
+        {{ booking_modal_form.name }}
+      </div>
+      <div>
+        <label class="form-label">Телефон</label>
+        {{ booking_modal_form.phone }}
+      </div>
+      <div>
+        <label class="form-label">Электронный адрес</label>
+        {{ booking_modal_form.email }}
+      </div>
+      <div class="row g-2">
+        <div class="col-6">
+          <label class="form-label">Дата визита</label>
+          {{ booking_modal_form.date }}
+        </div>
+        <div class="col-6">
+          <label class="form-label">Время</label>
+          {{ booking_modal_form.time }}
+        </div>
+      </div>
+      <div class="row g-2">
+        <div class="col-4">
+          <label class="form-label">Гостей</label>
+          {{ booking_modal_form.guests }}
+        </div>
+        <div class="col-8">
+          <label class="form-label">Столик</label>
+          {{ booking_modal_form.table }}
+          <div class="form-text js-booking-availability"></div>
+        </div>
+      </div>
+      <div class="wr-consent">
+        <label>
+          <input type="checkbox" required name="consent_personal" value="1" />
+          <span>Согласен(-сна) на обработку персональных данных</span>
+        </label>
+        <label>
+          <input type="checkbox" name="consent_newsletter" value="1" />
+          <span>Согласен(-сна) получать информационную рассылку</span>
+        </label>
+      </div>
+      <button type="submit" class="wr-btn wr-btn--fill w-100">Забронировать</button>
+      <a href="tel:{{ contact_settings.phone|cut:' '|cut:'-'|cut:'('|cut:')' }}" class="wr-btn w-100 text-center">Позвонить</a>
+    </form>
+  </div>
+</div>

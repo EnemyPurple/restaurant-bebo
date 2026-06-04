@@ -1,11 +1,11 @@
-async function refreshAvailability() {
-  const date = document.getElementById("id_date")?.value;
-  const time = document.getElementById("id_time")?.value;
-  const guests = document.getElementById("id_guests")?.value;
-  const hint = document.getElementById("booking-availability");
-  const tableSelect = document.getElementById("id_table");
+async function refreshAvailability(form) {
+  const date = form.querySelector("[name='date']")?.value;
+  const time = form.querySelector("[name='time']")?.value;
+  const guests = form.querySelector("[name='guests']")?.value;
+  const hint = form.querySelector(".js-booking-availability");
+  const tableSelect = form.querySelector("[name='table']");
 
-  if (!date || !time || !guests) return;
+  if (!date || !time || !guests || !hint || !tableSelect) return;
   hint.textContent = "Проверяем доступность...";
 
   const params = new URLSearchParams({ date, time, guests });
@@ -30,7 +30,11 @@ async function refreshAvailability() {
   }
 }
 
-["id_date", "id_time", "id_guests"].forEach((id) => {
-  document.getElementById(id)?.addEventListener("change", refreshAvailability);
+document.querySelectorAll("form").forEach((form) => {
+  if (!form.querySelector("[name='date'], [name='table']")) return;
+  const handler = () => refreshAvailability(form);
+  ["date", "time", "guests"].forEach((name) => {
+    form.querySelector(`[name='${name}']`)?.addEventListener("change", handler);
+  });
 });
 

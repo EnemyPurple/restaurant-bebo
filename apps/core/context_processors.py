@@ -12,3 +12,9 @@ def site_settings(request):
         "contact_settings": ContactSettings.load(),
     }
 
+
+def booking_modal_form(request):
+    from apps.booking.forms import BookingForm
+
+    return {"booking_modal_form": BookingForm()}
+

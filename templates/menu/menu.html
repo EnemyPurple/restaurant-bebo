@@ -2,36 +2,29 @@
 {% load static %}
 {% block title %}{{ SITE_NAME }} — Меню{% endblock %}
 {% block content %}
-  <div class="bebo-menu-page">
-  <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3 bebo-menu-page__toolbar">
-    <div>
-      <h1 class="h3 mb-0">Меню</h1>
+  {% include "partials/page_hero.html" with badge="Меню" title="Меню ресторана" subtitle="Локальные продукты, проверенные рецепты и сезонные позиции." %}
 
-    </div>
-    <div class="d-flex gap-2 bebo-menu-page__filters">
-      <input id="menu-q" class="form-control bebo-menu-page__search" placeholder="Поиск по названию" />
-      <select id="menu-category" class="form-select">
-        <option value="">Все категории</option>
-        {% for c in categories %}
-          <option value="{{ c.slug }}">{{ c.name }}</option>
-        {% endfor %}
-      </select>
-      <button id="menu-apply" class="btn btn-primary">Показать</button>
-    </div>
+  <div class="wr-menu-toolbar">
+    <input id="menu-q" class="form-control" style="max-width:280px" placeholder="Поиск по названию" />
+    <select id="menu-category" class="form-select" style="max-width:220px">
+      <option value="">Все категории</option>
+      {% for c in categories %}
+        <option value="{{ c.slug }}">{{ c.name }}</option>
+      {% endfor %}
+    </select>
+    <button id="menu-apply" class="wr-btn wr-btn--fill">Показать</button>
   </div>
 
-  <div class="bebo-menu-toggles mb-3" role="group" aria-label="Быстрые фильтры">
-    <button type="button" class="bebo-menu-toggle" data-filter="recommended">Рекомендуем</button>
-    <button type="button" class="bebo-menu-toggle" data-filter="vegetarian">Вегетарианское</button>
-    <button type="button" class="bebo-menu-toggle" data-filter="spicy">Острое</button>
+  <div class="d-flex flex-wrap gap-2 mb-4" role="group" aria-label="Быстрые фильтры">
+    <button type="button" class="wr-menu-toggle" data-filter="recommended">Рекомендуем</button>
+    <button type="button" class="wr-menu-toggle" data-filter="vegetarian">Вегетарианское</button>
+    <button type="button" class="wr-menu-toggle" data-filter="spicy">Острое</button>
   </div>
 
   <div id="menu-results" class="row g-3"></div>
   <div id="menu-empty" class="text-muted d-none">Ничего не найдено.</div>
-  </div>
 {% endblock %}
 
 {% block scripts %}
   <script src="{% static 'js/menu.js' %}?v={% now 'U' %}"></script>
 {% endblock %}
-

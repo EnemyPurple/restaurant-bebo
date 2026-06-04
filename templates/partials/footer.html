@@ -1,15 +1,38 @@
-<footer class="bebo-site__footer">
-  <div class="container">
-    <div class="bebo-site__footer-inner">
-      <div>
-        <div class="bebo-site__footer-brand">{{ SITE_NAME }}</div>
-        <div class="small text-muted">© {% now "Y" %} · {{ contact_settings.address }}</div>
-      </div>
-      <div class="bebo-site__footer-meta small">
-        <a href="tel:{{ contact_settings.phone|cut:' '|cut:'-'|cut:'('|cut:')' }}">{{ contact_settings.phone }}</a>
-        <span class="bebo-site__footer-sep">·</span>
-        <span class="text-muted">{{ contact_settings.working_hours }}</span>
-      </div>
+<footer class="wr-footer">
+  <div class="wr-footer__grid">
+    <div>
+      <div class="wr-footer__title">Ресторан</div>
+      <ul>
+        <li><a href="/#about">О нас</a></li>
+        <li><a href="/menu/">Меню</a></li>
+        <li><a href="/gallery/">Галерея</a></li>
+        <li><a href="/booking/">Бронирование</a></li>
+      </ul>
     </div>
+    <div>
+      <div class="wr-footer__title">Гости</div>
+      <ul>
+        <li><a href="/events/">Афиша</a></li>
+        <li><a href="/reviews/">Отзывы</a></li>
+        <li><a href="{% url 'newsletter:index' %}">Рассылка</a></li>
+        {% if request.user.is_authenticated %}
+          <li><a href="/users/me/">Личный кабинет</a></li>
+        {% else %}
+          <li><a href="/users/login/">Войти</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    <div>
+      <div class="wr-footer__title">Контакты</div>
+      <ul>
+        <li>{{ contact_settings.address }}</li>
+        <li><a href="tel:{{ contact_settings.phone|cut:' '|cut:'-'|cut:'('|cut:')' }}">{{ contact_settings.phone }}</a></li>
+        <li>{{ contact_settings.working_hours }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wr-footer__bottom">
+    <span>© {% now "Y" %} {{ SITE_NAME }}</span>
+    <span>Ресторан грузинской кухни</span>
   </div>
 </footer>

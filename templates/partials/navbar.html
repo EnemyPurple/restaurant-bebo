@@ -1,31 +1,46 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="/">Бебо</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-      <span class="navbar-toggler-icon"></span>
+<header class="wr-header {% if request.path == '/' %}wr-header--hero{% else %}wr-header--solid is-scrolled{% endif %}" id="wrHeader">
+  <div class="wr-header__inner">
+    <nav class="wr-header__nav wr-header__nav--left wr-header__nav--desktop" aria-label="Основное меню">
+      <a class="wr-header__link" href="/#about">О нас</a>
+      <a class="wr-header__link" href="/menu/">Меню</a>
+      <a class="wr-header__link" href="/events/">Афиша</a>
+    </nav>
+
+    <button type="button" class="wr-header__burger" id="wrBurger" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
     </button>
-    <div id="nav" class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link" href="/menu/">Меню</a></li>
-        <li class="nav-item"><a class="nav-link" href="/booking/">Бронирование</a></li>
-        <li class="nav-item"><a class="nav-link" href="/events/">События</a></li>
-        <li class="nav-item"><a class="nav-link" href="/gallery/">Галерея</a></li>
-        <li class="nav-item"><a class="nav-link" href="/reviews/">Отзывы</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contacts/">Контакты</a></li>
-      </ul>
-      <ul class="navbar-nav me-3">
-        {% if request.user.is_authenticated %}
-          <li class="nav-item"><a class="nav-link" href="/users/me/">Кабинет</a></li>
-        {% else %}
-          <li class="nav-item"><a class="nav-link" href="/users/login/">Войти</a></li>
-        {% endif %}
-      </ul>
-      <form class="d-none d-xl-flex ms-xl-2" method="post" action="/newsletter/subscribe/">
-        {% csrf_token %}
-        <input class="form-control form-control-sm me-2" name="email" placeholder="Email для новостей" />
-        <button class="btn btn-sm btn-outline-light">Подписаться</button>
-      </form>
+
+    <a class="wr-header__brand" href="/">{{ SITE_NAME }}</a>
+
+    <div class="wr-header__actions">
+      <nav class="wr-header__nav wr-header__nav--right wr-header__nav--desktop" aria-label="Дополнительное меню">
+        <a class="wr-header__link" href="/gallery/">Галерея</a>
+        <a class="wr-header__link" href="/reviews/">Отзывы</a>
+        <a class="wr-header__link" href="/contacts/">Контакты</a>
+      </nav>
+      <a class="wr-header__phone d-none d-lg-inline" href="tel:{{ contact_settings.phone|cut:' '|cut:'-'|cut:'('|cut:')' }}">{{ contact_settings.phone }}</a>
+      <button type="button" class="wr-btn wr-btn--fill" data-wr-booking-open>Забронировать</button>
     </div>
   </div>
-</nav>
+</header>
 
+<div class="wr-mobile-menu" id="wrMobileMenu" aria-hidden="true">
+  <div class="wr-mobile-menu__panel">
+    <ul>
+      <li><a href="/#about">О нас</a></li>
+      <li><a href="/menu/">Меню</a></li>
+      <li><a href="/events/">Афиша</a></li>
+      <li><a href="/gallery/">Галерея</a></li>
+      <li><a href="/reviews/">Отзывы</a></li>
+      <li><a href="/contacts/">Контакты</a></li>
+      <li><a href="/booking/">Бронирование</a></li>
+      {% if request.user.is_authenticated %}
+        <li><a href="/users/me/">Кабинет</a></li>
+      {% else %}
+        <li><a href="/users/login/">Войти</a></li>
+      {% endif %}
+      <li><a href="tel:{{ contact_settings.phone|cut:' '|cut:'-'|cut:'('|cut:')' }}">{{ contact_settings.phone }}</a></li>
+    </ul>
+    <button type="button" class="wr-btn wr-btn--fill mt-4 w-100" data-wr-booking-open>Забронировать</button>
+  </div>
+</div>

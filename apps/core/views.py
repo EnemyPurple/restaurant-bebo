@@ -3,6 +3,7 @@ from django.db.models import Case, IntegerField, Value, When
 from django.utils import timezone
 
 from apps.events.models import Event
+from apps.gallery.models import GalleryImage
 from apps.menu.models import Dish
 from apps.reviews.models import Review
 
@@ -32,6 +33,7 @@ def home(request):
         "category_is_drink", "-is_recommended", "category__sort_order", "name"
     )
     chef_picks = list(chef_picks_qs[:6])
+    gallery_images = list(GalleryImage.objects.filter(is_published=True).order_by("-created_at")[:8])
     return render(
         request,
         "core/home.html",
@@ -41,6 +43,7 @@ def home(request):
             "upcoming_event": upcoming_event,
             "dish_of_day": dish_of_day,
             "chef_picks": chef_picks,
+            "gallery_images": gallery_images,
         },
     )
 
